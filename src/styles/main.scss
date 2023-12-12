@@ -1,0 +1,35 @@
+//===Animation===//
+@import "./components/shared/Dock/dock.scss";
+@import "./components/shared/Dock/flags.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 14px;
+}
+
+body {
+  height: 100vh;
+  font-family: var(--font-family);
+  font-weight: normal;
+  background: black;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.carousel-section{
+  background-image: url('../../public/banner.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
