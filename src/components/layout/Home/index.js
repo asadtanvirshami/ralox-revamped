@@ -12,7 +12,9 @@ import {
   slideAnimation,
 } from "../../../config/motion";
 import logo from "../../../../public/white.png";
+import banner from "../../../../public/banner.jpg";
 import { Divider } from "@nextui-org/react";
+import CardsGroup from "@/components/shared/CardsGroup/CardsGroup";
 
 const Home = () => {
   const snap = useSnapshot(state);
@@ -21,40 +23,50 @@ const Home = () => {
   return (
     <React.Fragment>
       <AnimatePresence>
-        <motion.section className="p-10 ">
-          <motion.section className=" bg-cover relative z-0 h-full w-full carousel-section"></motion.section>
-          <motion.div className="p-5 " {...slideAnimation("left")}>
-            <motion.header
-              className=" flex m-auto justify-center align-middle"
-              {...slideAnimation("down")}
-            >
+        <motion.div className="relative w-full overflow-hidden h-min">
+          <motion.div className="relative w-full overflow-hidden">
+            <motion.div className="relative w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
               <Image
-                style={{ width: "100%", height: "90%" }}
-                src={logo}
-                alt="logo"
+                src={banner}
+                className="object-cover w-full h-[50rem] opacity-60"
+                alt="banner"
               />
-            </motion.header>
-            <motion.div className="text-center" {...headContainerAnimation}>
-              <motion.div {...headTextAnimation}>
-                <h1 className="text-white text-5xl">
-                  WE BUILD ROBUST SOFTWARES.
-                </h1>
-              </motion.div>
-              <motion.div {...headContentAnimation}>
-                <p className="text-white text-2xl">
-                  We work relentessly to provide and serve you the
-                  <strong> out class and optimized</strong> applications.
-                </p>
+              <motion.div
+                {...slideAnimation("left")}
+                className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
+              >
+                <motion.header {...slideAnimation("down")}>
+                  <Image style={{ width: "100%", height: "90%" }} src={logo} alt="logo" />
+                </motion.header>
+                <motion.div
+                  className="text-center mx-4"
+                  {...headContainerAnimation}
+                >
+                  <motion.div {...headTextAnimation}>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
+                      WE BUILD ROBUST SOFTWARES.
+                    </h1>
+                  </motion.div>
+                  <motion.div {...headContentAnimation}>
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                      We work relentlessly to provide and serve you the
+                      <strong> out class and optimized</strong> applications.
+                    </p>
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </motion.div>
           </motion.div>
-          <motion.div {...headContentAnimation}>
-            <Divider className=" bg-gray-500 mt-16"></Divider>
-          </motion.div>
-        </motion.section>
-        <div className="flex bg-slate-200 h-72 mt-5 w-full"></div>
-        <div className=" mt-12 h-full w-full"></div>
+        </motion.div>
+
+
+    
       </AnimatePresence>
+      <div className="w-full h-full flex items-start justify-center">
+
+            <CardsGroup/>
+      </div>
+        
     </React.Fragment>
   );
 };
