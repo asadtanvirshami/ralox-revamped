@@ -11,6 +11,7 @@ export default function Document() {
         />
         <link rel="preconnect" href="primeicons/primeicons.css" />
         <link rel="preconnect" href="primereact/resources/primereact.css" />
+        <link rel="preconnect" href="https://unpkg.com/aos@next/dist/aos.css" />
       </Head>
       <body>
         <Main />

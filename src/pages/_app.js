@@ -3,7 +3,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
 import 'primeflex/primeflex.css';                                   // css utility
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
-
+import 'aos/dist/aos.css'
 import {useRouter, Router} from 'next/router';
 import { useState } from 'react';
 

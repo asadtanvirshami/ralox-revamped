@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
-
+import AOS from "aos"; // You can also use <link> for styles
 import state from "@/store";
 import {
   headContainerAnimation,
@@ -14,11 +14,14 @@ import {
 import logo from "../../../../public/white.png";
 import banner from "../../../../public/banner.jpg";
 import { Divider } from "@nextui-org/react";
-import CardsGroup from "@/components/shared/CardsGroup/CardsGroup";
+import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
 
 const Home = () => {
   const snap = useSnapshot(state);
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <React.Fragment>
@@ -28,7 +31,7 @@ const Home = () => {
             <motion.div className="relative w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
               <Image
                 src={banner}
-                className="object-cover w-full h-[50rem] opacity-60"
+                className="object-cover w-full h-[62rem] md:h-[70rem] lg:h-[51rem]  opacity-60"
                 alt="banner"
               />
               <motion.div
@@ -36,7 +39,11 @@ const Home = () => {
                 className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
               >
                 <motion.header {...slideAnimation("down")}>
-                  <Image style={{ width: "100%", height: "90%" }} src={logo} alt="logo" />
+                  <Image
+                    style={{ width: "100%", height: "90%" }}
+                    src={logo}
+                    alt="logo"
+                  />
                 </motion.header>
                 <motion.div
                   className="text-center mx-4"
@@ -58,15 +65,16 @@ const Home = () => {
             </motion.div>
           </motion.div>
         </motion.div>
-
-
-    
       </AnimatePresence>
-      <div className="w-full h-full flex items-start justify-center">
-
-            <CardsGroup/>
+      <div
+        data-aos={"fade-in"}
+        className="w-full bg-slate-100  align-middle flex items-center justify-center mx-auto"
+      >
+        <FiveGridCard animation={"fade-right"} />
       </div>
-        
+      <div className="w-full align-middle flex items-center justify-center ">
+        <FiveGridCard />
+      </div>
     </React.Fragment>
   );
 };

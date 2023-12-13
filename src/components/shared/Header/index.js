@@ -53,7 +53,7 @@ const NavHeader = () => {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
+          <Link href="#" className="text-gray-300" aria-current="page">
             Customers
           </Link>
         </NavbarItem>
@@ -65,8 +65,8 @@ const NavHeader = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+        <NavbarItem className="hidden lg:flex ">
+          <Link className="text-orange-200" href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
