@@ -80,7 +80,7 @@ const Home = () => {
           />
           <h1
             data-aos={"fade-down"}
-            className=" text-large font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
+            className=" text-md font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
           >
             CONSULT {'-'} CREATE {'-'} COMPLY
           </h1>
@@ -89,7 +89,7 @@ const Home = () => {
               className=" lg:col-7 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
-              <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
+              <h1 className="font-body text-5xl text-center  lg:text-5xl mb-5 text-gray-300 ">
                 Why Choose Raloxsoft?
               </h1>
               <p className="font-oswald lg:text-xl text-gray-300 text-justify">
@@ -166,7 +166,7 @@ const Home = () => {
               className=" lg:col-7 opacity-1 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
-              <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
+              <h1 className="font-body text-5xl text-center  lg:text-5xl mb-5 text-gray-300 ">
                 A Platform of Skilled Engineers
               </h1>
               <p className="font-oswald lg:text-xl text-gray-300 text-justify">
@@ -191,7 +191,7 @@ const Home = () => {
               className=" lg:col-7 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
-              <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
+              <h1 className="font-body text-3xl text-left   lg:text-5xl mb-5 text-gray-300 ">
                 Think of us as an extension of your organization, working
                 tirelessly to give you the results that will take you to the
                 top.
