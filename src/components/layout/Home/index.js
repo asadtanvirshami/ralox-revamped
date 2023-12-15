@@ -81,7 +81,7 @@ const Home = () => {
             data-aos={"fade-down"}
             className=" text-large font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
           >
-            CONSULT – CREATE – COMPLY
+            CONSULT {'-'} CREATE {'-'} COMPLY
           </h1>
           <div className="row lg:flex">
             <div
