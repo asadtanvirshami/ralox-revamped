@@ -62,7 +62,7 @@ export default function CardsGroup({animation}) {
       <Card isFooterBlurred className=" w-full md:w-4  lg:w-4  h-[300px]  ">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">New</p>
-          <h4 className="text-black font-medium text-2xl">Acme camera</h4>
+          <h4 className="text-white font-medium text-2xl">Acme camera</h4>
         </CardHeader>
         <Image
           removeWrapper

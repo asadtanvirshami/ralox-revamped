@@ -82,7 +82,7 @@ const Home = () => {
             data-aos={"fade-down"}
             className=" text-md font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
           >
-            CONSULT {'-'} CREATE {'-'} COMPLY
+            CONSULT {"-"} CREATE {"-"} COMPLY
           </h1>
           <div className="row lg:flex">
             <div
@@ -137,7 +137,7 @@ const Home = () => {
         <FiveGridCard animation={"fade-down-right"} />
       </div>
 
-      <div className="w-fit  overflow-hidden align-middle flex items-center justify-center mx-auto">
+      <div className="w-fit bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
         <div
           data-aos={"fade-up"}
           className="w-2/3 gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 mt-6 mb-6"
@@ -163,7 +163,7 @@ const Home = () => {
               </Card>
             </div>
             <div
-              className=" lg:col-7 opacity-1 p-4 lg:p-6 rounded-2xl "
+              className=" opacity-90 bg-black lg:col-7 opacity-1 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
               <h1 className="font-body text-5xl text-center  lg:text-5xl mb-5 text-gray-300 ">
@@ -188,7 +188,7 @@ const Home = () => {
 
           <div className="row lg:flex">
             <div
-              className=" lg:col-7 p-4 lg:p-6 rounded-2xl "
+              className=" opacity-90 bg-black lg:col-7 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
               <h1 className="font-body text-3xl text-left   lg:text-5xl mb-5 text-gray-300 ">
