@@ -3,14 +3,23 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 import { useSnapshot } from "valtio";
-import AOS from "aos"; // You can also use <link> for styles
 import state from "@/store";
+
+import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Avatar,
+  Button,
+} from "@nextui-org/react";
+
+import AOS from "aos"; // You can also use <link> for styles
 import Icon from "../../../../public/a_white.png";
 import gif from "../../../../public/images/2D/bulb.jpg";
 import logo from "../../../../public/white.png";
 import ban from "../../../../public/banner.jpg";
-import { Card, CardHeader, Divider } from "@nextui-org/react";
-import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
 import Count from "@/components/shared/CountUp";
 import Slider from "../../shared/Slider";
 
@@ -23,6 +32,7 @@ const Home = () => {
 
   return (
     <React.Fragment>
+      {/* Top Section Carousel and Slider */}
       <div className="relative bg-gradient-to-br from-black via-black to-black w-full overflow-hidden h-min">
         <div className="relative w-full overflow-hidden">
           <div className="relative  w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
@@ -129,14 +139,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      {/* Grid of Five */}
       <div
         data-aos={"fade-in"}
         className="w-full bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400  align-middle flex items-center justify-center mx-auto"
       >
         <FiveGridCard animation={"fade-down-right"} />
       </div>
-
+      {/* Count and Grid Of  Two */}
       <div className="w-fit bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
         <div
           data-aos={"fade-up"}
@@ -144,7 +154,7 @@ const Home = () => {
         >
           <Count />
           <div className="row lg:flex">
-            <div className="lg:col-5" data-aos="fade-up-left">
+            <div className="lg:col-5" data-aos="fade-up-right">
               <Card className="w-full md:w-full lg:w-full sm:col-span-4 ">
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                   <p className="text-tiny text-white/60 uppercase font-bold">
@@ -164,7 +174,7 @@ const Home = () => {
             </div>
             <div
               className=" opacity-90 bg-black lg:col-7 opacity-1 p-4 lg:p-6 rounded-2xl "
-              data-aos="fade-right"
+              data-aos="fade-up-left"
             >
               <h1 className="font-body text-5xl text-center  lg:text-5xl mb-5 text-gray-300 ">
                 A Platform of Skilled Engineers
@@ -185,11 +195,10 @@ const Home = () => {
               </p>
             </div>
           </div>
-
           <div className="row lg:flex">
             <div
               className=" opacity-90 bg-black lg:col-7 p-4 lg:p-6 rounded-2xl "
-              data-aos="fade-right"
+              data-aos="fade-up-right"
             >
               <h1 className="font-body text-3xl text-left   lg:text-5xl mb-5 text-gray-300 ">
                 Think of us as an extension of your organization, working
@@ -209,8 +218,8 @@ const Home = () => {
                 promised.
               </p>
             </div>
-            <div className="lg:col-5" data-aos="fade-up-left">
-              <Card className="w-full md:w-full lg:w-full sm:col-span-4 ">
+            <div  className="lg:col-5" data-aos="fade-up-left">
+              <Card  className="w-full md:w-full lg:w-full sm:col-span-4 ">
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                   <p className="text-tiny text-white/60 uppercase font-bold">
                     What to watch
@@ -228,6 +237,126 @@ const Home = () => {
               </Card>
             </div>
           </div>
+        </div>
+      </div>
+           {/* Testimonial Section */}
+
+      <div className="p-8 w-full ">
+        <div className="grid  align-middle justify-center">
+          <Card  data-aos="fade-up-right"  className="max-w-[340px] m-3 min-h-[250px]">
+            <CardHeader className="justify-between">
+              <div className="flex gap-5">
+                <Avatar
+                  isBordered
+                  radius="full"
+                  size="md"
+                  src="/avatars/avatar-1.png"
+                />
+                <div className="flex flex-col gap-1 items-start justify-center">
+                  <h4 className="text-small font-semibold leading-none text-default-600">
+                    Zoey Lang
+                  </h4>
+                  <h5 className="text-small tracking-tight text-default-400">
+                    @zoeylang
+                  </h5>
+                </div>
+              </div>
+              <Button
+                className={"bg-transparent text-foreground border-default-200"}
+                color="primary"
+                radius="full"
+                size="sm"
+              ></Button>
+            </CardHeader>
+            <CardBody className="px-3 py-0 text-small text-default-400">
+              <p>
+                Frontend developer and UI/UX enthusiast. Join me on this coding
+                adventure!
+              </p>
+              <span className="pt-2">
+                #FrontendWithZoey
+                <span className="py-2" aria-label="computer" role="img">
+                  💻
+                </span>
+              </span>
+            </CardBody>
+          </Card>
+          <Card  data-aos="fade-in" className="max-w-[340px] m-3 min-h-[250px]">
+            <CardHeader className="justify-between">
+              <div className="flex gap-5">
+                <Avatar
+                  isBordered
+                  radius="full"
+                  size="md"
+                  src="/avatars/avatar-1.png"
+                />
+                <div className="flex flex-col gap-1 items-start justify-center">
+                  <h4 className="text-small font-semibold leading-none text-default-600">
+                    Zoey Lang
+                  </h4>
+                  <h5 className="text-small tracking-tight text-default-400">
+                    @zoeylang
+                  </h5>
+                </div>
+              </div>
+              <Button
+                className={"bg-transparent text-foreground border-default-200"}
+                color="primary"
+                radius="full"
+                size="sm"
+              ></Button>
+            </CardHeader>
+            <CardBody className="px-3 py-0 text-small text-default-400">
+              <p>
+                Frontend developer and UI/UX enthusiast. Join me on this coding
+                adventure!
+              </p>
+              <span className="pt-2">
+                #FrontendWithZoey
+                <span className="py-2" aria-label="computer" role="img">
+                  💻
+                </span>
+              </span>
+            </CardBody>
+          </Card>
+          <Card  data-aos="fade-up-left" className="max-w-[340px] m-3 min-h-[250px]">
+            <CardHeader className="justify-between">
+              <div className="flex gap-5">
+                <Avatar
+                  isBordered
+                  radius="full"
+                  size="md"
+                  src="/avatars/avatar-1.png"
+                />
+                <div className="flex flex-col gap-1 items-start justify-center">
+                  <h4 className="text-small font-semibold leading-none text-default-600">
+                    Zoey Lang
+                  </h4>
+                  <h5 className="text-small tracking-tight text-default-400">
+                    @zoeylang
+                  </h5>
+                </div>
+              </div>
+              <Button
+                className={"bg-transparent text-foreground border-default-200"}
+                color="primary"
+                radius="full"
+                size="sm"
+              ></Button>
+            </CardHeader>
+            <CardBody className="px-3 py-0 text-small text-default-400">
+              <p>
+                Frontend developer and UI/UX enthusiast. Join me on this coding
+                adventure!
+              </p>
+              <span className="pt-2">
+                #FrontendWithZoey
+                <span className="py-2" aria-label="computer" role="img">
+                  💻
+                </span>
+              </span>
+            </CardBody>
+          </Card>
         </div>
       </div>
     </React.Fragment>
