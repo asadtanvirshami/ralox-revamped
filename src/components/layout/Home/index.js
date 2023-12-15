@@ -7,7 +7,6 @@ import state from "@/store";
 import Icon from "../../../../public/a_white.png";
 import gif from "../../../../public/images/2D/bulb.jpg";
 import logo from "../../../../public/white.png";
-import banner from "../../../../public/banner.jpg";
 import ban from "../../../../public/banner.jpg";
 import { Card, CardHeader, Divider } from "@nextui-org/react";
 import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
@@ -68,7 +67,7 @@ const Home = () => {
       <div className=" bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 w-full">
         <Slider />
       </div>
-      <div className="w-fit overflow-hidden align-middle flex items-center justify-center mx-auto">
+      <div className="w-fit  overflow-hidden align-middle flex items-center justify-center mx-auto">
         <div
           data-aos={"fade-up"}
           className="w-2/3 gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 mt-6 mb-6"
@@ -86,7 +85,7 @@ const Home = () => {
           </h1>
           <div className="row lg:flex">
             <div
-              className=" lg:col-7 bg-gray-900 p-4 lg:p-6 rounded-2xl "
+              className=" lg:col-7 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
               <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
@@ -163,7 +162,7 @@ const Home = () => {
               </Card>
             </div>
             <div
-              className=" lg:col-7 bg-gray-900 opacity-1 p-4 lg:p-6 rounded-2xl "
+              className=" lg:col-7 opacity-1 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
               <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
@@ -188,7 +187,7 @@ const Home = () => {
 
           <div className="row lg:flex">
             <div
-              className=" lg:col-7 bg-gray-900 p-4 lg:p-6 rounded-2xl "
+              className=" lg:col-7 p-4 lg:p-6 rounded-2xl "
               data-aos="fade-right"
             >
               <h1 className="font-body  lg:text-5xl mb-5 text-gray-300 ">
