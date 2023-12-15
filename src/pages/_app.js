@@ -4,6 +4,11 @@ import 'primeflex/primeflex.css';                                   // css utili
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import 'aos/dist/aos.css'
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
 import {useRouter, Router} from 'next/router';
 import { useState } from 'react';
 

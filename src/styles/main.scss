@@ -1,7 +1,12 @@
+//===URL===//
+@import url('//db.onlinewebfonts.com/c/4e447705f6a3ad4e6e6ec31c7c8a14aa?family=Revamped');
 //===Animation===//
+
+//===Files===//
 @import "./components/shared/Dock/dock.scss";
 @import "./components/shared/Dock/flags.scss";
 
+//===Tailwind CSS===//
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,4 +37,19 @@ body {
   padding: 2rem;
   border-radius: 10px;
   margin-bottom: 1rem;
+}
+
+
+.sc img {
+  margin: auto !important;
+  height: 100px !important;
+  width: 100px !important;
+}
+
+.slick-slide > div {
+  display: grid !important;
+  place-items: center !important;
+  max-width: 100% !important;
+  margin: auto !important;
+  padding: 0px !important;
 }
