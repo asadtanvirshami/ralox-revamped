@@ -25,12 +25,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.carousel-section{
-  background-image: url('../../public/banner.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+// .carousel-section{
+//   background-image: url('../../public/banner.jpg');
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
 
 .card {
   background: var(--surface-card);
@@ -52,4 +52,11 @@ body {
   max-width: 100% !important;
   margin: auto !important;
   padding: 0px !important;
+}
+
+.lines-bg{
+  background-image: url('../../public/lines.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -1,35 +1,38 @@
-import React, { Suspense, useState, useEffect, useRef } from 'react';
-import { Canvas, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
-import { Center, Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import React, { Suspense, useState, useRef } from "react";
+import { Canvas, useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
+import { Center, Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import * as THREE from "three";
 
-import modelPath from '../../../../public/images/3D/mob.glb';
+import modelPath from "../../../../public/images/3D/company/logo.glb";
+import Backdrop from "../Canvas/Backdrop";
+import CameraRig from "../Canvas/CameraRig";
 
 const GroundPlane = () => {
-  return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5, 0]} receiveShadow>
-      <planeGeometry args={[100, 100]} />
-      <shadowMaterial opacity={0.5} />
-    </mesh>
-  );
-};
+    return (
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5, 0]} receiveShadow>
+        <planeGeometry args={[100, 100]} />
+        <shadowMaterial opacity={0.5} />
+      </mesh>
+    );
+  };
 
-const CustomModel = () => {
+// Custom Model component
+const CustomModel = ({ texture }) => {
   const gltf = useLoader(GLTFLoader, modelPath);
   const modelRef = useRef();
 
-
   return (
-    <group ref={modelRef}>
+    <group castShadow ref={modelRef}>
       <mesh castShadow>
-        <primitive object={gltf.scene} scale={[1, 1, 1]} position={[0, 0, 0]} />
+        <primitive  object={gltf.scene} scale={[70, 70, 70]} position={[0, 0, 0]}/>
       </mesh>
     </group>
   );
 };
 
-const MobileModel = () => {
-  const [texture, setTexture] = useState(null);
+// Main App component
+const AModel = () => {
   const [controls, setControls] = useState(true);
 
 
@@ -43,18 +46,17 @@ const MobileModel = () => {
         gl.shadowMap.type = 'PCFSoftShadowMap';
       }}
     >
+        
       {/* Lights */}
       <ambientLight intensity={1} />
       <Environment preset="city" />
       <pointLight position={[10, 10, 10]} castShadow />
-
       {/* Ground Plane */}
       <GroundPlane />
-
       {/* Custom Model */}
       <Suspense fallback={null}>
         <Center>
-          <CustomModel controls={controls} />
+          <CustomModel  controls={controls} />
         </Center>
       </Suspense>
 
@@ -72,4 +74,4 @@ const MobileModel = () => {
   );
 };
 
-export default MobileModel;
+export default AModel;

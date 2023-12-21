@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     <Fragment>
       <NavHeader />
       {children}
-      <Footer/>
+
     </Fragment>
   );
 };
