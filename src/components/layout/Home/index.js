@@ -4,7 +4,8 @@ import Image from "next/image";
 import AOS from "aos";
 
 import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
-import { Button, Card, CardHeader, Divider } from "@nextui-org/react";
+import { Card, CardHeader, Divider } from "@nextui-org/react";
+import ButtonPrimary from "@/components/shared/Button";
 
 import Icon from "../../../../public/a_white.png";
 import gif from "../../../../public/images/2D/bulb.jpg";
@@ -40,7 +41,7 @@ const Home = () => {
               >
                 <div data-aos="fade-down">
                   <Image
-                    className="mt-9"
+                    className=""
                     style={{ width: "100%", height: "90%" }}
                     src={logo}
                     alt="logo"
@@ -114,9 +115,12 @@ const Home = () => {
                   journey of unparalleled software development, innovation, and
                   quality assurance excellence.
                 </p>
-                <Button size="lg" variant="flat" color="warning">
-                  Start Project
-                </Button>
+                <ButtonPrimary
+                  title={"Start Project"}
+                  color={"warning"}
+                  variant={"flat"}
+                  size={"lg"}
+                />
               </div>
               <div className="lg:col-5" data-aos="fade-up-left">
                 <Card className="w-full md:w-full lg:w-full sm:col-span-4 ">
@@ -242,12 +246,12 @@ const Home = () => {
           </div>
         </div>
         {/* TESTMONIALS SECTION */}
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto py-12 mt-5">
           <h2
             data-aos="fade-up"
-            className="text-3xl lg:text-4xl font-bold mb-6 text-slate-300 "
+            className="text-3xl text-center lg:text-6xl font-bold mb-6 text-slate-300 "
           >
-            What Our Clients Say
+           Echoes of Excellence from Those Who've Experienced Our Distinctive Touch
           </h2>
           <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-12">
             <InfoCard animation="fade-up-right" />
@@ -263,7 +267,7 @@ const Home = () => {
             data-aos={"fade-up"}
             className="w-2/3 gap-3 grid grid-cols-12 justify-center align-middle grid-rows-2 mt-8 mb-8"
           >
-            <h1 className="text-xl flex m-5 lg:text-6xl font-semibold mb-8">
+            <h1 className="text-3xl text-center lg:text-6xl font-bold mb-8 ">
               A Systematic Process That Delivers Excellence
             </h1>
             <div className="row lg:flex">
@@ -271,7 +275,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Understanding Client Needs"}
+                title={"1. Understanding Client Needs"}
                 description={
                   "Before embarking on any project, we engage in thorough discussions with our clients to understand their unique needs, goals, and expectations. We prioritize active listening and open communication to gain insights into the specific requirements and desired outcomes."
                 }
@@ -283,7 +287,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Strategic Planning"}
+                title={"2. Strategic Planning"}
                 description={
                   "Based on the information gathered, we develop a comprehensive and strategic plan that outlines the project scope, milestones, and deliverables.Our planning phase involves collaborative sessions with stakeholders to align project objectives with organizational goals."
                 }
@@ -295,7 +299,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Cross-Functional Collaboration"}
+                title={"3. Cross-Functional Collaboration"}
                 description={
                   "We foster a culture of collaboration among cross-functional teams. Our approach involves bringing together diverse expertise to ensure a holistic perspective on projects. Collaboration encourages creativity, innovation, and the generation of unique solutions to complex challenges."
                 }
@@ -307,7 +311,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Agile Development"}
+                title={"4. Agile Development"}
                 description={
                   "We adopt agile methodologies to ensure flexibility and adaptability throughout the project lifecycle. Regular feedback loops, incremental development, and iterative improvements allow us to respond swiftly to changing requirements and market dynamics."
                 }
@@ -319,7 +323,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Quality Assurance"}
+                title={"5. Quality Assurance"}
                 description={
                   "Our commitment to excellence is upheld through rigorous quality assurance processes. This includes thorough testing, code reviews, and continuous evaluation of project components. Quality assurance is embedded into every stage of development, ensuring that the final deliverables meet the highest standards."
                 }
@@ -331,7 +335,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Client Involvement"}
+                title={"6. Client Involvement"}
                 description={
                   "Clients are considered integral partners in the development process. We encourage active client involvement through regular updates, demos, and feedback sessions. Client input is valued, and adjustments are made promptly to align with evolving client expectations."
                 }
@@ -343,7 +347,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Continuous Improvement"}
+                title={"7. Continuous Improvement"}
                 description={
                   "We believe in a culture of continuous improvement. Post-project evaluations, retrospectives, and lessons learned sessions contribute to refining our processes. Feedback from team members, clients, and stakeholders is analyzed to identify areas for enhancement and optimization."
                 }
@@ -356,7 +360,7 @@ const Home = () => {
                 withIcon={false}
                 icon={null}
                 mode={"dark"}
-                title={"Client Satisfaction Surveys"}
+                title={"8. Client Satisfaction Surveys"}
                 description={
                   "Upon project completion, we conduct client satisfaction surveys to gather valuable insights into the client's experience. Feedback obtained from clients is used to refine our processes, address areas for improvement, and enhance overall service delivery."
                 }
@@ -371,8 +375,8 @@ const Home = () => {
               data-aos={"fade-up"}
               className="w-2/3 gap-3 grid grid-cols-12 justify-center align-middle grid-rows-2 mt-8 "
             >
-              <h1 className="text-xl text-gray-300 flex m-5 lg:text-6xl font-semibold mb-7">
-                What We Specializes In
+              <h1 className="text-3xl text-center lg:text-6xl font-bold mb-6 text-slate-300">
+              Masters of Our Craft: Here's What We Specialize In
               </h1>
               <div className="row justify-center  lg:flex">
                 <PlainCard
@@ -380,7 +384,9 @@ const Home = () => {
                   icon={null}
                   title={"Mobile Application Development"}
                   mode={"dark"}
-                  description={"In the realm of mobile application development, we specialize in crafting innovative and user-centric solutions that seamlessly integrate with today's dynamic digital landscape. Our approach involves leveraging the latest technologies to design and develop mobile apps for iOS and Android platforms. From conceptualization to deployment, our expert team ensures a smooth and intuitive user experience, coupled with robust backend functionality. Whether it's a native app or a cross-platform solution, we navigate the intricacies of mobile development to deliver applications that meet your business objectives and resonate with your target audience. Trust us to bring your mobile app ideas to life with cutting-edge technology and a focus on user satisfaction."}
+                  description={
+                    "In the realm of mobile application development, we specialize in crafting innovative and user-centric solutions that seamlessly integrate with today's dynamic digital landscape. Our approach involves leveraging the latest technologies to design and develop mobile apps for iOS and Android platforms. From conceptualization to deployment, our expert team ensures a smooth and intuitive user experience, coupled with robust backend functionality. Whether it's a native app or a cross-platform solution, we navigate the intricacies of mobile development to deliver applications that meet your business objectives and resonate with your target audience. Trust us to bring your mobile app ideas to life with cutting-edge technology and a focus on user satisfaction."
+                  }
                   animation={"fade-up-left"}
                 />
                 <PlainCard

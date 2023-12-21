@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import ang from "../../../public/icons/tech/ang.png";
 import react from "../../../public/icons/tech/react.png";
 import py from "../../../public/icons/tech/py.png";
-import mgdb from "../../../public/icons/tech/node.png";
+import mgdb from "../../../public/icons/tech/mgdb.png";
 import node from "../../../public/icons/tech/node.png";
 import vue from "../../../public/icons/tech/vue.png";
 import redis from "../../../public/icons/tech/redis.png";
@@ -17,6 +17,8 @@ import graph from "../../../public/icons/tech/graph.png";
 import dart from "../../../public/icons/tech/dart.png";
 import firebase from "../../../public/icons/tech/firebase.png";
 import tsxc from "../../../public/icons/tech/ts.png";
+import git from "../../../public/icons/tech/git.png";
+import wordpress from "../../../public/icons/tech/wordpress.png";
 
 import Image from "next/image";
 
@@ -92,6 +94,10 @@ export default class AutoPlayMethods extends Component {
       { id: 13, icon: tsxc },
       { id: 14, icon: aws },
       { id: 15, icon: graph },
+      { id: 15, icon: graph },
+      { id: 16, icon: node },
+      { id: 17, icon: git },
+      { id: 18, icon: wordpress },
     ];
 
     return (
