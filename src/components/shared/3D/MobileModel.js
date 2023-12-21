@@ -3,15 +3,15 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import { Center, Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 
-import modelPath from '../../../../public/images/3D/mob.glb';
+import modelPath from '../../../../public/images/3D/phone/mob.glb';
 
 const GroundPlane = () => {
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5, 0]} receiveShadow>
+    <mesh  castShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -5, 0]} receiveShadow>
       <planeGeometry args={[100, 100]} />
-      <shadowMaterial opacity={0.5} />
+      <shadowMaterial opaciaty={0.5} />
     </mesh>
-  );
+  );        
 };
 
 const CustomModel = () => {

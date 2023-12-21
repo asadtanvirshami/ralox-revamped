@@ -4,8 +4,9 @@ import Image from "next/image";
 import AOS from "aos";
 
 import FiveGridCard from "@/components/shared/CardsGroup/FiveGridCard";
-import { Card, CardHeader, Divider } from "@nextui-org/react";
+import { Card, CardHeader } from "@nextui-org/react";
 import ButtonPrimary from "@/components/shared/Button";
+import { RiCodeSSlashFill } from "react-icons/ri";
 
 import Icon from "../../../../public/a_white.png";
 import gif from "../../../../public/images/2D/bulb.jpg";
@@ -16,44 +17,47 @@ import InfoCard from "@/components/shared/InfoCard";
 import SnippetCom from "@/components/shared/Snippet";
 import PlainCard from "@/components/shared/PlainCard";
 import MobileModel from "@/components/shared/3D/MobileModel";
+import ContactForm from "@/components/shared/ContactForm";
 
 const Home = () => {
   useEffect(() => {
     AOS.init();
   }, []);
 
-  const testimonials = [{ id: 0, name: "John Casey" }];
+  const testimonials = [{ id: 0, name: "John Casey", tag: "" }];
 
   return (
     <React.Fragment>
       <div className="">
         {/* Top Section Carousel and Slider */}
         <div className="relative bg-gradient-to-br from-black via-black to-black w-full overflow-hidden h-min">
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full  overflow-hidden">
             <div className="relative  w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
               <div
-                className="bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 object-cover w-full h-[62rem] md:h-[70rem] lg:h-[74rem]  opacity-90"
+                className=" bg-gradient-to-r from-slate-500 via-slate-100 to-slate-500 object-cover w-full h-[62rem] md:h-[70rem] lg:h-[74rem]  opacity-90"
                 alt="banner"
               />
+
               <div
                 data-aos="fade-down-right"
-                className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
+                className="absolute inset-0 w-full overflow-hidden flex flex-col items-center justify-center text-center text-white"
               >
                 <div data-aos="fade-down">
                   <Image
                     className=""
-                    style={{ width: "100%", height: "90%" }}
+                    style={{ width: "100%", height: "70%" }}
                     src={logo}
                     alt="logo"
                   />
+                  {/* <h1 className="text-10xl  font-brand">ALGORIM</h1> */}
                 </div>
                 <div className="text-center mx-4" data-aos="fade-up">
                   <div
                     data-aos="fade-up"
                     data-aos-anchor-placement="center-bottom"
                   >
-                    <h1 className=" font-oswald font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
-                      WE BUILD ROBUST SOFTWARES.
+                    <h1 className=" font-oswald font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-8xl">
+                      WE BUILD ROBUST APPLICATIONS
                     </h1>
                   </div>
                   <div
@@ -62,11 +66,14 @@ const Home = () => {
                   >
                     <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                       We work relentlessly to provide and serve you the
-                      <strong> out class and optimized</strong> applications.
+                      <strong className="text-gray-800">
+                        {" "}
+                        out class and optimized
+                      </strong>{" "}
+                      applications
                     </p>
                   </div>
                 </div>
-                <MobileModel />
               </div>
             </div>
           </div>
@@ -79,19 +86,22 @@ const Home = () => {
         <div className="w-fit overflow-hidden align-middle flex items-center justify-center mx-auto">
           <div
             data-aos={"fade-up"}
-            className="w-2/3 gap-3 h-full grid grid-cols-12  justify-center align-middle grid-rows-2 mt-6 mb-6"
+            className="w-2/3  md:auto-rows-min h-full grid grid-cols-12  justify-center align-middle grid-rows-2 mt-6 mb-6"
           >
             <Image
-              style={{ width: "30%", height: "20%" }}
+              style={{ width: "35%", height: "80%" }}
               src={Icon}
               alt="logo"
             />
-            <h1
-              data-aos={"fade-down"}
-              className=" text-md font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
-            >
-              CONSULT {"-"} CREATE {"-"} COMPLY
-            </h1>
+            <div>
+              <h1
+                data-aos={"fade-down"}
+                className=" text-md font-brand lg:text-5xl md:text-4xl xl:text-7xl mb-5 text-gray-300"
+              >
+                CONSULT {"-"} CREATE {"-"} COMPLY
+              </h1>
+            </div>
+
             <div className="row lg:flex">
               <div
                 className=" lg:col-7 lg:p-6 rounded-2xl "
@@ -122,23 +132,11 @@ const Home = () => {
                   size={"lg"}
                 />
               </div>
-              <div className="lg:col-5" data-aos="fade-up-left">
-                <Card className="w-full md:w-full lg:w-full sm:col-span-4 ">
-                  <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                    <p className="text-tiny text-white/60 uppercase font-bold">
-                      What to watch
-                    </p>
-                    <h4 className="text-white font-medium text-large">
-                      Stream the Acme event
-                    </h4>
-                  </CardHeader>
-                  <Image
-                    removeWrapper
-                    alt="Card background"
-                    src={gif}
-                    className="z-0 w-12 h-[32rem] object-cover"
-                  />
-                </Card>
+              <div
+                className="grid grid-cols-1 mt-5 container  lg:col-5 max-h-min bg-gradient-to-r   from-slate-400 via-slate-100  to-slate-400 rounded-2xl"
+                data-aos="fade-up-left"
+              >
+                <MobileModel />
               </div>
             </div>
             <SnippetCom text={"npm run @algorim/trust"} />
@@ -251,7 +249,8 @@ const Home = () => {
             data-aos="fade-up"
             className="text-3xl text-center lg:text-6xl font-bold mb-6 text-slate-300 "
           >
-           Echoes of Excellence from Those Who've Experienced Our Distinctive Touch
+            Echoes of Excellence from Those Who've Experienced Our Distinctive
+            Touch
           </h2>
           <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-12">
             <InfoCard animation="fade-up-right" />
@@ -364,7 +363,7 @@ const Home = () => {
                 description={
                   "Upon project completion, we conduct client satisfaction surveys to gather valuable insights into the client's experience. Feedback obtained from clients is used to refine our processes, address areas for improvement, and enhance overall service delivery."
                 }
-                animation={"fade-up-right"}
+                animation={"fade-up-left"}
               />
             </div>
           </div>
@@ -376,12 +375,18 @@ const Home = () => {
               className="w-2/3 gap-3 grid grid-cols-12 justify-center align-middle grid-rows-2 mt-8 "
             >
               <h1 className="text-3xl text-center lg:text-6xl font-bold mb-6 text-slate-300">
-              Masters of Our Craft: Here's What We Specialize In
+                Masters of Our Craft: Here's What We Specialize In
               </h1>
               <div className="row justify-center  lg:flex">
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Mobile Application Development"}
                   mode={"dark"}
                   description={
@@ -390,8 +395,14 @@ const Home = () => {
                   animation={"fade-up-left"}
                 />
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"CMS Web Application Development"}
                   mode={"dark"}
                   description={
@@ -402,8 +413,14 @@ const Home = () => {
               </div>
               <div className="row justify-center  lg:flex">
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"CRM Web Application Development"}
                   mode={"dark"}
                   description={
@@ -412,8 +429,14 @@ const Home = () => {
                   animation={"fade-up-left"}
                 />
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"ERP Web Application Development"}
                   mode={"dark"}
                   description={
@@ -424,8 +447,14 @@ const Home = () => {
               </div>
               <div className="row justify-center  lg:flex">
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Website Development"}
                   mode={"dark"}
                   description={
@@ -434,8 +463,14 @@ const Home = () => {
                   animation={"fade-up-left"}
                 />
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Quality Assurance Q/A"}
                   mode={"dark"}
                   description={
@@ -446,8 +481,14 @@ const Home = () => {
               </div>
               <div className="row justify-center  lg:flex">
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Cyber Security"}
                   mode={"dark"}
                   description={
@@ -456,8 +497,14 @@ const Home = () => {
                   animation={"fade-up-left"}
                 />
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Artificial Intelligence Development"}
                   mode={"dark"}
                   description={
@@ -468,8 +515,14 @@ const Home = () => {
               </div>
               <div className="row justify-center  lg:flex">
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"POS Web Application Development"}
                   mode={"dark"}
                   description={
@@ -478,8 +531,14 @@ const Home = () => {
                   animation={"fade-up-left"}
                 />
                 <PlainCard
-                  withIcon={false}
-                  icon={null}
+                  withIcon={true}
+                  icon={
+                    <RiCodeSSlashFill
+                      fontSize={35}
+                      color="white"
+                      className="mr-2"
+                    />
+                  }
                   title={"Digital Marketing"}
                   mode={"dark"}
                   description={
@@ -492,25 +551,10 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <div className="w-fit bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 overflow-hidden align-middle flex items-center justify-center mx-auto">
-            <div
-              data-aos={"fade-up"}
-              className="w-2/3 gap-3 grid grid-cols-12 justify-center align-middle grid-rows-2 mt-8 "
-            >
-              <h1 className="text-xl text-gray-300 flex m-5 lg:text-6xl font-semibold mb-7">
-                What is the most important
-              </h1>
+          <div className="w-fit overflow-hidden align-middle flex items-center justify-center mx-auto">
+            <div data-aos={"fade-up"} className="container mx-auto py-12 mt-5">
               <div className="row justify-center  lg:flex">
-                <PlainCard
-                  withIcon={false}
-                  icon={null}
-                  title={"POS Web Application Development"}
-                  mode={"dark"}
-                  description={
-                    "We maintain comprehensive documentation throughout the project lifecycle, ensuring transparency and clarity. Knowledge sharing sessions are conducted to disseminate insights gained from each project, fostering a culture of continuous learning and growth."
-                  }
-                  animation={"fade-up-left"}
-                />
+                <ContactForm />
               </div>
             </div>
           </div>

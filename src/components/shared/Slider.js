@@ -114,7 +114,7 @@ export default class AutoPlayMethods extends Component {
             {items.map((item, i) => {
               return (
                 <div key={item.id} className="sc">
-                  <Image src={item.icon} className="" />
+                  <Image src={item.icon} className=""   alt="logo" />
                 </div>
               );
             })}

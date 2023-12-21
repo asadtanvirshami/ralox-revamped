@@ -19,9 +19,9 @@ const InfoCard = ({animation}) => {
           <h4 className="text-small font-semibold leading-none text-default-600">
             Zoey Lang
           </h4>
-          <h5 className="text-small tracking-tight text-default-400">
+          {/* <h5 className="text-small tracking-tight text-default-400">
             @zoeylang
-          </h5>
+          </h5> */}
         </div>
       </div>
       <Button

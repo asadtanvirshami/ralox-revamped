@@ -1,5 +1,6 @@
 //===URL===//
 @import url('//db.onlinewebfonts.com/c/4e447705f6a3ad4e6e6ec31c7c8a14aa?family=Revamped');
+
 //===Animation===//
 @import "./animations/index.scss";
 
@@ -25,13 +26,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-// .carousel-section{
-//   background-image: url('../../public/banner.jpg');
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
 
 .card {
   background: var(--surface-card);

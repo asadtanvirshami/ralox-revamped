@@ -12,6 +12,7 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
       data-aos={animation}
     >
       <div className="flex">
+      {withIcon == true && <>{icon}</>}
         <h1
           className={
             mode == "dark"
@@ -21,7 +22,6 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
         >
           {title}
         </h1>
-        {withIcon == true && {icon}}
       </div>
       <p
         className={
