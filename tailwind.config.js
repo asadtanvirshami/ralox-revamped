@@ -1,5 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 const { nextui } = require("@nextui-org/react");
+const { colors: defaultColors } = require("tailwindcss/defaultTheme");
+
+const colors = {
+  ...defaultColors,
+  ...{
+    "layout": {
+      500: "#4088a9",
+      700: "#284e74",
+    },
+    theme: {
+      700: "#2c3138",
+    },
+    hover: {
+      700: "1e1e1e",
+    },
+  },
+};
 
 module.exports = {
   darkMode: ["class"],
@@ -13,6 +30,7 @@ module.exports = {
       body: ["Montserrat"],
       brand: ["revamped"],
     },
+
     fontSize: {
       sm: '0.8rem',
       base: '1rem',
@@ -63,6 +81,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         typing: "typing 2s steps(20) infinite alternate, blink .7s infinite"
       },
+      colors:colors
     },
   },
   plugins: [require("tailwindcss-animate"), nextui({  defaultTheme: "dark", // default theme from the themes object

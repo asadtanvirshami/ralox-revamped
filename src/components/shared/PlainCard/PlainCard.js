@@ -23,7 +23,7 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
           {title}
         </h1>
       </div>
-      <p
+      <article
         className={
           mode == "dark"
             ? `font-oswald lg:text-xl text-gray-300 text-justify `
@@ -31,7 +31,7 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
         }
       >
         {description}
-      </p>
+      </article>
     </div>
   );
 };

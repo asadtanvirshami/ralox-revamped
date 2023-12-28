@@ -29,7 +29,6 @@ const CustomModel = () => {
 };
 
 const MobileModel = () => {
-  const [texture, setTexture] = useState(null);
   const [controls, setControls] = useState(true);
 
 

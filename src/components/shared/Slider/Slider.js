@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-import ang from "../../../public/icons/tech/ang.png";
-import react from "../../../public/icons/tech/react.png";
-import py from "../../../public/icons/tech/py.png";
-import mgdb from "../../../public/icons/tech/mgdb.png";
-import node from "../../../public/icons/tech/node.png";
-import vue from "../../../public/icons/tech/vue.png";
-import redis from "../../../public/icons/tech/redis.png";
-import js from "../../../public/icons/tech/js.png";
-import sql from "../../../public/icons/tech/sql.png";
-import psql from "../../../public/icons/tech/psql.png";
-import azure from "../../../public/icons/tech/az.png";
-import aws from "../../../public/icons/tech/aws.png";
-import graph from "../../../public/icons/tech/graph.png";
-import dart from "../../../public/icons/tech/dart.png";
-import firebase from "../../../public/icons/tech/firebase.png";
-import tsxc from "../../../public/icons/tech/ts.png";
-import git from "../../../public/icons/tech/git.png";
-import wordpress from "../../../public/icons/tech/wordpress.png";
+import ang from "../../../../public/icons/tech/ang.png";
+import react from "../../../../public/icons/tech/react.png";
+import py from "../../../../public/icons/tech/py.png";
+import mgdb from "../../../../public/icons/tech/mgdb.png";
+import node from "../../../../public/icons/tech/node.png";
+import vue from "../../../../public/icons/tech/vue.png";
+import redis from "../../../../public/icons/tech/redis.png";
+import js from "../../../../public/icons/tech/js.png";
+import sql from "../../../../public/icons/tech/sql.png";
+import psql from "../../../../public/icons/tech/psql.png";
+import azure from "../../../../public/icons/tech/az.png";
+import aws from "../../../../public/icons/tech/aws.png";
+import graph from "../../../../public/icons/tech/graph.png";
+import dart from "../../../../public/icons/tech/dart.png";
+import firebase from "../../../../public/icons/tech/firebase.png";
+import tsxc from "../../../../public/icons/tech/ts.png";
+import git from "../../../../public/icons/tech/git.png";
+import wordpress from "../../../../public/icons/tech/wordpress.png";
 
 import Image from "next/image";
 

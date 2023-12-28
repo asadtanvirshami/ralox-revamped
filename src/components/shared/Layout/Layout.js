@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
+import dynamic from "next/dynamic";
 
-import NavHeader from "./Header";
-import Footer from "./Footer";
+const NavHeader = dynamic(() => import('../Header/Header'));
 
 const Layout = ({ children }) => {
   return (

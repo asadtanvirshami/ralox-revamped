@@ -5,7 +5,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 
 import { Spinner } from "@nextui-org/react";
-import Loader from "@/components/shared/Loader";
+import Loader from "@/components/shared/Loader/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +30,8 @@ export default function Landing() {
     <>
       <div>
         <Head>
-          <title>Three.js Model</title>
-          <meta name="description" content="Your description here" />
+          <title>ALGORIM</title>
+          <meta name="description" content="Algorim develops robust applications and provide digital marketing services." />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="flex align-middle justify-center ">

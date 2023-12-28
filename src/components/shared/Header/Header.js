@@ -11,7 +11,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import Logo  from "../../../public/a_white.png";
+import Logo  from "../../../../public/a_white.png";
 
 const NavHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -49,27 +49,37 @@ const NavHeader = () => {
         </NavbarBrand>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            About Us
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" className="text-gray-300" aria-current="page">
-            Customers
+            Services
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            Industries
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Consultancy
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Contact Us
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex ">
-          <Link className="text-orange-200" href="#">Login</Link>
+          <Link className="text-orange-200" href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
+          <Button as={Link} color="warning" href="/signup" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>

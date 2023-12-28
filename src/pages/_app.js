@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import {useRouter, Router} from 'next/router';
 import { useState } from 'react';
 
-import Layout from '@/components/shared/Layout';
+import Layout from '@/components/shared/Layout/Layout';
 
 export default function App({
   Component, pageProps

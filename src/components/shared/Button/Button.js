@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from '@nextui-org/react'
 
-const ButtonPrimary = ({title, size, variant, color}) => {
+const ButtonPrimary = ({title, size, variant, color, type}) => {
   return (
-    <Button size={size} variant={variant} color={color}>
+    <Button size={size} type={type} variant={variant} color={color}>
     {title}
   </Button>
   )
