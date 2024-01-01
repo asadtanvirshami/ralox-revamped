@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 
 import Image from "next/image";
 import logo from "../../../../../public/algo.png";
@@ -48,4 +48,4 @@ const TopSection = () => {
   );
 };
 
-export default TopSection;
+export default memo(TopSection);

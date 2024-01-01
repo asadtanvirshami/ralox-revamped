@@ -1,8 +1,8 @@
-import React from "react";
-import {Snippet} from "@nextui-org/react";
+import React, { memo } from "react";
+import { Snippet } from "@nextui-org/react";
 
-export default function SnippetCom({text}) {
-  return (
-    <Snippet>{text}</Snippet>
-  );
-}
+const SnippetCom = ({ text }) => {
+  return <Snippet>{text}</Snippet>;
+};
+
+export default memo(SnippetCom);

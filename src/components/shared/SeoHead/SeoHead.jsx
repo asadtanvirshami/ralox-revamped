@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React from 'react';
+import React,{memo} from 'react';
 
 
 
@@ -26,4 +26,4 @@ const SeoHead = (props) => {
   );
 };
 
-export default SeoHead;
+export default memo(SeoHead);

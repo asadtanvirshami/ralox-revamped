@@ -1,5 +1,5 @@
 import { RocketIcon } from "@radix-ui/react-icons";
-import React from "react";
+import React ,{memo} from "react";
 
 const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
   return (
@@ -36,4 +36,4 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
   );
 };
 
-export default PlainCard;
+export default memo(PlainCard);

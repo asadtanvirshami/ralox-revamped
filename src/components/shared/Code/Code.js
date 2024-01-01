@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 import {Code} from "@nextui-org/react";
 
 const CodeSnippet = ({code}) => {
@@ -9,4 +9,4 @@ const CodeSnippet = ({code}) => {
   )
 }
 
-export default CodeSnippet
+export default memo(CodeSnippet)

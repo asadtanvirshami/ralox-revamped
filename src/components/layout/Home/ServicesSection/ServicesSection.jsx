@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+import React,{memo} from 'react'
 import { RiCodeSSlashFill } from "react-icons/ri";
 import PlainCard from '@/components/shared/PlainCard/PlainCard'
 
@@ -186,4 +186,4 @@ const ServicesSection = () => {
   )
 }
 
-export default ServicesSection
+export default memo(ServicesSection)

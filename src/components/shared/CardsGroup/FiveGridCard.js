@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import {
   Card,
   CardHeader,
@@ -8,7 +8,7 @@ import {
   Button,
 } from "@nextui-org/react";
 
-export default function CardsGroup({animation}) {
+const CardsGroup = ({animation}) => {
   return (
     <div data-aos={animation} className="w-2/3 gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 mt-6 mb-6">
       <Card className="w-full md:w-4 lg:w-3 sm:col-span-4 h-[300px] ">
@@ -117,3 +117,6 @@ export default function CardsGroup({animation}) {
     </div>
   );
 }
+
+
+export default memo(CardsGroup)

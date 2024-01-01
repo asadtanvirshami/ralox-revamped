@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 
 const Backdrop = () => {
   return (
@@ -8,4 +8,4 @@ const Backdrop = () => {
   )
 }
 
-export default Backdrop
+export default memo(Backdrop)

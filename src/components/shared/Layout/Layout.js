@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {memo, Fragment } from "react";
 import dynamic from "next/dynamic";
 
 const NavHeader = dynamic(() => import('../Header/Header'));
@@ -13,4 +13,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default memo(Layout);

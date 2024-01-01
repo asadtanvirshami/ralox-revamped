@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import PlainCard from "@/components/shared/PlainCard/PlainCard";
 
 const SystematicProcess = () => {
@@ -111,4 +111,4 @@ const SystematicProcess = () => {
   );
 };
 
-export default SystematicProcess;
+export default memo(SystematicProcess);

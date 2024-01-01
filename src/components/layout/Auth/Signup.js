@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 
 const Signup = () => {
   return (
@@ -6,4 +6,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default memo(Signup)

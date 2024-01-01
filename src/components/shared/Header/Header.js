@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -108,4 +108,4 @@ const NavHeader = () => {
     </Navbar>
   );
 };
-export default NavHeader;
+export default memo(NavHeader);

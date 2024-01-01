@@ -1,5 +1,5 @@
 import FiveGridCard from '@/components/shared/CardsGroup/FiveGridCard'
-import React from 'react'
+import React,{memo} from 'react'
 
 const ShowCase = () => {
   return (
@@ -12,4 +12,4 @@ const ShowCase = () => {
   )
 }
 
-export default ShowCase
+export default memo(ShowCase)

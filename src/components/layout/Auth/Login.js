@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{memo} from 'react'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className=''></div>
   )
 }
 
-export default Login
+export default memo(Login)

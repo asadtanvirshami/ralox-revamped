@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import AOS from "aos";
 
 import { Divider } from "@nextui-org/react";
@@ -70,4 +70,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

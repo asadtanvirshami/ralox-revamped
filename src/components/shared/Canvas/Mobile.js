@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 
 import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
@@ -26,4 +26,4 @@ const MobileModel = () => {
   )
 }
 
-export default MobileModel
+export default memo(MobileModel)

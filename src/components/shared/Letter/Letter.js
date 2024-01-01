@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 
 const Letter = ({ description, title, button_text }) => {
   return (
@@ -50,4 +50,4 @@ const Letter = ({ description, title, button_text }) => {
   );
 };
 
-export default Letter;
+export default memo(Letter);

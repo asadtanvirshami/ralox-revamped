@@ -1,16 +1,18 @@
-import React from "react";
+import React,{memo} from "react";
 import {
   Card,
   CardHeader,
-  CardBody,
   CardFooter,
   Image,
   Button,
 } from "@nextui-org/react";
 
-export default function TwoGridCard({animation}) {
+const TwoGridCard = ({ animation }) => {
   return (
-    <div data-aos={animation} className=" gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 p-3">
+    <div
+      data-aos={animation}
+      className=" gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 p-3"
+    >
       <Card className="w-full md:w-4 lg:w-3 sm:col-span-4 h-[300px] ">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
@@ -116,4 +118,6 @@ export default function TwoGridCard({animation}) {
       </Card>
     </div>
   );
-}
+};
+
+export default memo(TwoGridCard);

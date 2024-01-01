@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 import { Button } from '@nextui-org/react'
 
 const ButtonPrimary = ({title, size, variant, color, type}) => {
@@ -9,4 +9,4 @@ const ButtonPrimary = ({title, size, variant, color, type}) => {
   )
 }
 
-export default ButtonPrimary
+export default memo(ButtonPrimary)

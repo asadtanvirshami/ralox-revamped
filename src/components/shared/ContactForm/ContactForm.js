@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {memo, useRef, useState } from "react";
 import { Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import emailjs from "@emailjs/browser";
 
@@ -110,4 +110,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default memo(ContactForm);

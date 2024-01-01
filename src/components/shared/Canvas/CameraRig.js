@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 
 const CameraRig = () => {
   return (
@@ -8,4 +8,4 @@ const CameraRig = () => {
   )
 }
 
-export default CameraRig
+export default memo(CameraRig)

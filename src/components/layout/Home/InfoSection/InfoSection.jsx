@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 import Image from 'next/image'
 import { CardHeader, Card } from '@nextui-org/react'
 import PlainCard from '@/components/shared/PlainCard/PlainCard'
@@ -76,4 +76,4 @@ const InfoSection = () => {
   )
 }
 
-export default InfoSection
+export default memo(InfoSection)

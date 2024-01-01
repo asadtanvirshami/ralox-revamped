@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{memo} from 'react'
 import Image from 'next/image'
 
 import MobileModel from '@/components/shared/3D/MobileModel'
@@ -71,4 +71,4 @@ const WhyChooseUs = () => {
   )
 }
 
-export default WhyChooseUs
+export default memo(WhyChooseUs)

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 
 const InfoCard = ({animation}) => {
@@ -47,4 +47,4 @@ const InfoCard = ({animation}) => {
   )
 }
 
-export default InfoCard
+export default memo(InfoCard)
