@@ -9,9 +9,10 @@ import 'slick-carousel/slick/slick-theme.css';
 
 
 import {useRouter, Router} from 'next/router';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import Layout from '@/components/shared/Layout/Layout';
+import UserProvider from "@/components/layout/User/UserProvider";
 
 export default function App({
   Component, pageProps
@@ -28,17 +29,19 @@ export default function App({
         router.pathname !== "/signup" &&
         router.pathname !== "/" &&
         router.pathname !== "/admin_login" && (
-          <>
+          <Fragment>
             {loading ? (
               <Layout>
                 <>Loading...</>
               </Layout>
             ) : (
+              <UserProvider>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
+            </UserProvider>
             )}
-          </>
+          </Fragment>
         )}
       {(router.pathname === "/" ||
         router.pathname === "/login" ||

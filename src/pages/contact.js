@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+
+import Contact from '@/components/layout/Contact/Contact'
 
 const contact = () => {
   return (
-    <div>
-      
-    </div>
+    <Fragment>
+      <Contact/>
+    </Fragment>
   )
 }
 

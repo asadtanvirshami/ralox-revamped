@@ -1,12 +1,10 @@
 import { proxy } from "valtio";
 
-import wallpaper from "../../public/images/3D/textures/Wallpaper_baseColor.png";
-
-const state = proxy({
-  intro: true,
-  color: "#EFBD48",
-  isFullTexture: false,
-  fullDecal: wallpaper,
+ const state = proxy({
+  //AuthAction
+  openAuthModal: false,
+  authModalType:''
 });
 
-export default state;
+export default state
+

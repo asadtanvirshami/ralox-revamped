@@ -8,7 +8,7 @@ const TopSection = () => {
     <div className="relative w-full  overflow-hidden">
       <div className="relative  w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
         <div
-          className=" bg-gradient-to-r from-slate-500 via-slate-100 to-slate-500 object-cover w-full h-[58rem] md:h-[70rem] lg:h-[74rem]  opacity-90"
+          className=" bg-gradient-to-r from-slate-500 via-slate-100 to-slate-500 object-cover w-full h-[58rem] md:h-[70rem] lg:h-[66rem]  opacity-90"
           alt="banner"
         />
 

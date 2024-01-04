@@ -1,4 +1,6 @@
-import React,{memo} from "react";
+import React from "react";
+import state from "@/store";
+
 import {
   Navbar,
   NavbarBrand,
@@ -8,13 +10,19 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  Avatar,
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import Logo  from "../../../../public/a_white.png";
+import Logo from "../../../../public/a_white.png";
 
 const NavHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isDropDown, setIsDropDown] = React.useState(false);
 
   const menuItems = [
     "Profile",
@@ -28,6 +36,17 @@ const NavHeader = () => {
     "Help & Feedback",
     "Log Out",
   ];
+
+  const handleClick = (type) => {
+    if (type == "login") {
+      state.openAuthModal = true;
+      state.authModalType = "login";
+    }
+    if (type == "signup") {
+      state.openAuthModal = true;
+      state.authModalType = "signup";
+    }
+  };
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -47,6 +66,11 @@ const NavHeader = () => {
         <NavbarBrand>
           <Image src={Logo} style={{ width: "10%", height: "10%" }} alt="alt" />
         </NavbarBrand>
+        <NavbarItem>
+          <Link color="foreground" href="/home">
+            Home
+          </Link>
+        </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
             About Us
@@ -68,7 +92,7 @@ const NavHeader = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/contact">
             Contact Us
           </Link>
         </NavbarItem>
@@ -76,15 +100,56 @@ const NavHeader = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex ">
-          <Link className="text-orange-200" href="/login">Login</Link>
+          <Link
+            className="text-orange-200 cursor-pointer"
+            onClick={() => handleClick("login")}
+          >
+            Login
+          </Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="warning" href="/signup" variant="flat">
+          <Button
+            as={Link}
+            color="warning"
+            onClick={() => handleClick("signup")}
+            variant="flat"
+          >
             Sign Up
           </Button>
         </NavbarItem>
       </NavbarContent>
-
+      <NavbarContent as="div" justify="end">
+        <Dropdown isOpen={isDropDown} placement="bottom-end">
+          <DropdownTrigger className=" cursor-pointer"  onClick={() => setIsDropDown((prev) => !prev)}>
+            <Avatar
+              isBordered
+              as="button"
+              className="cursor-pointer transition-transform"
+              color="secondary"
+              name="Jason Hughes"
+              size="sm"
+            >
+              A
+            </Avatar>
+            
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            <DropdownItem key="settings">My Settings</DropdownItem>
+            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem key="analytics">Analytics</DropdownItem>
+            <DropdownItem key="system">System</DropdownItem>
+            <DropdownItem key="configurations">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger">
+              Log Out
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
@@ -108,4 +173,4 @@ const NavHeader = () => {
     </Navbar>
   );
 };
-export default memo(NavHeader);
+export default NavHeader;

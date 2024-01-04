@@ -35,7 +35,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <h1 className="text-xl text-gray-300 flex lg:text-6xl font-semibold mb-7">
+      <h1 className="text-xl  text-gray-600 flex lg:mr-2 lg:text-6xl font-semibold mb-7">
         We love coming up with fresh ideas to increase conversions!
       </h1>
       <form
@@ -49,12 +49,12 @@ const ContactForm = () => {
             type="text"
             variant={"bordered"}
             label="Name"
-            className="mr-4 text-white"
+            className="mr-4 text-gray-600"
             name="user_name"
           />
           <Input
             type="email"
-            className="text-white"
+            className=" text-gray-600"
             name="user_email"
             size="lg"
             variant={"bordered"}
@@ -67,12 +67,13 @@ const ContactForm = () => {
             name="user_select"
             variant={"bordered"}
             label="Reason"
-            className="max-w-ful text-white"
+            className="max-w-full text-white"
             size="lg"
           >
             {services.map((service) => (
               <SelectItem
-                className="text-white"
+              className="text-white"
+            
                 hideSelectedIcon={true}
                 key={service.value}
                 value={service.value}
@@ -89,7 +90,7 @@ const ContactForm = () => {
             label="Description"
             variant="bordered"
             disableAnimation
-            className="text-white"
+            className=" text-gray-600"
             classNames={{
               base: "max-w-full",
               input: "resize-y min-h-[40px]",

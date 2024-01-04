@@ -55,9 +55,9 @@ const Home = () => {
             <ServicesSection />
           </div>
         </div>
-        <div>
+        <div className="bg-white">
           <Divider></Divider> {/* CONTACT FORM SECTION */}
-          <div className="w-fit overflow-hidden align-middle flex items-center justify-center mx-auto">
+          <div className="w-fit bg-white overflow-hidden align-middle flex items-center justify-center mx-auto">
             <div data-aos={"fade-up"} className="container mx-auto py-12 mt-5">
               <div className="row justify-center  lg:flex">
                 <ContactForm />
