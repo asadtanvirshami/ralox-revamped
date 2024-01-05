@@ -35,7 +35,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <h1 className="text-xl  text-gray-600 flex lg:mr-2 lg:text-6xl font-semibold mb-7">
+      <h1 className="text-xl  text-gray-600 flex lg:mr-2 lg:text-[3rem] font-bold mb-7">
         We love coming up with fresh ideas to increase conversions!
       </h1>
       <form

@@ -1,9 +1,9 @@
 import { proxy } from "valtio";
 
  const state = proxy({
-  //AuthAction
+  //AuthModalAction
   openAuthModal: false,
-  authModalType:''
+  authModalType:'',
 });
 
 export default state

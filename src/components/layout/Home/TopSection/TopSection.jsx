@@ -1,20 +1,20 @@
-import React,{memo} from "react";
-
+import React, { memo } from "react";
 import Image from "next/image";
+
 import logo from "../../../../../public/algo.png";
 
 const TopSection = () => {
   return (
-    <div className="relative w-full  overflow-hidden">
+    <div className="relative w-full   overflow-hidden">
       <div className="relative  w-full h-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
         <div
-          className=" bg-gradient-to-r from-slate-500 via-slate-100 to-slate-500 object-cover w-full h-[58rem] md:h-[70rem] lg:h-[66rem]  opacity-90"
+          className=" bg-gradient-to-r h-screen  from-slate-500 via-slate-100 to-slate-500 object-cover w-full  lg:h-[66rem]  opacity-90"
           alt="banner"
         />
 
         <div
           data-aos="fade-down-right"
-          className="absolute inset-0 w-full overflow-hidden flex flex-col items-center justify-center text-center text-white"
+          className="absolute inset-0 h-screen  w-full overflow-hidden flex flex-col items-center justify-center text-center text-white"
         >
           <div data-aos="fade-down">
             <Image
@@ -43,6 +43,7 @@ const TopSection = () => {
             </div>
           </div>
         </div>
+       
       </div>
     </div>
   );

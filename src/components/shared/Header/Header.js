@@ -1,5 +1,5 @@
 import React from "react";
-import state from "@/store";
+import state from "@/valtio/store";
 
 import {
   Navbar,
@@ -20,9 +20,15 @@ import {
 import Image from "next/image";
 import Logo from "../../../../public/a_white.png";
 
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/redux/actions/UserActions/userActions";
+
 const NavHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isDropDown, setIsDropDown] = React.useState(false);
+
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const menuItems = [
     "Profile",
@@ -98,58 +104,78 @@ const NavHeader = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex ">
-          <Link
-            className="text-orange-200 cursor-pointer"
-            onClick={() => handleClick("login")}
-          >
-            Login
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button
-            as={Link}
-            color="warning"
-            onClick={() => handleClick("signup")}
-            variant="flat"
-          >
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent as="div" justify="end">
-        <Dropdown isOpen={isDropDown} placement="bottom-end">
-          <DropdownTrigger className=" cursor-pointer"  onClick={() => setIsDropDown((prev) => !prev)}>
-            <Avatar
-              isBordered
-              as="button"
-              className="cursor-pointer transition-transform"
-              color="secondary"
-              name="Jason Hughes"
-              size="sm"
+      {!isAuthenticated && (
+        <NavbarContent justify="end">
+          <NavbarItem className="hidden lg:flex ">
+            <Link
+              className="text-orange-200 cursor-pointer"
+              onClick={() => handleClick("login")}
             >
-              A
-            </Avatar>
-            
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
-            </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarContent>
+              Login
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button
+              as={Link}
+              color="warning"
+              onClick={() => handleClick("signup")}
+              variant="flat"
+            >
+              Sign Up
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      )}
+      {isAuthenticated && (
+        <NavbarContent as="div" justify="end">
+          <Dropdown isOpen={isDropDown} placement="bottom-end">
+            <DropdownTrigger
+              className=" cursor-pointer"
+              onClick={() => setIsDropDown((prev) => !prev)}
+            >
+              <Avatar
+                isBordered
+                as="button"
+                className="cursor-pointer transition-transform"
+                color="warning"
+                variant="flat"
+                name={user.fname.slice(0, 1).toUpperCase()}
+                size="sm"
+              ></Avatar>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem key="profile" className="h-14 gap-2">
+                <p className="font-semibold">Signed in as</p>
+                <p className="font-semibold text-orange-200">{user.email}</p>
+              </DropdownItem>
+              <DropdownItem color="warning" key="configurations">
+                <Link
+                  href="/dashboard"
+                  className="text-white text-[12px] cursor-pointer"
+                >
+                  Dashboard
+                </Link>
+              </DropdownItem>
+              <DropdownItem color="warning" key="settings">
+                <Link
+                  className="text-white text-[12px]  cursor-pointer"
+                >
+                  Settings
+                </Link>
+              </DropdownItem>
+              <DropdownItem
+                key="logout"
+                onClick={() => {
+                  dispatch(logout()), setIsDropDown(false);
+                }}
+                color="danger"
+              >
+                Log Out
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarContent>
+      )}
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>

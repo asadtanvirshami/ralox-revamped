@@ -1,18 +1,20 @@
 import { RocketIcon } from "@radix-ui/react-icons";
-import React ,{memo} from "react";
+import React, { memo } from "react";
 
 const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
   return (
     <div
       className={
-        mode == "dark"
-          ? `mb-3 lg:mb-0 opacity-90 bg-black lg:col-7 p-4 lg:p-6 rounded-2xl `
-          : `mb-3 lg:mb-0 opacity-90  bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 lg:col-7 p-4 lg:p-6 rounded-2xl `
+        mode === "dark"
+          ? `lg:mb-0 opacity-90 bg-black lg:col-7 p-4 lg:p-6 rounded-2xl`
+          : mode === "light"
+          ? `lg:mb-0 opacity-90  bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 lg:col-7 p-4 lg:p-6 rounded-2xl`
+          : `lg:mb-0 opacity-90 bg-transparent lg:col-7 p-4 lg:p-6 rounded-2xl`
       }
       data-aos={animation}
     >
       <div className="flex">
-      {withIcon == true && <>{icon}</>}
+        {withIcon == true && <>{icon}</>}
         <h1
           className={
             mode == "dark"

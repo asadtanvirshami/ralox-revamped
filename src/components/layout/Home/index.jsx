@@ -34,24 +34,24 @@ const Home = () => {
           <Slider />
         </div>
         {/* WHY CHOOSE US SECTION */}
-        <div className="w-fit overflow-hidden align-middle flex items-center justify-center mx-auto">
+        <div className="w-full overflow-hidden align-middle flex items-center justify-center mx-auto">
           <WhyChooseUs />
         </div>
         {/* SHOWCASE SECTION */}
         <ShowCase />
         {/* INFO SECTION */}
-        <div className="w-fit bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
+        <div className="w-full bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
           <InfoSection />
         </div>
         {/* TESTMONIALS SECTION */}
         <Testamonials />
         {/* SYSTEMATIC PROCESS SECTION */}
-        <div className="w-fit bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
+        <div className="w-full bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
           <SystematicProcess />
         </div>
         <div>
           {/* SERVICES SECTION */}
-          <div className="w-fit bg-black   overflow-hidden align-middle flex items-center justify-center mx-auto">
+          <div className="w-full mt-8 mb-8 bg-black   overflow-hidden align-middle flex items-center justify-center mx-auto">
             <ServicesSection />
           </div>
         </div>

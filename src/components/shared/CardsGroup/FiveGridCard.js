@@ -1,4 +1,4 @@
-import React,{memo} from "react";
+import React, { memo } from "react";
 import {
   Card,
   CardHeader,
@@ -8,10 +8,13 @@ import {
   Button,
 } from "@nextui-org/react";
 
-const CardsGroup = ({animation}) => {
+const CardsGroup = ({ animation }) => {
   return (
-    <div data-aos={animation} className="w-2/3 gap-3 grid grid-cols-12 m-3 justify-center align-middle grid-rows-2 mt-6 mb-6">
-      <Card className="w-full md:w-4 lg:w-3 sm:col-span-4 h-[300px] ">
+    <div
+      data-aos={animation}
+      className="grid container w-full gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 m-3 justify-center align-middle mt-6 mb-6"
+    >
+      <Card className="w-full h-[300px]">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             What to watch
@@ -27,7 +30,7 @@ const CardsGroup = ({animation}) => {
           src="/images/card-example-4.jpeg"
         />
       </Card>
-      <Card className="w-full md:w-6 lg:w-4 h-[300px] ">
+      <Card className="w-full h-[300px]">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             Plant a tree
@@ -43,7 +46,7 @@ const CardsGroup = ({animation}) => {
           src="/images/card-example-3.jpeg"
         />
       </Card>
-      <Card className="w-full md:w-6 lg:w-4 h-[300px] ">
+      <Card className="w-full h-[300px]">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             Supercharged
@@ -59,7 +62,7 @@ const CardsGroup = ({animation}) => {
           src="/images/card-example-2.jpeg"
         />
       </Card>
-      <Card isFooterBlurred className=" w-full md:w-4  lg:w-4  h-[300px]  ">
+      <Card className="w-full h-[300px]">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">New</p>
           <h4 className="text-white font-medium text-2xl">Acme camera</h4>
@@ -80,7 +83,7 @@ const CardsGroup = ({animation}) => {
           </Button>
         </CardFooter>
       </Card>
-      <Card isFooterBlurred className=" w-full lg:w-7 sm:col-span-4 h-[300px] ">
+      <Card className="w-full h-[300px] sm:col-span-2 lg:w-full">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">
             Your day your way
@@ -116,7 +119,6 @@ const CardsGroup = ({animation}) => {
       </Card>
     </div>
   );
-}
+};
 
-
-export default memo(CardsGroup)
+export default memo(CardsGroup);

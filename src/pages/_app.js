@@ -1,24 +1,26 @@
-import '@/styles/main.scss'
-import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
-import 'primeflex/primeflex.css';                                   // css utility
-import 'primereact/resources/primereact.css';
-import 'aos/dist/aos.css'
+import "@/styles/main.scss";
+import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
+import { useRouter, Router } from "next/router";
+import { Fragment, useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-import {useRouter, Router} from 'next/router';
-import { Fragment, useState } from 'react';
-
-import Layout from '@/components/shared/Layout/Layout';
+import Layout from "@/components/shared/Layout/Layout";
 import UserProvider from "@/components/layout/User/UserProvider";
+import Loader from "@/components/shared/Loader/Loader";
 
-export default function App({
-  Component, pageProps
-}) {
+import { Provider } from "react-redux";
+import { store, persistor } from "../redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+
+export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const queryClient = new QueryClient();
 
   Router.events.on("routeChangeStart", () => setLoading(true));
   Router.events.on("routeChangeComplete", () => setLoading(false));
@@ -32,14 +34,20 @@ export default function App({
           <Fragment>
             {loading ? (
               <Layout>
-                <>Loading...</>
+                <Loader />
               </Layout>
             ) : (
-              <UserProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </UserProvider>
+              <QueryClientProvider client={queryClient}>
+                <UserProvider>
+                  <Provider store={store}>
+                    <PersistGate loading={null} persistor={persistor}>
+                      <Layout>
+                        <Component {...pageProps} />
+                      </Layout>
+                    </PersistGate>
+                  </Provider>
+                </UserProvider>
+              </QueryClientProvider>
             )}
           </Fragment>
         )}
