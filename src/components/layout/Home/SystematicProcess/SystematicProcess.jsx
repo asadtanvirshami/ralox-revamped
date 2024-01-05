@@ -11,13 +11,15 @@ const SystematicProcess = () => {
         A Systematic Process That Delivers Excellence
       </h1>
       {processSteps.map((step, index) => (
-        <div  className={`flex ${
-          index % 2 === 0
-            ? "justify-start mt-3 w-full"
-            : "flex justify-end align-baseline items-end mt-3 w-full"
-        } lg:flex`}>
+        <div
+          key={index}
+          className={`flex ${
+            index % 2 === 0
+              ? "justify-start mt-3 w-full"
+              : "flex justify-end align-baseline items-end mt-3 w-full"
+          } lg:flex`}
+        >
           <div
-            key={index}
             className={`flex ${
               index % 2 === 0
                 ? "justify-start md:w-2/4 lg:w-2/4 "
