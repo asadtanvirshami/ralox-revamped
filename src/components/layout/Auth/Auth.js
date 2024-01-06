@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import React, { Fragment, Suspense, memo, useState } from "react";
+import React, { Fragment, memo, useState } from "react";
 import { useSnapshot } from "valtio";
 import axios from "axios";
 import state from "@/valtio/store";

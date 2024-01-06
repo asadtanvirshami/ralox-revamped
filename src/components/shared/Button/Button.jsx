@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Button } from "@nextui-org/react";
 
-const ButtonPrimary = ({ title, size, variant, color, type, loading }) => {
+const ButtonPrimary = ({ title, size, variant, color, type, loading, endContent, startContent, onClick }) => {
   return (
     <Button
       spinner={
@@ -31,6 +31,9 @@ const ButtonPrimary = ({ title, size, variant, color, type, loading }) => {
       type={type}
       variant={variant}
       color={color}
+      endContent={endContent}
+      startContent={startContent}
+      onClick={onClick}
     >
       {title}
     </Button>

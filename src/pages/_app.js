@@ -29,8 +29,7 @@ export default function App({ Component, pageProps }) {
     <>
       {router.pathname !== "/login" &&
         router.pathname !== "/signup" &&
-        router.pathname !== "/" &&
-        router.pathname !== "/admin_login" && (
+        router.pathname !== "/" && (
           <Fragment>
             {loading ? (
               <Layout>
@@ -53,8 +52,7 @@ export default function App({ Component, pageProps }) {
         )}
       {(router.pathname === "/" ||
         router.pathname === "/login" ||
-        router.pathname === "/signup" ||
-        router.pathname === "/admin_login") && <Component {...pageProps} />}
+        router.pathname === "/signup") && <Component {...pageProps} />}
     </>
   );
 }
