@@ -120,7 +120,7 @@ const Login = () => {
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
-          size="lg"
+          size="md"
           type="text"
           variant={"bordered"}
           label="Email"
@@ -131,7 +131,7 @@ const Login = () => {
         <Input
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
-          size="lg"
+          size="md"
           variant={"bordered"}
           label="Password"
           name="password"
@@ -285,7 +285,7 @@ const SignUp = () => {
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
-          size="lg"
+          size="md"
           type="text"
           variant={"bordered"}
           label="First Name"
@@ -294,7 +294,7 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
-          size="lg"
+          size="md"
           type="text"
           variant={"bordered"}
           label="Last Name"
@@ -303,7 +303,7 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
-          size="lg"
+          size="md"
           type="text"
           variant={"bordered"}
           label="Email"
@@ -314,7 +314,7 @@ const SignUp = () => {
         <Input
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
-          size="lg"
+          size="md"
           variant={"bordered"}
           label="Password"
           name="password"
@@ -463,7 +463,7 @@ const ForgetPassword = () => {
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
-          size="lg"
+          size="md"
           type="text"
           variant={"bordered"}
           label="Email"
@@ -474,7 +474,7 @@ const ForgetPassword = () => {
         <Input
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
-          size="lg"
+          size="md"
           variant={"bordered"}
           label="Password"
           name="password"

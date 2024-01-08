@@ -23,7 +23,7 @@ const ModalCom = ({
 }) => {
   return (
     <>
-      <Modal isOpen={show} onOpenChange={Close}>
+      <Modal className="bg-black border-solid border border-white" isOpen={show} onOpenChange={Close}>
         <ModalContent>
           {(onClose) => (
             <>

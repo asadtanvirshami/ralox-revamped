@@ -4,26 +4,42 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Avatar,
+  Chip,
   Button,
+  CircularProgress,
 } from "@nextui-org/react";
 
-export default function ProjectCard() {
-  const [isFollowed, setIsFollowed] = React.useState(false);
-
+export default function ProjectCard({ data }) {
   return (
-    <Card className="max-w-[350px] h-[200px]">
+    <Card className="max-w-[350px] h-[250px]">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
-          <Avatar
-            isBordered
-            radius="full"
-            size="md"
-            src="/avatars/avatar-1.png"
+          <CircularProgress
+            aria-label="Loading..."
+            size="lg"
+            value={data.progress}
+            color={
+              data.progress < 20
+                ? "danger"
+                : data.progress < 30
+                ? "danger"
+                : data.progress < 50
+                ? "warning"
+                : data.progress < 60
+                ? "secondary"
+                : data.progress == 100
+                ? "success"
+                : data.status === "In progress"
+                ? "primary"
+                : data.status === "Paused"
+                ? "danger"
+                : "default"
+            }
+            showValueLabel={true}
           />
           <div className="flex flex-col gap-1 items-start justify-center">
-            <h4 className="text-small font-semibold leading-none text-default-600">
-              Zoey Lang
+            <h4 className="text-md font-semibold leading-none text-default-600">
+              {data.title}
             </h4>
             <h5 className="text-small tracking-tight text-default-400">
               @zoeylang
@@ -31,40 +47,52 @@ export default function ProjectCard() {
           </div>
         </div>
         <Button
-          className={
-            isFollowed
-              ? "bg-transparent text-foreground border-default-200"
-              : ""
-          }
-          color="primary"
+          disabled={true}
+          color="warning"
           radius="full"
           size="sm"
-          variant={isFollowed ? "bordered" : "solid"}
-          onPress={() => setIsFollowed(!isFollowed)}
+          variant={"flat"}
         >
-          {isFollowed ? "Unfollow" : "Follow"}
+          <p className="text-[14px] font-semibold"># {data.code}</p>
         </Button>
       </CardHeader>
-      <CardBody className="px-3 py-0 text-small text-default-400">
-        <p>
-          Frontend developer and UI/UX enthusiast. Join me on this coding
-          adventure!
-        </p>
-        <span className="pt-2">
-          #FrontendWithZoey
-          <span className="py-2" aria-label="computer" role="img">
-            💻
-          </span>
-        </span>
-      </CardBody>
-      <CardFooter className="gap-3">
-        <div className="flex gap-1">
-          <p className="font-semibold text-default-400 text-small">4</p>
-          <p className=" text-default-400 text-small">Following</p>
+      <CardBody className="px-3 py-0 text-md text-white">
+        <p>{data.description}</p>
+        <div className="mt-4">
+          <p>
+            <strong>Stage: </strong>
+            {data.stage}
+          </p>
+          <div className="mt-2" />
+          <p>
+            <strong>Status: </strong>
+            <Chip
+              variant="dot"
+              color={
+                data.status === "Pending"
+                  ? "warning"
+                  : data.status === "Completed"
+                  ? "success"
+                  : data.status === "In progress"
+                  ? "secondary"
+                  : data.status === "Paused"
+                  ? "danger"
+                  : "default"
+              }
+            >
+              {data.status}
+            </Chip>
+          </p>
         </div>
-        <div className="flex gap-1">
-          <p className="font-semibold text-default-400 text-small">97.1K</p>
-          <p className="text-default-400 text-small">Followers</p>
+      </CardBody>
+      <CardFooter className="gap-3 justify-end">
+        <div className="flex gap-3">
+          <Button variant="flat" color="warning">
+            View Info
+          </Button>
+          <Button variant="solid" color="secondary">
+            Boost Project
+          </Button>
         </div>
       </CardFooter>
     </Card>
