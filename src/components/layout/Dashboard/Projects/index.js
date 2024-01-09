@@ -169,7 +169,7 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={<ProjectCreate />}
+        children={<ProjectCreate projects={data.projects} />}
       />
     </>
   );

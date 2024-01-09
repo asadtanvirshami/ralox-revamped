@@ -10,7 +10,7 @@ export const getProjectsByUserID = async (userId) => {
   return response.json();
 };
 
-export const getProjectByStatus = async (id,status) => {
+export const getProjectByStatus = async (id, status) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_STATUS}?status=${status}&&userId=${id}`
   );
@@ -21,11 +21,18 @@ export const getProjectByStatus = async (id,status) => {
 };
 
 export const createProject = async (data) => {
-  const response = await axios.post(`${process.env.NEXT_PUBLIC_CREATE_PROJECT}`, {
-    data
-  });
-  if (!response.ok) {
+  const response = await axios
+    .post(`${process.env.NEXT_PUBLIC_CREATE_PROJECT}`, {
+      data,
+    })
+    .then((res) => {
+        if(res.data.message=='project-created'){
+          return res.data.payload
+        }
+    });
+  if (!response) {
     throw new Error("Failed to fetch projects");
   }
-  return response.json();
+  const responseData = await response.json();
+  return responseData;
 };

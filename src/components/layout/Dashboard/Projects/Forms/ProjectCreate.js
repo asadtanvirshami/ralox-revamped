@@ -24,11 +24,15 @@ const SignupSchema = yup.object().shape({
   UserId: yup.string(),
 });
 
-const ProjectCreate = () => {
+const ProjectCreate = ({projects}) => {
   const [date, setDate] = useState();
   const queryClient = useQueryClient();
 
-  const user = useSelector((state)=>state.user.user)
+  const user = useSelector((state) => state.user.user);
+
+console.log('====================================');
+console.log(projects);
+console.log('====================================');
 
   const {
     register,
@@ -43,33 +47,32 @@ const ProjectCreate = () => {
   });
 
   const createProjectMutation = useMutation(createProject, {
-    onSuccess: () => {
-      // Invalidate and refetch the projects query after successful creation
+    onSuccess: (data) => {
       queryClient.invalidateQueries("projects");
-      // Reset the form
       reset();
-      // Show success message or navigate to another page
     },
   });
 
+  console.log(createProjectMutation); 
+
   const submitProjectInfo = async (data) => {
     // Your form data
-    console.log(data);
     const formData = {
       ...data,
-      UserId:user.loginId,
-      deadline:date,
-      startDate:moment().format(),
-      endDate:"-",
-      manager:'none',
-      progress:"0",
-      manager_no:'none',
-      stage:'Confirmation',
-      status:'Pending',
+      UserId: user.loginId,
+      deadline: date,
+      startDate: moment().format(),
+      endDate: "-",
+      manager: "none",
+      progress: "0",
+      manager_no: "none",
+      stage: "Confirmation",
+      status: "Pending",
     };
 
     await createProjectMutation.mutate(formData);
   };
+  console.log();
 
   return (
     <div>
@@ -87,7 +90,7 @@ const ProjectCreate = () => {
           />
           <div className="mt-3" />
           <Label title={"Deadline of Project"} />
-          <DatePicker  date={date} setDate={setDate} />
+          <DatePicker date={date} setDate={setDate} />
           <div className="mt-3" />
           <Label title={"Budget"} />
           <Input
@@ -127,7 +130,6 @@ const ProjectCreate = () => {
 };
 
 export default ProjectCreate;
-
 
 // {
 //   "title":"Web development",
