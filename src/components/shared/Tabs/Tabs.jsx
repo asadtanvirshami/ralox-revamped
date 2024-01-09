@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 
 const Index = ({ tabs, step, handleClick }) => {
   return (
@@ -27,4 +27,4 @@ const Index = ({ tabs, step, handleClick }) => {
   );
 };
 
-export default Index;
+export default memo(Index);

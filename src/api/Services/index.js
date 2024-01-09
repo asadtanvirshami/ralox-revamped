@@ -1,6 +1,6 @@
-export const getService = async (id,status) => {
+export const getServices = async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_STATUS}?status=${status}&&userId=${id}`
+      `${process.env.NEXT_PUBLIC_GET_SERVICES}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch projects");

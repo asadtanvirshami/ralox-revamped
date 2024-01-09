@@ -2,7 +2,7 @@ import React, {memo, useRef, useState } from "react";
 import { Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import emailjs from "@emailjs/browser";
 
-import { services } from "@/utils/selectOptions";
+import { services} from "@/utils/Options/selectOptions";
 
 import ButtonPrimary from "../Button/Button";
 

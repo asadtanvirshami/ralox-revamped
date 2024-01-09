@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "@/components/shared/Form/Input/Input";
 import TextArea from "@/components/shared/Form/TextArea/TextArea";
 import DatePicker from "@/components/shared/Form/DatePicker/DatePicker";
+import SelectService from "@/components/shared/SelectService/SelectService";
 import Label from "@/components/shared/Form/Label/Label";
 import Button from "@/components/shared/Button/Button";
 
@@ -21,18 +22,14 @@ const SignupSchema = yup.object().shape({
   description: yup.string().required(),
   deadline: yup.string(),
   budget: yup.number().required(),
-  UserId: yup.string(),
+  service: yup.string().required(),
 });
 
-const ProjectCreate = ({projects}) => {
+const ProjectCreate = ({ projects }) => {
   const [date, setDate] = useState();
   const queryClient = useQueryClient();
 
   const user = useSelector((state) => state.user.user);
-
-console.log('====================================');
-console.log(projects);
-console.log('====================================');
 
   const {
     register,
@@ -53,8 +50,6 @@ console.log('====================================');
     },
   });
 
-  console.log(createProjectMutation); 
-
   const submitProjectInfo = async (data) => {
     // Your form data
     const formData = {
@@ -69,10 +64,9 @@ console.log('====================================');
       stage: "Confirmation",
       status: "Pending",
     };
-
+    
     await createProjectMutation.mutate(formData);
   };
-  console.log();
 
   return (
     <div>
@@ -103,6 +97,9 @@ console.log('====================================');
             name="budget"
           />
           <div className="mt-3" />
+          <Label title={"Service"} />
+          <SelectService register={register} control={control} />
+          <div className="mt-3" />
           <Label title={"Description"} />
           <TextArea
             register={register}
@@ -129,7 +126,7 @@ console.log('====================================');
   );
 };
 
-export default ProjectCreate;
+export default memo(ProjectCreate);
 
 // {
 //   "title":"Web development",

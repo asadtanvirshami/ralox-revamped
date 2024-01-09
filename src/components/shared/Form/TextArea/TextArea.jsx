@@ -15,7 +15,7 @@ const TextArea = ({ placeholder, name, type, disabled, register, control }) => {
             type={type}
             name={name}
             placeholder={placeholder}
-            className="bg-black border-white border w-full mt-3 rounded-md p-[9px]"
+            className="bg-black border-white border w-full mt-3 rounded-md p-[9px] h-[150px]"
             {...field}
           />
         )}

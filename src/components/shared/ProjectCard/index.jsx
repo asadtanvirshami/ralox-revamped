@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   Card,
   CardHeader,
@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from "@nextui-org/react";
 
-export default function ProjectCard({ data }) {
+const ProjectCard = ({ data, primaryClick}) => {
   return (
     <Card className="max-w-[350px] h-[250px]">
       <CardHeader className="justify-between">
@@ -90,11 +90,12 @@ export default function ProjectCard({ data }) {
           <Button variant="flat" color="warning">
             View Info
           </Button>
-          <Button variant="solid" color="secondary">
+          <Button onClick={primaryClick} variant="solid" color="secondary">
             Boost Project
           </Button>
         </div>
       </CardFooter>
     </Card>
   );
-}
+};
+export default memo(ProjectCard);

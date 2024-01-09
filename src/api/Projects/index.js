@@ -26,10 +26,20 @@ export const createProject = async (data) => {
       data,
     })
     .then((res) => {
-        if(res.data.message=='project-created'){
-          return res.data.payload
-        }
+      if (res.data.message == "project-created") {
+        return res.data.payload;
+      }
     });
+  if (!response) {
+    throw new Error("Failed to fetch projects");
+  }
+  return response;
+};
+
+export const deleteProject = async (id) => {
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_CREATE_DELETE}?id=${id}`
+  );
   if (!response) {
     throw new Error("Failed to fetch projects");
   }
