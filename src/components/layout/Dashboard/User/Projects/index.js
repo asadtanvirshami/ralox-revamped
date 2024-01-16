@@ -8,12 +8,12 @@ import Modal from "@/components/shared/Modal/Modal";
 import Button from "@/components/shared/Button/Button";
 import ProjectCreate from "./Forms/ProjectCreate";
 import ProjectCard from "@/components/shared/ProjectCard";
+import ProjectBoost from "./ProjectBoost";
 
-import { getProjectByStatus, getProjectsByUserID } from "@/api/Projects";
+import { getProjectbyStatusById, getProjectsByUserID } from "@/api/Projects";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { Spinner } from "@nextui-org/react";
-import ProjectBoost from "./ProjectBoost";
 
 const Projects = () => {
   const [isInitialRender, setIsInitialRender] = useState(true);
@@ -39,13 +39,11 @@ const Projects = () => {
     refetch: refetchStatus,
   } = useQuery({
     queryKey: [query.status, userID],
-    queryFn: () => getProjectByStatus(userID.loginId, query.status),
+    queryFn: () => getProjectbyStatusById(userID.loginId, query.status),
     enabled: false,
     refetchInterval: false,
     refetchOnWindowFocus: false,
   });
-
-  console.log(data);
 
   const handleClick = (step, key, status) => {
     setQuery((prev) => ({
@@ -135,7 +133,16 @@ const Projects = () => {
               {statusData && statusData.projects.length > 0 && (
                 <>
                   {statusData.projects.map((project) => (
-                    <ProjectCard data={project} />
+                    <ProjectCard
+                      primaryClick={() =>
+                        setState((prevState) => ({
+                          ...prevState,
+                          boostModal: !prevState.boostModal,
+                          value: project,
+                        }))
+                      }
+                      data={project}
+                    />
                   ))}
                 </>
               )}
@@ -165,6 +172,8 @@ const Projects = () => {
         )}
       </div>
       <Modal
+        size={"md"}
+        scrollBehavior={''}
         show={state.createModal}
         footer={false}
         onClick={() =>
@@ -183,9 +192,21 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={<ProjectCreate projects={data.projects} />}
+        children={
+          <ProjectCreate
+            onClick={() => {
+              setState((prevState) => ({
+                ...prevState,
+                createModal: !prevState.createModal,
+              }));
+            }}
+            projects={data.projects}
+          />
+        }
       />
       <Modal
+        size={"md"}
+        scrollBehavior={''}
         show={state.boostModal}
         footer={false}
         onClick={() =>

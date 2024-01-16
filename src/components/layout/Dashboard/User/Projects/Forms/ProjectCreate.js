@@ -15,6 +15,7 @@ import Button from "@/components/shared/Button/Button";
 import { createProject } from "@/api/Projects"; // Import your API function
 import { useSelector } from "react-redux";
 import moment from "moment";
+import RadioNext from "@/components/shared/Form/RadioGroup/RadioGroup";
 
 const SignupSchema = yup.object().shape({
   //Yup schema to set the values
@@ -23,9 +24,10 @@ const SignupSchema = yup.object().shape({
   deadline: yup.string(),
   budget: yup.number().required(),
   service: yup.string().required(),
+  paymentType: yup.string().required(),
 });
 
-const ProjectCreate = ({ projects }) => {
+const ProjectCreate = ({ onClick }) => {
   const [date, setDate] = useState();
   const queryClient = useQueryClient();
 
@@ -57,14 +59,8 @@ const ProjectCreate = ({ projects }) => {
       UserId: user.loginId,
       deadline: date,
       startDate: moment().format(),
-      endDate: "-",
-      manager: "none",
-      progress: "0",
-      manager_no: "none",
-      stage: "Confirmation",
-      status: "Pending",
     };
-    
+
     await createProjectMutation.mutate(formData);
   };
 
@@ -82,10 +78,10 @@ const ProjectCreate = ({ projects }) => {
             className="text-gray-600"
             name="title"
           />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Label title={"Deadline of Project"} />
           <DatePicker date={date} setDate={setDate} />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Label title={"Budget"} />
           <Input
             register={register}
@@ -97,9 +93,19 @@ const ProjectCreate = ({ projects }) => {
             name="budget"
           />
           <div className="mt-3" />
+          <RadioNext
+            label={"Payment Type"}
+            options={paymentTypes}
+            orientation={"horizontal"}
+            name={"paymentType"}
+            register={register}
+            control={control}
+            color={"warning"}
+          />
+          <div className="mt-3" />
           <Label title={"Service"} />
           <SelectService register={register} control={control} />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Label title={"Description"} />
           <TextArea
             register={register}
@@ -110,7 +116,7 @@ const ProjectCreate = ({ projects }) => {
             className="text-gray-600"
             name="description"
           />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Button
             title="Submit"
             startContent={null}
@@ -120,6 +126,17 @@ const ProjectCreate = ({ projects }) => {
             type="submit"
             size="md"
           />
+          <span>
+            <Button
+              title="Cancel"
+              startContent={null}
+              disabled={createProjectMutation.isLoading}
+              variant="flat"
+              color="default"
+              onClick={onClick}
+              size="md"
+            />
+          </span>
         </div>
       </form>
     </div>
@@ -127,6 +144,19 @@ const ProjectCreate = ({ projects }) => {
 };
 
 export default memo(ProjectCreate);
+
+const paymentTypes = [
+  {
+    name: "One-Time (Full payment)",
+    value: "full",
+    description: "Full payment at once.",
+  },
+  {
+    name: "Two-Milestone",
+    value: "milestone",
+    description: "half payment before and after completion.",
+  },
+];
 
 // {
 //   "title":"Web development",

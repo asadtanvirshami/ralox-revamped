@@ -49,7 +49,7 @@ const SelectService = ({register, control}) => {
         {...register('service')}
         render={({ field }) => (
           <Select
-            placeholder="Select Status"
+            placeholder="Select Service"
             labelPlacement="outside"
             className="max-w-full mt-2 text-white"
             variant="bordered"

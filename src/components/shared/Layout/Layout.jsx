@@ -2,7 +2,7 @@ import React, { memo, Fragment, useState } from "react";
 import dynamic from "next/dynamic";
 
 const NavHeader = dynamic(() => import("../Header/Header"));
-const AccessAuth = dynamic(() => import("../../layout/Auth/Auth"));
+const AccessAuth = dynamic(() => import("../../layout/Auth/User/Auth"));
 
 const Layout = ({ children }) => {
  

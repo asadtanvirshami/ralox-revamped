@@ -77,9 +77,9 @@ export default memo(ProjectBoost);
 
 const Perks = [
   { id: 0, title: "Discounts on Future Services" },
-  { id: 0, title: "Priority Project Completion" },
-  { id: 0, title: "Priority Scheduling" },
-  { id: 0, title: "Faster Progress Updates" },
-  { id: 0, title: "Extended Support Hours" },
-  { id: 0, title: "Dedicated Support" },
+  { id: 1, title: "Priority Project Completion" },
+  { id: 2, title: "Priority Scheduling" },
+  { id: 3, title: "Faster Progress Updates" },
+  { id: 4, title: "Extended Support Hours" },
+  { id: 5, title: "Dedicated Support" },
 ];

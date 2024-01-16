@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import Layout from "@/components/shared/Layout/Layout";
 import UserProvider from "@/components/layout/User/UserProvider";
-import Loader from "@/components/shared/Loader/Loader";
+import { Spinner } from "@nextui-org/react";
 
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
@@ -27,32 +27,45 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {router.pathname !== "/login" &&
-        router.pathname !== "/signup" &&
-        router.pathname !== "/" && (
-          <Fragment>
-            {loading ? (
-              <Layout>
-                <Loader />
-              </Layout>
-            ) : (
-              <QueryClientProvider client={queryClient}>
-                <UserProvider>
-                  <Provider store={store}>
-                    <PersistGate loading={null} persistor={persistor}>
-                      <Layout>
-                        <Component {...pageProps} />
-                      </Layout>
-                    </PersistGate>
-                  </Provider>
-                </UserProvider>
-              </QueryClientProvider>
-            )}
-          </Fragment>
-        )}
-      {(router.pathname === "/" ||
-        router.pathname === "/login" ||
-        router.pathname === "/signup") && <Component {...pageProps} />}
+      {router.pathname !== "/auth" && router.pathname !== "/" && (
+        <Fragment>
+          {loading ? (
+            <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
+                <Layout>
+                  <div class="flex justify-center mt-5 gap-4">
+                    <Spinner
+                      className="h-96"
+                      size="lg"
+                      label="Loading..."
+                      color="warning"
+                    />
+                  </div>
+                </Layout>
+              </PersistGate>
+            </Provider>
+          ) : (
+            <QueryClientProvider client={queryClient}>
+              <UserProvider>
+                <Provider store={store}>
+                  <PersistGate loading={null} persistor={persistor}>
+                    <Layout>
+                      <Component {...pageProps} />
+                    </Layout>
+                  </PersistGate>
+                </Provider>
+              </UserProvider>
+            </QueryClientProvider>
+          )}
+        </Fragment>
+      )}
+      {(router.pathname === "/" || router.pathname === "/auth") && (
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Component {...pageProps} />
+          </PersistGate>
+        </Provider>
+      )}
     </>
   );
 }
