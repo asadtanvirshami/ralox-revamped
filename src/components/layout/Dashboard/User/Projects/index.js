@@ -45,7 +45,7 @@ const Projects = () => {
     refetchOnWindowFocus: false,
   });
 
-  const handleClick = (step, key, status) => {
+  const handleClick = (step, status) => {
     setQuery((prev) => ({
       ...prev,
       active: step,

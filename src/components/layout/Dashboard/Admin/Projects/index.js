@@ -1,40 +1,40 @@
 import React, { useState, memo, useEffect } from "react";
 
+import { useQuery, useQueryClient } from "react-query";
 import { HiPlusCircle } from "react-icons/hi";
 import { GoStack } from "react-icons/go";
-import { useSelector } from "react-redux";
-import { useQuery } from "react-query";
-import { useQueryClient } from "react-query";
 
 import Tabs from "@/components/shared/Tabs/Tabs";
 import Modal from "@/components/shared/Modal/Modal";
 import Button from "@/components/shared/Button/Button";
 import ProjectCreate from "./Forms/ProjectCreate";
 import ProjectCard from "@/components/shared/ProjectCard";
-import ProjectBoost from "./ProjectBoost";
 
 import {
   getAllProjects,
   getProjectbyStatus,
   updateProject,
+  getProjectsByCode,
 } from "@/api/Projects";
-import { Spinner } from "@nextui-org/react";
+import { Input, Spinner } from "@nextui-org/react";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 const Projects = () => {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [state, setState] = useState({
     createModal: false,
-    boostModal: false,
     value: {},
   });
 
   const [query, setQuery] = useState({ active: 0, status: "" });
+  const [searchTerm, setSearchTerm] = useState("");
   const queryClient = useQueryClient();
 
   const {
     data: Projects,
     error,
     isLoading,
+    refetch: refetchAllProjects,
   } = useQuery({
     queryKey: ["projects"],
     queryFn: () => getAllProjects(),
@@ -53,7 +53,20 @@ const Projects = () => {
     refetchOnWindowFocus: false,
   });
 
-  const handleClick = (step, key, status) => {
+  const {
+    data: searchedProject,
+    error: searchedError,
+    isLoading: searchedLoading,
+    refetch: refetchSearchProject,
+  } = useQuery({
+    queryKey: [searchTerm],
+    queryFn: () => getProjectsByCode(searchTerm),
+    enabled: false,
+    refetchInterval: false,
+    refetchOnWindowFocus: false,
+  });
+
+  const handleClick = (step, status) => {
     setQuery((prev) => ({
       ...prev,
       active: step,
@@ -63,47 +76,78 @@ const Projects = () => {
     setIsInitialRender(false);
   };
 
-  const handleActive = (data) => {
+  const handleActive = (array, data) => {
+    if (array === undefined) {
+      return null;
+    }
+    const Array = [...array.projects];
     let active = data.active === false ? true : false;
-    let tempState = [...Projects.projects];
+    let tempState = Array;
     let i = tempState.findIndex((item) => item.ProjectDetail.id === data.id);
 
-    tempState[i].ProjectDetail.active = active;
-    const projectActivated = updateProject(tempState[i].ProjectDetail);
-    if (projectActivated) {
-      queryClient.setQueryData(["projects"], { projects: tempState });
+    if (tempState[i] && tempState[i].ProjectDetail) {
+      tempState[i].ProjectDetail.active = active;
+      const projectActivated = updateProject(tempState[i].ProjectDetail);
+      if (projectActivated) {
+        queryClient.setQueryData(["projects"], { projects: tempState });
+      }
     }
   };
 
-  const handleApproval = (data) => {
+  const handleApproval = (array, data) => {
+    if (array === undefined) {
+      return null;
+    }
+
     let approved = data.approved === false ? true : false;
     let phase = data.approved === false ? "Confirmed" : "Confirmation";
     let status = data.approved === false ? "In progress" : "Pending";
     let stage = data.approved === false ? "Started" : "Approval";
 
-    let tempState = [...Projects.projects];
+    const Array = [...array.projects];
+    let tempState = Array;
+
     let i = tempState.findIndex((item) => item.ProjectDetail.id === data.id);
 
-    tempState[i].ProjectDetail.approved = approved;
-    tempState[i].ProjectDetail.phase = phase;
-    tempState[i].ProjectDetail.status = status;
-    tempState[i].ProjectDetail.stage = stage;
+    if (tempState[i] && tempState[i].ProjectDetail) {
+      tempState[i].ProjectDetail.approved = approved;
+      tempState[i].ProjectDetail.phase = phase;
+      tempState[i].ProjectDetail.status = status;
+      tempState[i].ProjectDetail.stage = stage;
 
-    const projectApproved = updateProject(tempState[i].ProjectDetail);
-    if (projectApproved) {
-      queryClient.setQueryData(["projects"], { projects: tempState });
+      const projectApproved = updateProject(tempState[i].ProjectDetail);
+      if (projectApproved) {
+        queryClient.setQueryData(["projects"], { projects: tempState });
+      }
     }
   };
 
   useEffect(() => {
     if (!isInitialRender) {
-      if (query.active !== undefined && query.status !== undefined) {
+      if (
+        query.active !== undefined &&
+        query.active !== 0 &&
+        query.status !== undefined &&
+        query.status !== ""
+      ) {
         refetchStatus();
       }
     }
   }, [query.active, query.status, refetchStatus, isInitialRender]);
 
-  if (error || statusError) {
+  useEffect(() => {
+    if (query.active === 0 && searchTerm === "") {
+      refetchAllProjects();
+    }
+  }, [query.active]);
+
+  useEffect(() => {
+    if (searchTerm.length > 2) {
+      refetchSearchProject();
+    }
+  }, [searchTerm]);
+
+  if (error || statusError || searchedError) {
     return <div>Error: {error.message || statusError}</div>;
   }
 
@@ -131,6 +175,18 @@ const Projects = () => {
             )}
           </div>
           <div className="ml-auto flex items-center align-middle mt-5 md:mt-0 lg:mt-0">
+            {query.active == 0 && (
+              <Input
+                placeholder="Search Code #3875"
+                labelPlacement="outside"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                endContent={
+                  <MagnifyingGlassIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+              />
+            )}
+          </div>
+          <div className="ml-auto flex items-center align-middle mt-5 md:mt-0 lg:mt-0">
             <Button
               title={"Start Project"}
               startContent={null}
@@ -149,45 +205,65 @@ const Projects = () => {
             />
           </div>
         </div>
-
-        {(!isLoading || !statusLoading) && (
+        {searchedLoading && (
+          <div class="flex justify-center mt-5 gap-4">
+            <Spinner
+              className="h-96"
+              size="lg"
+              label="Loading..."
+              color="warning"
+            />
+          </div>
+        )}
+        {!isLoading && (
           <div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mt-5 gap-4 justify-center">
-              {((Projects.projects.length > 0 && !statusData) ||
-                (query.active == 0 && query.status == "")) && (
-                <>
-                  {Projects.projects.map((project) => (
-                    <ProjectCard
-                      secondaryClick={handleActive}
-                      primaryClick={handleApproval}
-                      onClickEdit={() =>
-                        setState((prevState) => ({
-                          ...prevState,
-                          createModal: !prevState.createModal,
-                          value: project,
-                        }))
-                      }
-                      data={project}
-                    />
-                  ))}
-                </>
-              )}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5 gap-4 justify-center">
+              {Projects.projects.length > 0 &&
+                !statusData &&
+                query.active === 0 &&
+                searchTerm === "" &&
+                query.status === "" && (
+                  <>
+                    {Projects.projects.map((project) => (
+                      <ProjectCard
+                        array={Projects}
+                        secondaryClick={handleActive}
+                        primaryClick={handleApproval}
+                        onClickEdit={() => handleEdit(project)}
+                        data={project}
+                      />
+                    ))}
+                  </>
+                )}
               {statusData && statusData.projects.length > 0 && (
                 <>
                   {statusData.projects.map((project) => (
                     <ProjectCard
-                      primaryClick={() =>
-                        setState((prevState) => ({
-                          ...prevState,
-                          boostModal: !prevState.boostModal,
-                          value: project,
-                        }))
-                      }
+                      array={statusData}
+                      secondaryClick={handleActive}
+                      primaryClick={handleApproval}
+                      onClickEdit={() => handleEdit(project)}
                       data={project}
                     />
                   ))}
                 </>
               )}
+              {searchTerm != "" &&
+                query.active === 0 &&
+                searchedProject &&
+                searchedProject?.projects?.length > 0 && (
+                  <>
+                    {searchedProject.projects.map((project) => (
+                      <ProjectCard
+                        array={searchedProject}
+                        secondaryClick={handleActive}
+                        primaryClick={handleApproval}
+                        onClickEdit={() => handleEdit(project)}
+                        data={project}
+                      />
+                    ))}
+                  </>
+                )}
             </div>
             {(!statusData && statusData == undefined) ||
               (statusData.projects.length === 0 && query.status != "" && (
@@ -195,19 +271,24 @@ const Projects = () => {
                   <p className="text-2xl mr-2">
                     You have no projects on {query.status}.
                   </p>
-                  <div className="mt-12 lg:mt-0 text-center flex items-center justify-center">
-                    <GoStack fontSize={50} color="white" />
-                  </div>
-                  <></>
+                  {/* ... (other error handling) */}
                 </div>
               ))}
+            {(!searchedProject && searchedProject == undefined) ||
+              (searchedProject?.projects?.length === 0 &&
+                searchTerm != "" &&
+                query.active === 0 && (
+                  <div className="mt-12 p-4 text-center lg:flex items-center justify-center ">
+                    <p className="text-2xl mr-2">
+                      You have no projects with #{searchTerm}.
+                    </p>
+                    {/* ... (other error handling) */}
+                  </div>
+                ))}
             {Projects.projects.length == 0 && (
               <div className="mt-12 p-4 text-center lg:flex items-center justify-center ">
                 <p className="text-2xl mr-2">You have no started projects.</p>
-                <div className="mt-12 lg:mt-0 text-center flex items-center justify-center">
-                  <GoStack fontSize={50} color="white" />
-                </div>
-                <></>
+                {/* ... (other error handling) */}
               </div>
             )}
           </div>
@@ -215,7 +296,7 @@ const Projects = () => {
       </div>
       <Modal
         size={"full"}
-        scrollBehavior={'inside'}
+        scrollBehavior={"inside"}
         show={state.createModal}
         footer={false}
         onClick={() =>

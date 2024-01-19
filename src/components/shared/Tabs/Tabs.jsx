@@ -9,7 +9,7 @@ const Index = ({ tabs, step, handleClick }) => {
             return (
               <li
                 onClick={() => {
-                  handleClick(tab.id, tab.key, tab.status);
+                  handleClick(tab.id, tab.status);
                 }}
                 className={`cursor-pointer p-1 pl-3 pr-3 md:mr-0 lg:mr-2 rounded-lg text-[11px] lg:text-[12px] ${
                   step === tab.id

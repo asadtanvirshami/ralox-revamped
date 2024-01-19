@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const ProjectCard = ({ data, primaryClick, secondaryClick, onClickEdit }) => {
+const ProjectCard = ({array, data, primaryClick, secondaryClick, onClickEdit }) => {
   const user = useSelector((state) => state.user.user);
 
   return (
@@ -95,7 +95,7 @@ const ProjectCard = ({ data, primaryClick, secondaryClick, onClickEdit }) => {
             <p className="items-center flex gap-2">
               <strong>Activated: </strong>
               <Switch
-                onClick={() => secondaryClick(data.ProjectDetail)}
+                onClick={() => secondaryClick(array,data.ProjectDetail)}
                 isSelected={data.ProjectDetail.active === false ? false : true}
                 color={
                   data.ProjectDetail.active === false ? "warning" : "success"
@@ -123,7 +123,7 @@ const ProjectCard = ({ data, primaryClick, secondaryClick, onClickEdit }) => {
           )}
           {user.isAdmin && (
             <Button
-              onClick={() => primaryClick(data.ProjectDetail)}
+              onClick={() => primaryClick(array,data.ProjectDetail)}
               variant="solid"
               className="text-white"
               color={
