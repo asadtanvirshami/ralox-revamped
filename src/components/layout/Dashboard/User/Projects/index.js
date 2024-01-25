@@ -116,8 +116,9 @@ const Projects = () => {
               {((data.projects.length > 0 && !statusData) ||
                 (query.active == 0 && query.status == "")) && (
                 <>
-                  {data.projects.map((project) => (
+                  {data.projects.map((project, i) => (
                     <ProjectCard
+                      key={i}
                       primaryClick={() =>
                         setState((prevState) => ({
                           ...prevState,
@@ -132,8 +133,9 @@ const Projects = () => {
               )}
               {statusData && statusData.projects.length > 0 && (
                 <>
-                  {statusData.projects.map((project) => (
+                  {statusData.projects.map((project, i) => (
                     <ProjectCard
+                      key={i}
                       primaryClick={() =>
                         setState((prevState) => ({
                           ...prevState,
@@ -173,7 +175,7 @@ const Projects = () => {
       </div>
       <Modal
         size={"md"}
-        scrollBehavior={''}
+        scrollBehavior={""}
         show={state.createModal}
         footer={false}
         onClick={() =>
@@ -192,21 +194,20 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={
-          <ProjectCreate
-            onClick={() => {
-              setState((prevState) => ({
-                ...prevState,
-                createModal: !prevState.createModal,
-              }));
-            }}
-            projects={data.projects}
-          />
-        }
-      />
+      >
+        <ProjectCreate
+          onClick={() => {
+            setState((prevState) => ({
+              ...prevState,
+              createModal: !prevState.createModal,
+            }));
+          }}
+          projects={data.projects}
+        />
+      </Modal>
       <Modal
         size={"md"}
-        scrollBehavior={''}
+        scrollBehavior={""}
         show={state.boostModal}
         footer={false}
         onClick={() =>
@@ -225,8 +226,9 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={<ProjectBoost project={state.value} />}
-      />
+      >
+        <ProjectBoost project={state.value} />
+      </Modal>
     </>
   );
 };

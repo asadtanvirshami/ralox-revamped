@@ -20,7 +20,7 @@ const RadioNext = ({ label,name, orientation,register,control, color, options })
       >
         {options.map((item, i) => {
           return (
-            <Radio value={item.value} description={item.description}>
+            <Radio key={i} value={item.value} description={item.description}>
               {item.name}
             </Radio>
           );

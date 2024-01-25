@@ -1,13 +1,28 @@
 import React, { memo } from "react";
 import Image from "next/image";
+import state from "@/valtio/store";
 
 import MobileModel from "@/components/shared/3D/MobileModel";
 import ButtonPrimary from "@/components/shared/Button/Button";
 import SnippetCom from "@/components/shared/Snippet/Snippet";
 
 import Icon from "../../../../../public/a_white.png";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const WhyChooseUs = () => {
+  const user = useSelector((state)=>state.user)
+  const router = useRouter()
+
+  const handleClick = (type) => {
+    if (type == "login" && !user.isAuthenticated) {
+      state.openAuthModal = true;
+      state.authModalType = "login";
+    }else{
+      router.push('/dashboard')
+    }
+  };
+  
   return (
     <div className="w-fit overflow-hidden container align-middle flex items-center justify-center mx-auto">
       <div
@@ -49,6 +64,7 @@ const WhyChooseUs = () => {
               innovation, and quality assurance excellence.
             </article>
             <ButtonPrimary
+              onClick={()=>handleClick('login')}
               title={"Start Project"}
               color={"warning"}
               variant={"flat"}

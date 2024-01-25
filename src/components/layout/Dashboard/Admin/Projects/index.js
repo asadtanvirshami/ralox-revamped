@@ -2,7 +2,6 @@ import React, { useState, memo, useEffect } from "react";
 
 import { useQuery, useQueryClient } from "react-query";
 import { HiPlusCircle } from "react-icons/hi";
-import { GoStack } from "react-icons/go";
 
 import Tabs from "@/components/shared/Tabs/Tabs";
 import Modal from "@/components/shared/Modal/Modal";
@@ -224,8 +223,9 @@ const Projects = () => {
                 searchTerm === "" &&
                 query.status === "" && (
                   <>
-                    {Projects.projects.map((project) => (
+                    {Projects.projects.map((project, i) => (
                       <ProjectCard
+                        key={i}
                         array={Projects}
                         secondaryClick={handleActive}
                         primaryClick={handleApproval}
@@ -237,8 +237,9 @@ const Projects = () => {
                 )}
               {statusData && statusData.projects.length > 0 && (
                 <>
-                  {statusData.projects.map((project) => (
+                  {statusData.projects.map((project, i) => (
                     <ProjectCard
+                      key={i}
                       array={statusData}
                       secondaryClick={handleActive}
                       primaryClick={handleApproval}
@@ -253,8 +254,9 @@ const Projects = () => {
                 searchedProject &&
                 searchedProject?.projects?.length > 0 && (
                   <>
-                    {searchedProject.projects.map((project) => (
+                    {searchedProject.projects.map((project, i) => (
                       <ProjectCard
+                        key={i}
                         array={searchedProject}
                         secondaryClick={handleActive}
                         primaryClick={handleApproval}
@@ -315,18 +317,17 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={
-          <ProjectCreate
-            onClick={() => {
-              setState((prevState) => ({
-                ...prevState,
-                createModal: !prevState.createModal,
-              }));
-            }}
-            projects={state.value}
-          />
-        }
-      />
+      >
+        <ProjectCreate
+          onClick={() => {
+            setState((prevState) => ({
+              ...prevState,
+              createModal: !prevState.createModal,
+            }));
+          }}
+          projects={state.value}
+        />
+      </Modal>
     </>
   );
 };

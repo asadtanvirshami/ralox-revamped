@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { memo } from "react";
+
 import { LuCheckCircle } from "react-icons/lu";
 import { GoRocket } from "react-icons/go";
+
 import { Button } from "@nextui-org/react";
 
 const ProjectBoost = () => {

@@ -5,9 +5,10 @@ const Index = ({ tabs, step, handleClick }) => {
     <div className="flex flex-wrap gap-4 ">
       <div className="w-full md:w-full lg:w-fit rounded-xl ">
         <ul className="flex-none md:flex lg:flex  border border-gray-600  rounded-xl p-1 pt-2 pb-2">
-          {tabs.map((tab) => {
+          {tabs.map((tab,i) => {
             return (
-              <li
+              <li 
+                key={i}
                 onClick={() => {
                   handleClick(tab.id, tab.status);
                 }}

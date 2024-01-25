@@ -36,7 +36,9 @@ const ModalCom = ({
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-              <ModalBody>{children}</ModalBody>
+              <ModalBody>
+                <>{children}</>
+              </ModalBody>
               {footer && (
                 <ModalFooter>
                   <Button
