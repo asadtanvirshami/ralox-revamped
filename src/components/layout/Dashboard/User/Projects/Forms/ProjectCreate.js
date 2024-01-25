@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
 import { useForm } from "react-hook-form";
@@ -8,12 +8,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "@/components/shared/Form/Input/Input";
 import TextArea from "@/components/shared/Form/TextArea/TextArea";
 import DatePicker from "@/components/shared/Form/DatePicker/DatePicker";
+import SelectService from "@/components/shared/SelectService/SelectService";
 import Label from "@/components/shared/Form/Label/Label";
 import Button from "@/components/shared/Button/Button";
 
 import { createProject } from "@/api/Projects"; // Import your API function
 import { useSelector } from "react-redux";
 import moment from "moment";
+import RadioNext from "@/components/shared/Form/RadioGroup/RadioGroup";
 
 const SignupSchema = yup.object().shape({
   //Yup schema to set the values
@@ -21,14 +23,15 @@ const SignupSchema = yup.object().shape({
   description: yup.string().required(),
   deadline: yup.string(),
   budget: yup.number().required(),
-  UserId: yup.string(),
+  service: yup.string().required(),
+  paymentType: yup.string().required(),
 });
 
-const ProjectCreate = () => {
+const ProjectCreate = ({ onClick }) => {
   const [date, setDate] = useState();
   const queryClient = useQueryClient();
 
-  const user = useSelector((state)=>state.user.user)
+  const user = useSelector((state) => state.user.user);
 
   const {
     register,
@@ -43,29 +46,19 @@ const ProjectCreate = () => {
   });
 
   const createProjectMutation = useMutation(createProject, {
-    onSuccess: () => {
-      // Invalidate and refetch the projects query after successful creation
+    onSuccess: (data) => {
       queryClient.invalidateQueries("projects");
-      // Reset the form
       reset();
-      // Show success message or navigate to another page
     },
   });
 
   const submitProjectInfo = async (data) => {
     // Your form data
-    console.log(data);
     const formData = {
       ...data,
-      UserId:user.loginId,
-      deadline:date,
-      startDate:moment().format(),
-      endDate:"-",
-      manager:'none',
-      progress:"0",
-      manager_no:'none',
-      stage:'Confirmation',
-      status:'Pending',
+      UserId: user.loginId,
+      deadline: date,
+      startDate: moment().format(),
     };
 
     await createProjectMutation.mutate(formData);
@@ -85,10 +78,10 @@ const ProjectCreate = () => {
             className="text-gray-600"
             name="title"
           />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Label title={"Deadline of Project"} />
-          <DatePicker  date={date} setDate={setDate} />
-          <div className="mt-3" />
+          <DatePicker date={date} setDate={setDate} />
+          <div className="mt-2" />
           <Label title={"Budget"} />
           <Input
             register={register}
@@ -100,6 +93,19 @@ const ProjectCreate = () => {
             name="budget"
           />
           <div className="mt-3" />
+          <RadioNext
+            label={"Payment Type"}
+            options={paymentTypes}
+            orientation={"horizontal"}
+            name={"paymentType"}
+            register={register}
+            control={control}
+            color={"warning"}
+          />
+          <div className="mt-3" />
+          <Label title={"Service"} />
+          <SelectService register={register} control={control} />
+          <div className="mt-2" />
           <Label title={"Description"} />
           <TextArea
             register={register}
@@ -110,7 +116,7 @@ const ProjectCreate = () => {
             className="text-gray-600"
             name="description"
           />
-          <div className="mt-3" />
+          <div className="mt-2" />
           <Button
             title="Submit"
             startContent={null}
@@ -120,14 +126,37 @@ const ProjectCreate = () => {
             type="submit"
             size="md"
           />
+          <span>
+            <Button
+              title="Cancel"
+              startContent={null}
+              disabled={createProjectMutation.isLoading}
+              variant="flat"
+              color="default"
+              onClick={onClick}
+              size="md"
+            />
+          </span>
         </div>
       </form>
     </div>
   );
 };
 
-export default ProjectCreate;
+export default memo(ProjectCreate);
 
+const paymentTypes = [
+  {
+    name: "One-Time (Full payment)",
+    value: "full",
+    description: "Full payment at once.",
+  },
+  {
+    name: "Two-Milestone",
+    value: "milestone",
+    description: "half payment before and after completion.",
+  },
+];
 
 // {
 //   "title":"Web development",

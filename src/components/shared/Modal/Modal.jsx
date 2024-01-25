@@ -20,15 +20,25 @@ const ModalCom = ({
   secondayAction,
   primaryText,
   secondaryText,
+  scrollBehavior,
+  size,
 }) => {
   return (
     <>
-      <Modal className="bg-black border-solid border border-white" isOpen={show} onOpenChange={Close}>
+      <Modal
+        size={size}
+        className="bg-black border-solid border border-white"
+        isOpen={show}
+        onOpenChange={Close}
+        scrollBehavior={scrollBehavior}
+      >
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-              <ModalBody>{children}</ModalBody>
+              <ModalBody>
+                <>{children}</>
+              </ModalBody>
               {footer && (
                 <ModalFooter>
                   <Button

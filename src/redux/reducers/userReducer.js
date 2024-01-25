@@ -29,7 +29,7 @@ const userReducer = (state = initialState, action) => {
         isAuthenticated: false,
       };
     case LOGOUT:
-      return (initialState, Cookies.remove("user"), Cookies.remove("token"));
+      return initialState, Cookies.remove("user"), Cookies.remove("token");
     default:
       return state;
   }

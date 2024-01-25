@@ -8,16 +8,20 @@ import Modal from "@/components/shared/Modal/Modal";
 import Button from "@/components/shared/Button/Button";
 import ProjectCreate from "./Forms/ProjectCreate";
 import ProjectCard from "@/components/shared/ProjectCard";
+import ProjectBoost from "./ProjectBoost";
 
-import { getProjectByStatus, getProjectsByUserID } from "@/api/Projects";
+import { getProjectbyStatusById, getProjectsByUserID } from "@/api/Projects";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { Spinner } from "@nextui-org/react";
 
-
 const Projects = () => {
   const [isInitialRender, setIsInitialRender] = useState(true);
-  const [state, setState] = useState({ createModal: false });
+  const [state, setState] = useState({
+    createModal: false,
+    boostModal: false,
+    value: {},
+  });
 
   const [query, setQuery] = useState({ active: 0, status: "" });
   const userID = useSelector((state) => state.user.user);
@@ -35,23 +39,22 @@ const Projects = () => {
     refetch: refetchStatus,
   } = useQuery({
     queryKey: [query.status, userID],
-    queryFn: () =>  getProjectByStatus(userID.loginId, query.status),
+    queryFn: () => getProjectbyStatusById(userID.loginId, query.status),
     enabled: false,
     refetchInterval: false,
     refetchOnWindowFocus: false,
   });
 
-  const handleClick = (step, key, status) => {
-  
+  const handleClick = (step, status) => {
     setQuery((prev) => ({
       ...prev,
       active: step,
       status: status,
     }));
-  
+
     setIsInitialRender(false);
   };
-  
+
   useEffect(() => {
     if (!isInitialRender) {
       if (query.active !== undefined && query.status !== undefined) {
@@ -113,15 +116,35 @@ const Projects = () => {
               {((data.projects.length > 0 && !statusData) ||
                 (query.active == 0 && query.status == "")) && (
                 <>
-                  {data.projects.map((project) => (
-                    <ProjectCard data={project} />
+                  {data.projects.map((project, i) => (
+                    <ProjectCard
+                      key={i}
+                      primaryClick={() =>
+                        setState((prevState) => ({
+                          ...prevState,
+                          boostModal: !prevState.boostModal,
+                          value: project,
+                        }))
+                      }
+                      data={project}
+                    />
                   ))}
                 </>
               )}
               {statusData && statusData.projects.length > 0 && (
                 <>
-                  {statusData.projects.map((project) => (
-                    <ProjectCard data={project} />
+                  {statusData.projects.map((project, i) => (
+                    <ProjectCard
+                      key={i}
+                      primaryClick={() =>
+                        setState((prevState) => ({
+                          ...prevState,
+                          boostModal: !prevState.boostModal,
+                          value: project,
+                        }))
+                      }
+                      data={project}
+                    />
                   ))}
                 </>
               )}
@@ -151,6 +174,8 @@ const Projects = () => {
         )}
       </div>
       <Modal
+        size={"md"}
+        scrollBehavior={""}
         show={state.createModal}
         footer={false}
         onClick={() =>
@@ -169,8 +194,41 @@ const Projects = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
-        children={<ProjectCreate />}
-      />
+      >
+        <ProjectCreate
+          onClick={() => {
+            setState((prevState) => ({
+              ...prevState,
+              createModal: !prevState.createModal,
+            }));
+          }}
+          projects={data.projects}
+        />
+      </Modal>
+      <Modal
+        size={"md"}
+        scrollBehavior={""}
+        show={state.boostModal}
+        footer={false}
+        onClick={() =>
+          setState((prevState) => ({
+            ...prevState,
+            boostModal: !prevState.boostModal,
+          }))
+        }
+        Close={() =>
+          setState((prevState) => ({
+            ...prevState,
+            boostModal: !prevState.boostModal,
+          }))
+        }
+        primaryAction={null}
+        secondayAction={null}
+        primaryText={""}
+        secondaryText={""}
+      >
+        <ProjectBoost project={state.value} />
+      </Modal>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   Card,
   CardHeader,
@@ -7,9 +7,14 @@ import {
   Chip,
   Button,
   CircularProgress,
+  Switch,
 } from "@nextui-org/react";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
-export default function ProjectCard({ data }) {
+const ProjectCard = ({array, data, primaryClick, secondaryClick, onClickEdit }) => {
+  const user = useSelector((state) => state.user.user);
+
   return (
     <Card className="max-w-[350px] h-[250px]">
       <CardHeader className="justify-between">
@@ -17,32 +22,32 @@ export default function ProjectCard({ data }) {
           <CircularProgress
             aria-label="Loading..."
             size="lg"
-            value={data.progress}
+            value={data.ProjectDetail.progress}
             color={
-              data.progress < 20
+              data.ProjectDetail.progress < 20
                 ? "danger"
-                : data.progress < 30
+                : data.ProjectDetail.progress < 30
                 ? "danger"
-                : data.progress < 50
+                : data.ProjectDetail.progress < 50
                 ? "warning"
-                : data.progress < 60
+                : data.ProjectDetail.progress < 60
                 ? "secondary"
-                : data.progress == 100
+                : data.ProjectDetail.progress == 100
                 ? "success"
-                : data.status === "In progress"
+                : data.ProjectDetail.status === "In progress"
                 ? "primary"
-                : data.status === "Paused"
+                : data.ProjectDetail.status === "Paused"
                 ? "danger"
                 : "default"
             }
             showValueLabel={true}
           />
-          <div className="flex flex-col gap-1 items-start justify-center">
-            <h4 className="text-md font-semibold leading-none text-default-600">
+          <div className="flex flex-col gap-1 items-start justify-center ">
+            <h4 className="text-md font-semibold leading-none text-default-600 ">
               {data.title}
             </h4>
-            <h5 className="text-small tracking-tight text-default-400">
-              @zoeylang
+            <h5 className="text-small tracking-tight text-orange-300">
+              {data.ProjectDetail.approved == false ? "Unapproved" : "Approved"}
             </h5>
           </div>
         </div>
@@ -53,15 +58,17 @@ export default function ProjectCard({ data }) {
           size="sm"
           variant={"flat"}
         >
-          <p className="text-[14px] font-semibold"># {data.code}</p>
+          <p className="text-[14px] font-semibold">
+            # {data.ProjectDetail.code}
+          </p>
         </Button>
       </CardHeader>
-      <CardBody className="px-3 py-0 text-md text-white">
+      <CardBody className="px-3 py-0 text-md text-white scrollable-content">
         <p>{data.description}</p>
         <div className="mt-4">
           <p>
             <strong>Stage: </strong>
-            {data.stage}
+            {data.ProjectDetail.stage}
           </p>
           <div className="mt-2" />
           <p>
@@ -69,32 +76,72 @@ export default function ProjectCard({ data }) {
             <Chip
               variant="dot"
               color={
-                data.status === "Pending"
+                data.ProjectDetail.status === "Pending"
                   ? "warning"
-                  : data.status === "Completed"
+                  : data.ProjectDetail.status === "Completed"
                   ? "success"
-                  : data.status === "In progress"
+                  : data.ProjectDetail.status === "In progress"
                   ? "secondary"
-                  : data.status === "Paused"
+                  : data.ProjectDetail.status === "Paused"
                   ? "danger"
                   : "default"
               }
             >
-              {data.status}
+              {data.ProjectDetail.status}
             </Chip>
           </p>
+          <div className="mt-2" />
+          {user.isAdmin && (
+            <p className="items-center flex gap-2">
+              <strong>Activated: </strong>
+              <Switch
+                onClick={() => secondaryClick(array,data.ProjectDetail)}
+                isSelected={data.ProjectDetail.active === false ? false : true}
+                color={
+                  data.ProjectDetail.active === false ? "warning" : "success"
+                }
+                size="sm"
+              />
+            </p>
+          )}
         </div>
       </CardBody>
       <CardFooter className="gap-3 justify-end">
         <div className="flex gap-3">
           <Button variant="flat" color="warning">
-            View Info
+            <Link href={`/project/${data.id}`}>View Info</Link>
           </Button>
-          <Button variant="solid" color="secondary">
-            Boost Project
-          </Button>
+          {user.isAdmin && (
+            <Button
+              onClick={() => onClickEdit(data.ProjectDetail)}
+              variant="solid"
+              className="text-white"
+              color={"warning"}
+            >
+              Edit
+            </Button>
+          )}
+          {user.isAdmin && (
+            <Button
+              onClick={() => primaryClick(array,data.ProjectDetail)}
+              variant="solid"
+              className="text-white"
+              color={
+                data.ProjectDetail.approved === false ? "danger" : "success"
+              }
+            >
+              {data.ProjectDetail.approved === false ? "Approve" : "Unapprove"}
+            </Button>
+          )}
+
+          {!user.isAdmin && (
+            <Button onClick={primaryClick} variant="solid" color="secondary">
+              Boost Project
+            </Button>
+          )}
         </div>
       </CardFooter>
     </Card>
   );
-}
+};
+export default memo(ProjectCard);

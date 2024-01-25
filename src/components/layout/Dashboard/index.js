@@ -1,18 +1,18 @@
-import React, { memo, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 
-import TopSection from "./TopSection";
-import Projects from "./Projects";
+import UserDashboard from "../Dashboard/User/index";
+import AdminDasboard from "../Dashboard/Admin/index";
 
 const Dashboard = () => {
+  const user = useSelector((state) => state.user.user);
+
   return (
-    <div className="md:m-12 lg:m-12 ">
-      {/* Top Panel Section */}
-      <TopSection />
-      {/*Project Component Render */}
-      <Projects />
-    </div>
+    <React.Fragment>
+      {!user.isAdmin && <UserDashboard />}
+      {user.isAdmin && <AdminDasboard />}
+    </React.Fragment>
   );
 };
 
-export default memo(Dashboard);
-
+export default Dashboard;
