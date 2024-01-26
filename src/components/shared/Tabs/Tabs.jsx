@@ -14,7 +14,7 @@ const Index = ({ tabs, step, handleClick }) => {
                 }}
                 className={`cursor-pointer p-1 pl-3 pr-3 md:mr-0 lg:mr-2 rounded-lg text-[11px] lg:text-[12px] ${
                   step === tab.id
-                    ? " text-black bg-orange-300 transition-all duration-300"
+                    ? " text-black font-semibold bg-orange-300 transition-all duration-300"
                     : "text-white transition-all duration-300"
                 }`}
               >
