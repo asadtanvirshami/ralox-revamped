@@ -46,7 +46,6 @@ const Login = () => {
       state.openAuthModal = true;
       state.authModalType = "forgetPass";
     }
-    
   };
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -63,7 +62,7 @@ const Login = () => {
         if (res_status === "success" && res_message === "authorized-user") {
           setIsError(false);
           setMessage("Logging In.");
-          
+
           //Cache JWT Token & user details
           let token = jwt_decode(response.data.token);
           Cookies.set("token", response.data.token, { expires: 1 });
@@ -120,6 +119,7 @@ const Login = () => {
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
+          data-cy={"email-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -129,6 +129,7 @@ const Login = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"passsword-input"}
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
           size="md"
@@ -164,13 +165,17 @@ const Login = () => {
           </div>
 
           <div className="flex justify-end align-baseline w-full ">
-            <small  onClick={() => handleClick("forgetPassword")} className="cursor-pointer  text-[14px]">
+            <small
+              onClick={() => handleClick("forgetPassword")}
+              className="cursor-pointer  text-[14px]"
+            >
               forgot password?
             </small>
           </div>
         </div>
 
         <Button
+          data-cy={"login-btn"}
           title={"Login"}
           type={"submit"}
           color={"warning"}
@@ -285,6 +290,7 @@ const SignUp = () => {
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
+          data-cy={"fname-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -294,6 +300,7 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"lname-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -303,6 +310,7 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"email-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -312,6 +320,7 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"password-input"}
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
           size="md"
@@ -336,6 +345,7 @@ const SignUp = () => {
         <p className={isError ? "text-red-500" : "text-green-500"}>{message}</p>
         <div className="mt-2" />
         <Button
+          data-cy={"create-btn"}
           title={"Create Account"}
           type={"submit"}
           color={"warning"}
@@ -406,7 +416,7 @@ const ForgetPassword = () => {
         if (res_status === "success" && res_message === "authorized-user") {
           setIsError(false);
           setMessage("Logging In.");
-          
+
           //Cache JWT Token & user details
           let token = jwt_decode(response.data.token);
           Cookies.set("token", response.data.token, { expires: 1 });
@@ -507,7 +517,7 @@ const ForgetPassword = () => {
           </div>
 
           <div className="flex justify-end align-baseline w-full ">
-            <small  className="cursor-pointer  text-[14px]">
+            <small className="cursor-pointer  text-[14px]">
               forgot password?
             </small>
           </div>

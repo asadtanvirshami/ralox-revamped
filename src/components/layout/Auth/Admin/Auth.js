@@ -18,7 +18,6 @@ import {
   loginSuccess,
 } from "@/redux/actions/UserActions/userActions";
 
-
 const Login = ({ setIsLogin }) => {
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -32,7 +31,7 @@ const Login = ({ setIsLogin }) => {
   });
 
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClick = () => {
     setIsLogin((state) => !state);
@@ -52,7 +51,7 @@ const Login = ({ setIsLogin }) => {
         if (res_status === "success" && res_message === "authorized-user") {
           setIsError(false);
           setMessage("Logging In.");
-          router.push('/dashboard')
+          router.push("/dashboard");
           //Cache JWT Token & user details
           let token = jwt_decode(response.data.token);
           Cookies.set("token", response.data.token, { expires: 1 });
@@ -102,13 +101,14 @@ const Login = ({ setIsLogin }) => {
     <Fragment>
       <h1 className="text-[3.5rem] items-center text-center text-slate-200 flex lg:mr-2 lg:text-6xl font-semibold mb-4">
         Login
-        <MdOutlineAdminPanelSettings className="text-[60px]"/>
+        <MdOutlineAdminPanelSettings className="text-[60px]" />
       </h1>
       <form
         onSubmit={onSubmitCreds}
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
+          data-cy={"email-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -118,6 +118,7 @@ const Login = ({ setIsLogin }) => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"password-input"}
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
           size="md"
@@ -260,15 +261,16 @@ const SignUp = ({ setIsLogin }) => {
 
   return (
     <Fragment>
-     <h1 className="text-[3.5rem] items-center text-center text-slate-200 flex lg:mr-2 lg:text-6xl font-semibold mb-4">
+      <h1 className="text-[3.5rem] items-center text-center text-slate-200 flex lg:mr-2 lg:text-6xl font-semibold mb-4">
         Sign Up
-        <MdOutlineAdminPanelSettings className="text-[60px]"/>
+        <MdOutlineAdminPanelSettings className="text-[60px]" />
       </h1>
       <form
         onSubmit={onSubmitCreds}
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
+          data-cy={"fname-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -278,6 +280,7 @@ const SignUp = ({ setIsLogin }) => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"lname-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -296,6 +299,7 @@ const SignUp = ({ setIsLogin }) => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"password-input"}
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
           size="md"

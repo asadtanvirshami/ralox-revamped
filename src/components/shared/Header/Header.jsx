@@ -108,6 +108,7 @@ const NavHeader = () => {
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex ">
             <Link
+              data-cy={"login-header-btn"}
               className="text-orange-200 cursor-pointer"
               onClick={() => handleClick("login")}
             >
@@ -157,13 +158,12 @@ const NavHeader = () => {
                 </Link>
               </DropdownItem>
               <DropdownItem color="warning" key="settings">
-                <Link
-                  className="text-white text-[12px]  cursor-pointer"
-                >
+                <Link className="text-white text-[12px]  cursor-pointer">
                   Settings
                 </Link>
               </DropdownItem>
               <DropdownItem
+                data-cy={"logout-btn"}
                 key="logout"
                 onClick={() => {
                   dispatch(logout()), setIsDropDown(false);
