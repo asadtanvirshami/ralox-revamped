@@ -1,8 +1,9 @@
 import React, { memo } from "react";
-import Image from "next/image";
 import { CardHeader, Card } from "@nextui-org/react";
-import PlainCard from "@/components/shared/PlainCard/PlainCard";
+import Image from "next/image";
+
 import Count from "../CountUp/CountUp";
+import PlainCard from "@/components/shared/PlainCard/PlainCard";
 import gif from "../../../../../public/images/2D/bulb.jpg";
 
 const InfoSection = () => {

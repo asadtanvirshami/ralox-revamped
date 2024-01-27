@@ -18,8 +18,8 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
         <h1
           className={
             mode == "dark"
-              ? `font-body text-3xl text-left  md:text-2xl   lg:text-3xl mb-5 text-gray-300 `
-              : `font-body text-3xl text-left  md:text-2xl   lg:text-3xl mb-5 text-black `
+              ? ` text-3xl text-left  md:text-2xl   lg:text-3xl mb-5 text-gray-300 `
+              : `text-3xl text-left  md:text-2xl   lg:text-3xl mb-5 text-black `
           }
         >
           {title}
@@ -28,8 +28,8 @@ const PlainCard = ({ title, description, animation, icon, mode, withIcon }) => {
       <article
         className={
           mode == "dark"
-            ? `font-oswald lg:text-xl text-gray-300 text-justify `
-            : `font-oswald lg:text-xl text-black text-justify `
+            ? `lg:text-xl text-gray-300 text-justify `
+            : `lg:text-xl text-black text-justify `
         }
       >
         {description}

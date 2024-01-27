@@ -1,28 +1,28 @@
 import React, { memo } from "react";
 import Image from "next/image";
-import state from "@/valtio/store";
 
 import MobileModel from "@/components/shared/3D/MobileModel";
 import ButtonPrimary from "@/components/shared/Button/Button";
 import SnippetCom from "@/components/shared/Snippet/Snippet";
 
-import Icon from "../../../../../public/a_white.png";
+import state from "@/valtio/store";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Icon from "../../../../../public/a_white.png";
 
 const WhyChooseUs = () => {
-  const user = useSelector((state)=>state.user)
-  const router = useRouter()
+  const user = useSelector((state) => state.user);
+  const router = useRouter();
 
   const handleClick = (type) => {
     if (type == "login" && !user.isAuthenticated) {
       state.openAuthModal = true;
       state.authModalType = "login";
-    }else{
-      router.push('/dashboard')
+    } else {
+      router.push("/dashboard");
     }
   };
-  
+
   return (
     <div className="w-fit overflow-hidden container align-middle flex items-center justify-center mx-auto">
       <div
@@ -46,7 +46,7 @@ const WhyChooseUs = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="p-6 rounded-2xl" data-aos="fade-right">
-            <h1 className="font-body text-1xl lg:text-4xl mb-5 font-semibold text-gray-300">
+            <h1 className="text-1xl lg:text-4xl mb-5 font-semibold text-gray-300">
               Why Choose Algorim?
             </h1>
             <article className="font-oswald text-1xl mb-3 lg:text-[18px] text-gray-300 text-justify">
@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
               innovation, and quality assurance excellence.
             </article>
             <ButtonPrimary
-              onClick={()=>handleClick('login')}
+              onClick={() => handleClick("login")}
               title={"Start Project"}
               color={"warning"}
               variant={"flat"}

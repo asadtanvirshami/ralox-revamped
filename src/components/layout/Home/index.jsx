@@ -11,7 +11,7 @@ import SystematicProcess from "./SystematicProcess/SystematicProcess";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import InfoSection from "./InfoSection/InfoSection";
 import ShowCase from "./ShowCase/ShowCase";
-import TopSection from "./TopSection/TopSection";
+import Hero from "./Hero/Hero";
 import Testamonials from "./Testamonials/Testamonials";
 import ServicesSection from "./ServicesSection/ServicesSection";
 
@@ -27,7 +27,7 @@ const Home = () => {
       <div className="">
         {/* Top Section Carousel and Slider */}
         <div className="relative bg-gradient-to-br from-black via-black to-black w-full overflow-hidden h-min">
-          <TopSection />
+          <Hero />
         </div>
         {/* SLIDER SECTION */}
         <div className=" bg-gradient-to-r  from-slate-400 via-slate-100 to-slate-400 w-full">
