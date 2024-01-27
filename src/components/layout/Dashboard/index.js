@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import UserDashboard from "../Dashboard/User/index";
 import AdminDasboard from "../Dashboard/Admin/index";
 
-const Dashboard = () => {
+const DashboardPanel = () => {
   const user = useSelector((state) => state.user.user);
 
   return (
@@ -15,4 +15,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPanel;

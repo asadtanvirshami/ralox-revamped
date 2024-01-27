@@ -1,23 +1,25 @@
 import Cookies from "cookies";
 import React from "react";
 
-import Dashboard from "@/components/layout/Dashboard";
+import DashboardPanel from "@/components/layout/Dashboard";
 import verifyToken from "@/api/Auth/verifyToken";
 import { useRouter } from "next/router";
 
-const dashboard = ({ sessionData }) => {
+const Dashboard = ({ sessionData }) => {
   const router = useRouter();
   if (!sessionData.isAuthorized) {
     router.push("/");
   }
   return (
-    <div className="container">
-      <Dashboard />
-    </div>
+    <React.Fragment>
+      <div className="container">
+        <DashboardPanel />
+      </div>
+    </React.Fragment>
   );
 };
 
-export default dashboard;
+export default Dashboard;
 
 export async function getServerSideProps({ req, res }) {
   const sessionRequest = await verifyToken(Cookies, req, res);
