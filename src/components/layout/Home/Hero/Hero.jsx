@@ -44,7 +44,7 @@ const Hero = () => {
               src={logo}
               alt="logo"
             /> */}
-            <h1 className="text-[9rem]  font-brand">ALGORIM</h1>
+            <h1 className="text-[5rem] md:text-[9rem] lg:text-[7rem] xl:text-[9rem]  font-brand">ALGORIM</h1>
           </div>
 
         </div>

@@ -20,14 +20,14 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <HiBadgeCheck fontSize={35} color="white" className="mr-2" />,
-      title: 'Mobile Application Development',
+      title: 'Mobile App Development',
       mode: 'dark',
       description: 'In the realm of mobile application development, we specialize in crafting innovative and user-centric solutions that seamlessly integrate with today\'s dynamic digital landscape. Our approach involves leveraging the latest technologies to design and develop mobile apps for iOS and Android platforms. From conceptualization to deployment, our expert team ensures a smooth and intuitive user experience, coupled with robust backend functionality. Whether it\'s a native app or a cross-platform solution, we navigate the intricacies of mobile development to deliver applications that meet your business objectives and resonate with your target audience. Trust us to bring your mobile app ideas to life with cutting-edge technology and a focus on user satisfaction.',
       animation: 'fade-up-left',
     },
     {
       icon: <HiBadgeCheck fontSize={35} color="white" className="mr-2" />,
-      title: 'CMS Web Application Development',
+      title: 'CMS Web App Development',
       mode: 'dark',
       description: 'In the domain of CMS (Content Management System) web application development, we specialize in empowering businesses with flexible and user-friendly digital platforms. Our approach involves creating bespoke solutions that enable effortless content creation, publishing, and management. From customizable templates to seamless collaboration tools, our expert team ensures the development of a robust CMS system tailored to meet your content needs. Whether it\'s a blog, e-commerce site, or corporate portal, we navigate the intricacies of CMS development to deliver a solution that enhances your online presence. Trust us to provide a cutting-edge CMS web application designed for efficiency, scalability, and a superior content management experience.',
       animation: 'fade-up-left',
@@ -42,7 +42,7 @@ const ServicesSection = () => {
     },
     {
       icon: <HiBadgeCheck fontSize={35} color="white" className="mr-2" />,
-      title: 'ERP Web Application Development',
+      title: 'ERP Web App Development',
       mode: 'dark',
       description: 'In the domain of ERP web application development, we bring a wealth of expertise to streamline and elevate your business processes. Our approach involves crafting tailored solutions that seamlessly integrate modules for finance, human resources, inventory, and more. Meticulous planning and execution ensure the creation of a scalable and efficient ERP system that aligns with your organizational goals. From user-friendly interfaces to robust backend functionality, our expert team navigates the intricacies of ERP development to deliver a comprehensive and cohesive solution, optimizing your business operations for success. Trust us to empower your organization with a cutting-edge ERP web application designed for efficiency and growth.',
       animation: 'fade-up-left',
@@ -70,14 +70,14 @@ const ServicesSection = () => {
     },
     {
       icon: <HiBadgeCheck fontSize={35} color="white" className="mr-2" />,
-      title: 'Artificial Intelligence Development',
+      title: 'AI Development',
       mode: 'dark',
       description: 'In the realm of Artificial Intelligence (AI) development, we harness innovative technologies to craft intelligent solutions. Our approach involves meticulous planning and execution, ensuring the creation of robust and adaptive AI systems. From machine learning algorithms to neural network architectures, our expert team navigates the forefront of AI, delivering tailored solutions that empower businesses with smart and scalable capabilities. Trust us to propel your organization into the future with cutting-edge AI development.',
       animation: 'fade-up-left',
     },
     {
       icon: <HiBadgeCheck fontSize={35} color="white" className="mr-2" />,
-      title: 'POS Web Application Development',
+      title: 'POS Web App Development',
       mode: 'dark',
       description: 'In POS web application development, we prioritize precision and transparency, documenting every stage of the process. Our team conducts knowledge-sharing sessions, fostering continuous learning and innovation. Specializing in intuitive user experiences, we deliver tailored solutions for efficient and cutting-edge point-of-sale systems.',
       animation: 'fade-up-left',
