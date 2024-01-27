@@ -1,16 +1,13 @@
-import React, { memo, useState } from "react";
+import React, { memo} from "react";
 
-import TopSection from "./TopSection/index";
+import DashboardLayout from "@/components/shared/DashboardLayout/DashboardLayout";
 import Projects from "./Projects/index";
 
 const UserDashboard = () => {
   return (
-    <div className="md:m-12 lg:m-12 ">
-      {/* Top Panel Section */}
-      <TopSection />
-      {/*Project Component Render */}
+    <DashboardLayout>
       <Projects />
-    </div>
+    </DashboardLayout>
   );
 };
 

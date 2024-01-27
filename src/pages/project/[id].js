@@ -1,40 +1,41 @@
-// pages/project/[id].js
+import Cookies from "cookies";
 
-import { getProjectById } from "@/api/Projects";
 import ProjectInfo from "@/components/layout/Projects/ProjectInfo";
 
-export async function getStaticPaths() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_GET_PROJECT_IDS}`);
-  const projects = await response.json();
+import { getProjectById } from "@/api/Projects";
+import verifyToken from "@/api/Auth/verifyToken";
+import { useRouter } from "next/router";
 
-  const paths = projects.map((project) => ({
-    params: { id: project.id.toString() },
-  }));
+const ProjectPage = ({ data, sessionData }) => {
+  const router = useRouter();
+  if (!sessionData.isAuthorized) {
+    router.push("/home");
+  }
+  return (
+    <div className="container justify-center flex align-middle mx-auto">
+      <ProjectInfo data={data} />
+    </div>
+  );
+};
 
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
+export default ProjectPage;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params, req, res }) {
+  const sessionRequest = await verifyToken(Cookies, req, res);
+
   try {
     const data = await getProjectById(params.id);
 
     return {
-      props: { data },
-      revalidate: 60 * 60,
+      props: {
+        sessionData: sessionRequest,
+        data: data,
+      },
     };
   } catch (error) {
     console.error(error);
     return {
-      props: { data: null },
+      props: { data: null, sessionData: { isAuthorized: false } },
     };
   }
 }
-
-const ProjectPage = ({ data }) => {
-  return <div className="container justify-center flex align-middle mx-auto"><ProjectInfo data={data} /></div> ;
-};
-
-export default ProjectPage;

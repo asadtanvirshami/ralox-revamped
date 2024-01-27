@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {router.pathname !== "/auth" && router.pathname !== "/" && (
+      {router.pathname !== "/auth" && router.pathname !== "/" && router.pathname !== "/dashboard" && (
         <Fragment>
           {loading ? (
             <Provider store={store}>
@@ -59,12 +59,16 @@ export default function App({ Component, pageProps }) {
           )}
         </Fragment>
       )}
-      {(router.pathname === "/" || router.pathname === "/auth") && (
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <Component {...pageProps} />
-          </PersistGate>
-        </Provider>
+      {(router.pathname === "/" ||
+        router.pathname === "/auth" ||
+        router.pathname === "/dashboard") && (
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <Component {...pageProps} />
+            </PersistGate>
+          </Provider>
+        </QueryClientProvider>
       )}
     </>
   );

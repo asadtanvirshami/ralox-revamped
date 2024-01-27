@@ -27,7 +27,7 @@ const Projects = () => {
   const userID = useSelector((state) => state.user.user);
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["projects", userID.loginId],
+    queryKey: ["projects", userID?.loginId],
     enabled: userID != null,
     queryFn: () => getProjectsByUserID(userID.loginId),
   });

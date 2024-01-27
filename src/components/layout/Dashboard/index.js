@@ -9,8 +9,8 @@ const Dashboard = () => {
 
   return (
     <React.Fragment>
-      {!user.isAdmin && <UserDashboard />}
-      {user.isAdmin && <AdminDasboard />}
+      {!user?.isAdmin && <UserDashboard />}
+      {user?.isAdmin && <AdminDasboard />}
     </React.Fragment>
   );
 };
