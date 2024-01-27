@@ -50,7 +50,7 @@ const Hero = () => {
         </div>
           <div className="text-center mx-4" data-aos="fade-up">
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-              <h1 className=" font-oswald text-zinc-800 font-bold text-3xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-8xl">
+              <h1 className=" font-oswald text-zinc-800 font-bold text-2xl md:text-5xl lg:text-6xl xl:text-6xl xl:text-8xl">
               WE BUILD
               <span className="relative whitespace-nowrap text-orange-400">
               <svg
