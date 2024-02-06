@@ -6,7 +6,7 @@ import { services} from "@/utils/Options/selectOptions";
 
 import ButtonPrimary from "../Button/Button";
 
-const ContactForm = () => {
+const ContactForm = ({text}) => {
   const [condition, setCondition] = useState(false);
 
   const sendEmail = (e) => {
@@ -36,7 +36,7 @@ const ContactForm = () => {
   return (
     <>
       <h1 className="text-xl  text-gray-600 flex lg:mr-2 lg:text-[3rem] font-bold mb-7">
-        We love coming up with fresh ideas to increase conversions!
+       {text}
       </h1>
       <form
         onSubmit={sendEmail}
@@ -66,7 +66,7 @@ const ContactForm = () => {
           <Select
             name="user_select"
             variant={"bordered"}
-            label="Reason"
+            label="Subject"
             className="max-w-full text-white"
             size="lg"
           >

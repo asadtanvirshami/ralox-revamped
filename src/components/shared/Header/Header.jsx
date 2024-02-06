@@ -73,12 +73,12 @@ const NavHeader = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/about">
             About Us
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" className="text-gray-300" aria-current="page">
+          <Link href="/services" className="text-gray-300" aria-current="page">
             Services
           </Link>
         </NavbarItem>

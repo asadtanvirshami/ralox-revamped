@@ -4,10 +4,10 @@ import AOS from "aos";
 
 import { Divider } from "@nextui-org/react";
 
-import Slider from "../../shared/Slider/Slider";
 
 import ContactForm from "@/components/shared/ContactForm/ContactForm";
 import SystematicProcess from "./SystematicProcess/SystematicProcess";
+import Slider from "../../shared/Slider/Slider";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import InfoSection from "./InfoSection/InfoSection";
 import ShowCase from "./ShowCase/ShowCase";
@@ -60,7 +60,11 @@ const Home = () => {
           <div className="w-fit bg-white overflow-hidden align-middle flex items-center justify-center mx-auto">
             <div data-aos={"fade-up"} className="container mx-auto py-12 mt-5">
               <div className="row justify-center  lg:flex">
-                <ContactForm />
+                <ContactForm
+                  text={
+                    "We love coming up with fresh ideas to increase conversions!"
+                  }
+                />
               </div>
             </div>
           </div>
