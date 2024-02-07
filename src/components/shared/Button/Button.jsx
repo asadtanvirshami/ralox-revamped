@@ -34,6 +34,7 @@ const ButtonPrimary = ({ title, size, variant, color, type, loading, endContent,
       endContent={endContent}
       startContent={startContent}
       onClick={onClick}
+      data-cy={"btn"}
     >
       {title}
     </Button>

@@ -101,7 +101,7 @@ const NavHeader = () => {
 
       {!isAuthenticated && (
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex ">
+          <NavbarItem className="hidden md:flex lg:flex ">
             <Link
               data-cy={"login-header-btn"}
               className="text-orange-200 cursor-pointer"
@@ -158,7 +158,7 @@ const NavHeader = () => {
                 </Link>
               </DropdownItem>
               <DropdownItem
-                data-cy={"logout-btn"}
+                data-cy={"logout-header-btn"}
                 key="logout"
                 onClick={() => {
                   dispatch(logout()), setIsDropDown(false);
