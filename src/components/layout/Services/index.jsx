@@ -120,7 +120,7 @@ const Services = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
               {processSteps.map((x, i) => {
                 return (
-                  <div data-aos={"fade-up"} className="p-5 w-fit">
+                  <div key={i} data-aos={"fade-up"} className="p-5 w-fit">
                     <h1 className="text-3xl font-semibold text-center md:text-left lg:text-left xl:text-left text-white ">
                       {x.title}
                     </h1>
