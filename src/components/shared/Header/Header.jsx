@@ -83,12 +83,12 @@ const NavHeader = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/industries">
             Industries
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/consultancy">
             Consultancy
           </Link>
         </NavbarItem>

@@ -1,10 +1,8 @@
-import Services from '@/components/layout/Services'
-import React from 'react'
+import Services from "@/components/layout/Services";
+import React from "react";
 
 const services = () => {
-  return (
-    <Services/>
-  )
-}
+  return <Services />;
+};
 
-export default services
+export default services;

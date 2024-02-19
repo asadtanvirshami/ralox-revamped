@@ -46,12 +46,12 @@ const Home = () => {
         {/* TESTMONIALS SECTION */}
         <Testamonials />
         {/* SYSTEMATIC PROCESS SECTION */}
-        <div className="w-full bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400   overflow-hidden align-middle flex items-center justify-center mx-auto">
+        <div className="w-full bg-white   overflow-hidden align-middle flex items-center justify-center mx-auto">
           <SystematicProcess />
         </div>
         <div>
           {/* SERVICES SECTION */}
-          <div className="w-full mt-8 mb-8 bg-black   overflow-hidden align-middle flex items-center justify-center mx-auto">
+          <div className="w-full mt-8 mb-8 bg-black overflow-hidden align-middle flex items-center justify-center mx-auto">
             <ServicesSection />
           </div>
         </div>

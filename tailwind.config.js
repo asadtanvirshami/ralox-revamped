@@ -5,7 +5,7 @@ const { colors: defaultColors } = require("tailwindcss/defaultTheme");
 const colors = {
   ...defaultColors,
   ...{
-    "layout": {
+    layout: {
       500: "#4088a9",
       700: "#284e74",
     },
