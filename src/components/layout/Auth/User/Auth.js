@@ -175,7 +175,6 @@ const Login = () => {
         </div>
 
         <Button
-          data-cy={"login-btn"}
           title={"Login"}
           type={"submit"}
           color={"warning"}

@@ -10,7 +10,6 @@
     "test": "",
     "prepare": "husky install",
     "cypress": "cypress open",
-    "cypress-staging": "cypress open --config-file cypress.staging.config.js",
     "cypress:headless": "cypress run"
   },
   "dependencies": {
