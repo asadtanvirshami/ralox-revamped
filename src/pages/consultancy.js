@@ -1,8 +1,9 @@
+import Consultancy from '@/components/layout/Consultancy'
 import React from 'react'
 
 const consultancy = () => {
   return (
-    <div>consultancy</div>
+    <Consultancy/>
   )
 }
 

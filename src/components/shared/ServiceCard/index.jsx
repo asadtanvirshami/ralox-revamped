@@ -12,7 +12,7 @@ const ServiceCard = ({ title, content, Icon }) => {
         </div>
         <div className="glass"></div>
         <div className="content">
-          <span className="title font-body">{title}</span>
+          <span className="title">{title}</span>
           <span className="text">{content}</span>
         </div>
         <div className="bottom">
