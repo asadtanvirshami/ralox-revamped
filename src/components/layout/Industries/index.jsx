@@ -12,9 +12,9 @@ const IndustriesCard = ({ title, description, icon,  }) => (
   <div className=" text-white p-6 rounded-lg shadow-md mb-8 mx-4 transition transform hover:scale-105 duration-300 ease-in-out bg-opacity-5 bg-white"
     data-aos="fade-up">
     <div className="items-center flex text-[40px] ">{icon}
-      <h1 className="text-left font-semibold text-[1rem] xl:text-[2rem] mb-4 px-8 text-white">{title}</h1>
+      <h1 className="text-left font-semibold text-[1rem] xl:text-[1.8rem] mb-4 px-8 text-white">{title}</h1>
     </div>
-    <ul className="text-[1.1rem] m-5 text-justify">
+    <ul className="text-[1.2rem] m-5 text-justify">
       <li>{description}</li>
     </ul>
   </div>
@@ -29,17 +29,17 @@ const Industires = () => {
     <>
       <div className="flex pt-[60px] pb-[60px] justify-start container bg-black">
         <h1
-          data-aos={"fade-up"}
+          data-aos={"fade-down-right"}
           className=" text-white font-bold text-[5rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
         >
           Industries
         </h1>
       </div>
       <div
-        data-aos={"fade-up"}
-        className="flex pt-[40px] pb-[20px] justify-end  container bg-black"
+        data-aos={"fade-in"}
+        className="flex pt-[60px] pb-[60px] justify-start container"
       >
-        <article className=" text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <article className=" text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[18px]">
           At Algorim, we pride ourselves on being at the forefront of the
           digital revolution, empowering businesses across diverse industries
           with innovative software solutions tailored to their unique needs.
@@ -55,7 +55,7 @@ const Industires = () => {
           unparalleled value to our clients.
         </article>
       </div>
-      <div className="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 mt-5" >
+      <div className="container grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 mt-5" >
         <IndustriesCard
           title="Healthcare"
           icon={<MdOutlineHealthAndSafety />}

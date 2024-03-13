@@ -31,11 +31,12 @@ const NavHeader = () => {
   const dispatch = useDispatch();
 
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "My Settings",
-    "Help & Feedback",
-    "Log Out",
+    { name: "Profile", href: "/profile", authorized: false },
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "Services", href: "/services" },
+    { name: "Consultancy", href: "/consultancy" },
+    { name: "Industries", href: "/industries" },
+    { name: "Help & Feedback", href: "/contact" },
   ];
 
   const handleClick = (type) => {
@@ -68,7 +69,7 @@ const NavHeader = () => {
           <Image src={Logo} style={{ width: "10%", height: "10%" }} alt="alt" />
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="/home">
+          <Link color="foreground" href="/">
             Home
           </Link>
         </NavbarItem>
@@ -101,7 +102,7 @@ const NavHeader = () => {
 
       {!isAuthenticated && (
         <NavbarContent justify="end">
-          <NavbarItem className="hidden md:flex lg:flex ">
+          <NavbarItem className=" md:flex lg:flex ">
             <Link
               data-cy={"login-header-btn"}
               className="text-orange-200 cursor-pointer"
@@ -171,26 +172,43 @@ const NavHeader = () => {
           </Dropdown>
         </NavbarContent>
       )}
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+      {isAuthenticated && (
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link
+                onClick={() => {
+                  if (index === menuItems.length - 1) {
+                    dispatch(logout());
+                  }
+                }}
+                className="w-full"
+                color={"foreground"}
+                href={item.href}
+                size="lg"
+              >
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
+      )}
+      {!isAuthenticated && (
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link
+                className="w-full"
+                color="foreground"
+                href={item.href}
+                size="lg"
+              >
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
+      )}
     </Navbar>
   );
 };

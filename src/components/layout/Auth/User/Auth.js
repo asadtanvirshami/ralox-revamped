@@ -573,6 +573,7 @@ const AccessAuth = () => {
         secondayAction={null}
         primaryText={""}
         secondaryText={""}
+        mode="dark"
       >
         {snap.authModalType === "login" && <Login />}
         {snap.authModalType === "signup" && <SignUp />}

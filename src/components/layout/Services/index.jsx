@@ -21,7 +21,7 @@ const Services = () => {
     <>
       <div className="flex pt-[60px] pb-[60px] justify-start container bg-black">
         <h1
-          data-aos={"fade-up"}
+          data-aos={"fade-down-right"}
           className=" text-white font-bold text-[5rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
         >
           Services

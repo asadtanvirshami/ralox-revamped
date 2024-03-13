@@ -22,12 +22,17 @@ const ModalCom = ({
   secondaryText,
   scrollBehavior,
   size,
+  mode,
 }) => {
   return (
     <>
       <Modal
         size={size}
-        className="bg-black border-solid border border-white"
+        className={
+          mode === "dark"
+            ? "bg-black border-solid border border-white"
+            : "bg-white border-solid text-theme-500 border border-white"
+        }
         isOpen={show}
         onOpenChange={Close}
         scrollBehavior={scrollBehavior}

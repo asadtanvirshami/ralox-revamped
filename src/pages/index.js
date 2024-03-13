@@ -1,43 +1,42 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-
 import Head from "next/head";
 import { Inter } from "next/font/google";
 
-import { Spinner } from "@nextui-org/react";
-import Loader from "@/components/shared/Loader/Loader";
+import Home from "@/components/layout/Home/index";
+import React from "react";
+import FloatingButtons from "@/components/shared/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Landing() {
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter()
-
-  useEffect(() => {
-    // Simulate a delay using setTimeout
-    const delay = 800; // Adjust the delay duration in milliseconds
-
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-      router.push('/home')
-    }, delay);
-
-    // Clear the timeout if the component unmounts
-    return () => clearTimeout(timeoutId);
-  }, []);
-
   return (
     <>
       <div>
         <Head>
-          <title>ALGORIM</title>
-          <meta name="description" content="Algorim develops robust applications and provide digital marketing services." />
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>
+            ALGORIM | Develops Robust Applications & Provides Digital Marketing
+            Services
+          </title>
+          <meta
+            name="description"
+            content="ALGORIM specializes in developing robust applications and providing digital marketing services to businesses worldwide. Our expert team delivers innovative solutions tailored to your needs. Contact us to elevate your digital presence."
+          />
+          <meta
+            name="keywords"
+            content="ALGORIM, development, applications, digital marketing, services, business solutions, innovation, software, saasm, paas, iaas, need, want, website, looking"
+          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="flex align-middle justify-center ">
-          <Loader />
-        </div>
+        <React.Fragment>
+          <Home />
+          <FloatingButtons/>
+        </React.Fragment>
       </div>
     </>
   );
 }
+
