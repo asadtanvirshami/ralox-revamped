@@ -33,10 +33,9 @@ export default function Landing() {
         </Head>
         <React.Fragment>
           <Home />
-          <FloatingButtons/>
+          <FloatingButtons />
         </React.Fragment>
       </div>
     </>
   );
 }
-

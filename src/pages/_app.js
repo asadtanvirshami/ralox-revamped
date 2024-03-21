@@ -24,44 +24,47 @@ export default function App({ Component, pageProps }) {
 
   Router.events.on("routeChangeStart", () => setLoading(true));
   Router.events.on("routeChangeComplete", () => setLoading(false));
+  const isDynamicRoute = router.pathname.startsWith("/project/");
 
   return (
     <>
-      {router.pathname !== "/auth" && router.pathname !== "/dashboard" && (
-        <Fragment>
-          {loading ? (
-            <Provider store={store}>
-              <PersistGate loading={null} persistor={persistor}>
-                <Layout>
-                  <div class="flex justify-center mt-5 gap-4">
-                    <Spinner
-                      className="h-96"
-                      size="lg"
-                      label="Loading..."
-                      color="warning"
-                    />
-                  </div>
-                </Layout>
-              </PersistGate>
-            </Provider>
-          ) : (
-            <QueryClientProvider client={queryClient}>
-              <UserProvider>
-                <Provider store={store}>
-                  <PersistGate loading={null} persistor={persistor}>
-                    <Layout>
-                      <Component {...pageProps} />
-                    </Layout>
-                  </PersistGate>
-                </Provider>
-              </UserProvider>
-            </QueryClientProvider>
-          )}
-        </Fragment>
-      )}
-      {(
+      {router.pathname !== "/auth" &&
+        router.pathname !== "/dashboard" &&
+        !isDynamicRoute && (
+          <Fragment>
+            {loading ? (
+              <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                  <Layout>
+                    <div class="flex justify-center mt-5 gap-4">
+                      <Spinner
+                        className="h-96"
+                        size="lg"
+                        label="Loading..."
+                        color="warning"
+                      />
+                    </div>
+                  </Layout>
+                </PersistGate>
+              </Provider>
+            ) : (
+              <QueryClientProvider client={queryClient}>
+                <UserProvider>
+                  <Provider store={store}>
+                    <PersistGate loading={null} persistor={persistor}>
+                      <Layout>
+                        <Component {...pageProps} />
+                      </Layout>
+                    </PersistGate>
+                  </Provider>
+                </UserProvider>
+              </QueryClientProvider>
+            )}
+          </Fragment>
+        )}
+      {(router.pathname === "/dashboard" ||
         router.pathname === "/auth" ||
-        router.pathname === "/dashboard") && (
+        isDynamicRoute) && (
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

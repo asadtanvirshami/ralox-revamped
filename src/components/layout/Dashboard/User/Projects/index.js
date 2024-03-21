@@ -176,6 +176,7 @@ const Projects = () => {
       <Modal
         size={"md"}
         scrollBehavior={""}
+        mode={'dark'}
         show={state.createModal}
         footer={false}
         onClick={() =>
@@ -207,6 +208,7 @@ const Projects = () => {
       </Modal>
       <Modal
         size={"md"}
+        mode={'dark'}
         scrollBehavior={""}
         show={state.boostModal}
         footer={false}

@@ -63,7 +63,7 @@ const ProjectBoost = () => {
             color={"warning"}
             className="w-full font-bold text-xl"
           >
-            $750 Boost Now!
+            Chat with us now!
           </Button>
           <span>
             <small>
