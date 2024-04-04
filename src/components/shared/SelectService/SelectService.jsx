@@ -49,6 +49,7 @@ const SelectService = ({register, control}) => {
         {...register('service')}
         render={({ field }) => (
           <Select
+            aria-label="service"
             placeholder="Select Service"
             labelPlacement="outside"
             className="max-w-full mt-2 text-white"

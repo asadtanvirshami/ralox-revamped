@@ -68,7 +68,7 @@ const BottomSection = ({ project }) => {
             )}
           </div>
         </Card>
-      )} */}
+      )} */}  
     </div>
   );
 };

@@ -1,6 +1,14 @@
 import React from "react";
 //
-const Card = ({ icon, animation, withIcon, title, description, className, mode }) => {
+const Card = ({
+  icon,
+  animation,
+  withIcon,
+  title,
+  description,
+  className,
+  mode,
+}) => {
   return (
     <div className={className} data-aos={animation}>
       <div className="flex">
@@ -18,8 +26,8 @@ const Card = ({ icon, animation, withIcon, title, description, className, mode }
       <article
         className={
           mode == "dark"
-            ? `lg:text-[16px]  text-black text-justify `
-            : `lg:text-xl  text-black text-justify `
+            ? `lg:text-[16px] tracking-tighter text-black text-justify `
+            : `lg:text-xl tracking-tighter  text-black text-justify `
         }
       >
         {description}

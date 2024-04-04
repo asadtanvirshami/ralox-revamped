@@ -67,6 +67,19 @@ const Projects = () => {
     return <div>Error: {error.message || statusError}</div>;
   }
 
+  if (!data) {
+    return (
+      <div class="flex justify-center mt-5 gap-4">
+        <Spinner
+          className="h-96"
+          size="lg"
+          label="Loading..."
+          color="warning"
+        />
+      </div>
+    );
+  }
+
   if (isLoading || statusLoading) {
     return (
       <div class="flex justify-center mt-5 gap-4">
@@ -86,7 +99,7 @@ const Projects = () => {
         {/* Tabs Section */}
         <div className="mt-5 mb-5 md:flex lg:flex ">
           <div>
-            {data.projects.length > 0 && (
+            {data?.projects.length > 0 && (
               <Tabs tabs={tabs} step={query.active} handleClick={handleClick} />
             )}
           </div>
@@ -113,10 +126,10 @@ const Projects = () => {
         {(!isLoading || !statusLoading) && (
           <div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  mt-5 gap-4 justify-center">
-              {((data.projects.length > 0 && !statusData) ||
+              {((data?.projects.length > 0 && !statusData) ||
                 (query.active == 0 && query.status == "")) && (
                 <>
-                  {data.projects.map((project, i) => (
+                  {data?.projects.map((project, i) => (
                     <ProjectCard
                       key={i}
                       primaryClick={() =>
@@ -161,7 +174,7 @@ const Projects = () => {
                   <></>
                 </div>
               ))}
-            {data.projects.length == 0 && (
+            {data?.projects.length == 0 && (
               <div className="mt-12 p-4 text-center lg:flex items-center justify-center ">
                 <p className="text-2xl mr-2">You have no started projects.</p>
                 <div className="mt-12 lg:mt-0 text-center flex items-center justify-center">
@@ -176,7 +189,7 @@ const Projects = () => {
       <Modal
         size={"md"}
         scrollBehavior={""}
-        mode={'dark'}
+        mode={"dark"}
         show={state.createModal}
         footer={false}
         onClick={() =>
@@ -208,7 +221,7 @@ const Projects = () => {
       </Modal>
       <Modal
         size={"md"}
-        mode={'dark'}
+        mode={"dark"}
         scrollBehavior={""}
         show={state.boostModal}
         footer={false}

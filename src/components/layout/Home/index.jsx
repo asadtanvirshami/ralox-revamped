@@ -4,7 +4,6 @@ import AOS from "aos";
 
 import { Divider } from "@nextui-org/react";
 
-
 import ContactForm from "@/components/shared/ContactForm/ContactForm";
 import SystematicProcess from "./SystematicProcess/SystematicProcess";
 import Slider from "../../shared/Slider/Slider";

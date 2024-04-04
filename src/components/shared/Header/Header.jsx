@@ -17,6 +17,8 @@ import {
   Avatar,
   Button,
 } from "@nextui-org/react";
+import Switcher from "../Switcher/Swticher";
+
 import Image from "next/image";
 import Logo from "../../../../public/a_white.png";
 
@@ -51,7 +53,7 @@ const NavHeader = () => {
   };
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className="dark:bg-white" isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -68,6 +70,7 @@ const NavHeader = () => {
         <NavbarBrand>
           <Image src={Logo} style={{ width: "10%", height: "10%" }} alt="alt" />
         </NavbarBrand>
+        <Switcher />
         <NavbarItem>
           <Link color="foreground" href="/">
             Home
