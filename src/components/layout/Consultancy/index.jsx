@@ -1,9 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import React from "react";
 import AOS from "aos";
 
-import { FaHandshake } from "react-icons/fa";
-import { HiChat } from "react-icons/hi";
-import { MdRocketLaunch } from "react-icons/md";
 import { MdAddBusiness, MdBiotech, MdManageAccounts } from "react-icons/md";
 import { GiTakeMyMoney } from "react-icons/gi";
 
