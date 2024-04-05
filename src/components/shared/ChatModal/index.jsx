@@ -9,13 +9,14 @@ const ChatModal = () => {
   const [open, setOpen] = React.useState(true);
   const [currentMessage, setCurrentMessage] = React.useState("");
   const [messageList, setMessageList] = React.useState([]);
-
+  const [roomId, setRoomId] = React.useState([]);
 
   const sendMessage = async () => {
     if (currentMessage.trim() !== "") {
       const messageData = {
         room: "1",
         message: currentMessage,
+        isMine:false,
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         // Indicate that the message is yours
       };

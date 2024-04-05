@@ -5,7 +5,7 @@ import { HiOutlineDocumentText } from "react-icons/hi";
 const BottomSection = ({ project }) => {
   return (
     <div className="grid lg:grid xl:flex w-full lg:grid-cols-2  md:grid-cols-2  xl:grid-cols-3 mt-5 gap-4  align-middle">
-      <Card className="bg-gray-800 h-[270px] p-3 lg:-w-full  xl:w-full rounded-xl">
+      {/* <Card className="bg-gray-800 h-[270px] p-3 lg:-w-full  xl:w-full rounded-xl">
         <div className="">
           <h1 className="text-2xl font-bold">Payments</h1>
 
@@ -35,8 +35,8 @@ const BottomSection = ({ project }) => {
             </div>
           )}
         </div>
-      </Card>
-      {project.ProjectDetail.paymentType === "milestone" && (
+      </Card> */}
+      {/* {project.ProjectDetail.paymentType === "milestone" && (
         <Card className="bg-gray-800 h-[270px] p-3 lg:-w-full  xl:w-full rounded-xl">
           <div className="">
             <h1 className="text-2xl font-bold">Milestones</h1>
@@ -68,7 +68,7 @@ const BottomSection = ({ project }) => {
             )}
           </div>
         </Card>
-      )}
+      )} */}  
     </div>
   );
 };

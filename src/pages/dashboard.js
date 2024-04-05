@@ -4,11 +4,16 @@ import React from "react";
 import DashboardPanel from "@/components/layout/Dashboard";
 import verifyToken from "@/api/Auth/verifyToken";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/actions/UserActions/userActions";
 
 const Dashboard = ({ sessionData }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
   if (!sessionData.isAuthorized) {
     router.push("/");
+    dispatch(logout);
   }
   return (
     <React.Fragment>
@@ -31,7 +36,6 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   } catch (error) {
-    console.error(error);
     return {
       props: { sessionData: { isAuthorized: false } },
     };

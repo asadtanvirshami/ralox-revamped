@@ -48,7 +48,7 @@ const Services = () => {
           unlocking the full potential of your business.
         </article>
       </div>
-      <div className=" bg-black pt-2 w-full h-screen">
+      <div className=" bg-black pt-2 w-full ">
         <h1
           data-aos={"fade-up"}
           className="text-3xl font-bold text-center text-white m-12  md:text-[4rem] lg:text-[4rem] xl:text-[4rem]"
@@ -117,7 +117,7 @@ const Services = () => {
         </div>
         <div className="mt-12 mx-auto  container w-full justify-center flex">
           <div className="flex justify-center items-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+            <div className="grid pb-[100px] grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
               {processSteps.map((x, i) => {
                 return (
                   <div key={i} data-aos={"fade-up"} className="p-5 w-fit">

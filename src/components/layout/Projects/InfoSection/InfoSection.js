@@ -46,38 +46,6 @@ const InfoSection = ({ project }) => {
           </div>
         </div>
       </Card>
-
-      <Card className="bg-gray-800 h-[270px] p-3 lg:-w-full  xl:w-full rounded-xl">
-        <div className="">
-          <h1 className="text-2xl font-bold">Documents & Images</h1>
-
-          {project.ProjectDetail.ProjectDocuments.length > 0 && (
-            <div>
-              {project.ProjectDetail.ProjectDocuments.map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="flex m-2 items-center gap-2  rounded-lg  p-2 bg-slate-500"
-                  >
-                    <span>
-                      <HiOutlineDocumentText className="text-3xl text-orange-300" />
-                    </span>
-                    <span>File ETC 2nd Operation</span>
-                    <small>File ETC 2nd Operation</small>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {project.ProjectDetail.ProjectDocuments.length === 0 && (
-            <div className="flex m-2 items-center w-dull gap-2  rounded-lg h-full align-middle justify-center bg-warning-400 bg-opacity-30 border-warning-600 border-opacity-60  border border-solid p-3 ">
-              <span className=" text-orange-300 font-semibold text-md">
-                No documents or images to show.
-              </span>
-            </div>
-          )}
-        </div>
-      </Card>
       <Card className="bg-gray-800 h-[270px] p-3 lg:-w-full  xl:w-full rounded-xl">
         <div className="">
           <h1 className="text-2xl font-bold">Services</h1>
@@ -85,7 +53,6 @@ const InfoSection = ({ project }) => {
           {project.ProjectDetail.ProjectServices.length > 0 && (
             <div>
               {project.ProjectDetail.ProjectServices.map((item, index) => {
-                console.log(item);
                 return (
                   <div
                     key={index}

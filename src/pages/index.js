@@ -1,11 +1,8 @@
+import React from "react";
 import Head from "next/head";
-import { Inter } from "next/font/google";
 
 import Home from "@/components/layout/Home/index";
-import React from "react";
 import FloatingButtons from "@/components/shared/FloatingButton";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Landing() {
   return (
@@ -27,16 +24,15 @@ export default function Landing() {
           />
           <meta
             name="keywords"
-            content="ALGORIM, development, applications, digital marketing, services, business solutions, innovation, software, saasm, paas, iaas, need, want, website, looking"
+            content="ALGORIM, development, applications, digital marketing, services, business solutions, innovation, software, saas, paas, iaas, need, want, website, looking"
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <React.Fragment>
           <Home />
-          <FloatingButtons/>
+          <FloatingButtons />
         </React.Fragment>
       </div>
     </>
   );
 }
-
