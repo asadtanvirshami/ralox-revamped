@@ -9,7 +9,7 @@ import { logout } from "@/redux/actions/UserActions/userActions";
 import Settings from "@/components/layout/Settings";
 import { getProfile } from "@/api/User";
 
-const settings = ({ sessionData, userData }) => {
+const Setting = ({ sessionData, userData }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ const settings = ({ sessionData, userData }) => {
   );
 };
 
-export default settings;
+export default Setting;
 
 export async function getServerSideProps({ req, res }) {
   const cookies = await Cookies(req, res);
