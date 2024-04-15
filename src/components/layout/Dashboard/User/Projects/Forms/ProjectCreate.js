@@ -23,7 +23,7 @@ const SignupSchema = yup.object().shape({
   description: yup.string().required(),
   deadline: yup.string(),
   budget: yup.number().required(),
-  service: yup.string().required(),
+  service: yup.array().required(),
   paymentType: yup.string().required(),
 });
 
@@ -37,10 +37,10 @@ const ProjectCreate = ({ onClick }) => {
     register,
     control,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors },
   } = useForm({
-    //passing the props in the useForm yupResolver
     resolver: yupResolver(SignupSchema),
     defaultValues: "ds",
   });
@@ -56,8 +56,9 @@ const ProjectCreate = ({ onClick }) => {
     // Your form data
     const formData = {
       ...data,
-      UserId: user.loginId,
       deadline: date,
+      email:user.email,
+      UserId: user.loginId,
       startDate: moment().format(),
     };
 
@@ -104,7 +105,11 @@ const ProjectCreate = ({ onClick }) => {
           />
           <div className="mt-3" />
           <Label title={"Service"} />
-          <SelectService register={register} control={control} />
+          <SelectService
+            register={register}
+            control={control}
+            setValue={setValue}
+          />
           <div className="mt-2" />
           <Label title={"Description"} />
           <TextArea
@@ -126,6 +131,7 @@ const ProjectCreate = ({ onClick }) => {
             type="submit"
             size="md"
           />
+          <button on></button>
           <span>
             <Button
               title="Cancel"

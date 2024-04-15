@@ -13,7 +13,7 @@ const Dashboard = ({ sessionData }) => {
 
   if (!sessionData.isAuthorized) {
     router.push("/");
-    dispatch(logout);
+    dispatch(logout());
   }
   return (
     <React.Fragment>

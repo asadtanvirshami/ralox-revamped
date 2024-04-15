@@ -19,7 +19,7 @@ const Services = () => {
 
   return (
     <>
-      <div className="flex pt-[60px] pb-[60px] justify-start container bg-black">
+      <div className="flex pt-[60px] pb-[30px] justify-start container bg-black">
         <h1
           data-aos={"fade-down-right"}
           className=" text-white font-bold text-[5rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
@@ -29,9 +29,9 @@ const Services = () => {
       </div>
       <div
         data-aos={"fade-up"}
-        className="flex pt-[40px] pb-[20px] justify-end  container bg-black"
+        className="flex pt-[20px] lg:pt-[40px] pb-[20px] justify-end  container bg-black"
       >
-        <article className=" text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <article className=" text-white tracking-tighter text-justify text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
           Algorim offers a comprehensive suite of cutting-edge services tailored
           to meet the diverse needs of businesses in the digital age. From
           advanced data analytics to bespoke software development, Algorim
@@ -124,7 +124,7 @@ const Services = () => {
                     <h1 className="text-3xl font-semibold text-center md:text-left lg:text-left xl:text-left text-white ">
                       {x.title}
                     </h1>
-                    <article className="text-[16px] text-justify md:text-left lg:text-left xl:text-left">
+                    <article className="text-[15px] w-full whitespace-break-spaces tracking-tighter text-justify md:text-left lg:text-left xl:text-left">
                       {x.description}
                     </article>
                   </div>

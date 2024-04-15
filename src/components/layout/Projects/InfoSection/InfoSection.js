@@ -9,7 +9,6 @@ import { MdOutlineMiscellaneousServices } from "react-icons/md";
 
 
 const InfoSection = ({ project }) => {
-  console.log(project.ProjectDetail.ProjectDocuments);
   return (
     <div className="grid lg:grid xl:flex w-full lg:grid-cols-2  md:grid-cols-2  xl:grid-cols-3 mt-5 gap-4  align-middle">
       <Progress
@@ -28,6 +27,10 @@ const InfoSection = ({ project }) => {
         <div className="flex items-end ">
           <label className="mr-3 font-bold">Manager No: </label>
           <p className="font-bold"> {project.ProjectDetail.managerNo}</p>
+        </div>
+        <div className="flex items-end ">
+          <label className="mr-3 font-bold">Slack: </label>
+          <p className="font-bold"> {project.ProjectDetail.slack}</p>
         </div>
         <div className=" items-end grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  p-4">
           <div className=" bg-blue-400 bg-opacity-30 border-blue-600 border-opacity-60  border border-solid p-3 rounded-lg m-1">

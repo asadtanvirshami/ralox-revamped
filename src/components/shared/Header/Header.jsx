@@ -33,12 +33,11 @@ const NavHeader = () => {
   const dispatch = useDispatch();
 
   const menuItems = [
-    { name: "Profile", href: "/profile", authorized: false },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Services", href: "/services" },
     { name: "Consultancy", href: "/consultancy" },
     { name: "Industries", href: "/industries" },
-    { name: "Help & Feedback", href: "/contact" },
+    { name: "Settings", href: "/setting" },
   ];
 
   const handleClick = (type) => {
@@ -157,7 +156,7 @@ const NavHeader = () => {
                 </Link>
               </DropdownItem>
               <DropdownItem color="warning" key="settings">
-                <Link className="text-white text-[12px]  cursor-pointer">
+                <Link href="/settings" className="text-white text-[12px]  cursor-pointer">
                   Settings
                 </Link>
               </DropdownItem>

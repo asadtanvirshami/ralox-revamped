@@ -1,8 +1,18 @@
 // authActions.js
-import { USER_SIGNIN_SUCCESS, USER_SIGNIN_FALIURE, LOGOUT } from '../../constants/userConstants';
+import {
+  USER_SIGNIN_SUCCESS,
+  USER_SIGNIN_FALIURE,
+  USER_PROFILE_UPDATE,
+  LOGOUT,
+} from "../../constants/userConstants";
 
 export const loginSuccess = (user) => ({
   type: USER_SIGNIN_SUCCESS,
+  payload: { user },
+});
+
+export const updateSuccess = (user) => ({
+  type: USER_PROFILE_UPDATE,
   payload: { user },
 });
 

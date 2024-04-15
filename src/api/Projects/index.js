@@ -25,28 +25,17 @@ export const updateProject = async (data) => {
 };
 
 export const getProjectsByCode = async (code) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_CODE}?code=${code}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch projects");
-    }
-    return response.json();
-};
-
-export const getProjectsByUserID = async (userId) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_USER_ID}?userId=${userId}`
+    `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_CODE}?code=${code}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch projects");
   }
   return response.json();
 };
-
-export const getProjectbyStatusById = async (id, status) => {
+export const getProjectsByUserID = async (userId, page, pageSize,status) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_STATUS_BY_ID}?status=${status}&&userId=${id}`
+    `${process.env.NEXT_PUBLIC_GET_PROJECT_BY_USER_ID}?userId=${userId}&page=${page}&pageSize=${pageSize}&status=${status}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch projects");
