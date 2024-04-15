@@ -218,6 +218,11 @@ const SignUp = () => {
     lname: "",
     email: "",
     password: "",
+    phone: "",
+    country: "",
+    city: "",
+    long: "",
+    lat: "",
   });
 
   const handleClick = (type) => {
@@ -288,29 +293,66 @@ const SignUp = () => {
         onSubmit={onSubmitCreds}
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
+        <div className=" space-x-1 grid-cols-2 grid">
+          <Input
+            data-cy={"fname-input"}
+            size="sm"
+            type="text"
+            variant={"bordered"}
+            label="First Name"
+            className="text-white"
+            name="fname"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
+          <Input
+            data-cy={"lname-input"}
+            size="sm"
+            type="text"
+            variant={"bordered"}
+            label="Last Name"
+            className="text-white"
+            name="lname"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
+        </div>
+
         <Input
-          data-cy={"fname-input"}
-          size="md"
-          type="text"
+          data-cy={"city-input"}
+          type={"text"}
+          className=" text-white mt-2"
+          size="sm"
           variant={"bordered"}
-          label="First Name"
-          className="mr-4 text-white"
-          name="fname"
+          label="City"
+          name="city"
           onChange={(e) => handleChange(e.target.name, e.target.value)}
+          endContent={
+            <button
+              className="focus:outline-none"
+              type="button"
+              onClick={toggleVisibility}
+            ></button>
+          }
         />
         <Input
-          data-cy={"lname-input"}
-          size="md"
-          type="text"
+          data-cy={"country-input"}
+          type={"text"}
+          className=" text-white mt-2"
+          size="sm"
           variant={"bordered"}
-          label="Last Name"
-          className="mr-4 text-white"
-          name="lname"
+          label="Country"
+          name="country"
           onChange={(e) => handleChange(e.target.name, e.target.value)}
+          endContent={
+            <button
+              className="focus:outline-none"
+              type="button"
+              onClick={toggleVisibility}
+            ></button>
+          }
         />
         <Input
           data-cy={"email-input"}
-          size="md"
+          size="sm"
           type="text"
           variant={"bordered"}
           label="Email"
@@ -319,10 +361,27 @@ const SignUp = () => {
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
+          data-cy={"phone-input"}
+          type={"text"}
+          className=" text-white mt-2"
+          size="sm"
+          variant={"bordered"}
+          label="Phone"
+          name="phone"
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          endContent={
+            <button
+              className="focus:outline-none"
+              type="button"
+              onClick={toggleVisibility}
+            ></button>
+          }
+        />
+        <Input
           data-cy={"password-input"}
           type={isVisible ? "text" : "password"}
           className=" text-white mt-2"
-          size="md"
+          size="sm"
           variant={"bordered"}
           label="Password"
           name="password"
@@ -341,6 +400,7 @@ const SignUp = () => {
             </button>
           }
         />
+
         <p className={isError ? "text-red-500" : "text-green-500"}>{message}</p>
         <div className="mt-2" />
         <Button
@@ -364,7 +424,7 @@ const SignUp = () => {
             </strong>
           </small>
         </div>
-        <Divider className="mt-3" />
+        <Divider className="mt-1" />
         <div className="text-center text-white">
           <small className="text-sm">
             This site is protected by reCAPTCHA and the Google Privacy Policy
@@ -574,6 +634,7 @@ const AccessAuth = () => {
         primaryText={""}
         secondaryText={""}
         mode="dark"
+        size={"md"}
       >
         {snap.authModalType === "login" && <Login />}
         {snap.authModalType === "signup" && <SignUp />}

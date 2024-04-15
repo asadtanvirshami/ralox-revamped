@@ -49,7 +49,7 @@ const WhyChooseUs = () => {
             <h1 className="text-1xl lg:text-4xl mb-5 font-semibold text-gray-300">
               Why Choose Algorim?
             </h1>
-            <article className="font-oswald text-1xl mb-3 lg:text-[18px] text-gray-300 text-justify">
+            <article className="font-oswald tracking-tighter text-1xl mb-3 lg:text-[18px] text-gray-300 text-justify">
               Our specialized team of developers and QA professionals possess
               extensive expertise in diverse technologies, ensuring top-notch
               solutions and flawless user experiences. We thrive on innovation,

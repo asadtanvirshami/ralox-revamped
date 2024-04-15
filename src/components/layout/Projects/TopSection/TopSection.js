@@ -131,11 +131,15 @@ const TopSection = ({ project }) => {
         </div>
         <div className="mt-2 ">
           <Chip
-            color={project.ProjectDetail.approved === true ? "success" : "warning"}
+            color={
+              project.ProjectDetail.approved === true ? "success" : "warning"
+            }
             size="lg"
             variant="flat"
           >
-            {project.ProjectDetail.approved === true ? "Approved" : "Unapproved"}
+            {project.ProjectDetail.approved === true
+              ? "Approved"
+              : "Unapproved"}
           </Chip>
         </div>
       </div>
@@ -150,7 +154,9 @@ const TopSection = ({ project }) => {
         </div>
         <div className="mt-2 ">
           <Chip
-            color={project.ProjectDetail.active === true ? "success" : "warning"}
+            color={
+              project.ProjectDetail.active === true ? "success" : "warning"
+            }
             size="lg"
             variant="flat"
           >

@@ -1,12 +1,11 @@
 import React, { memo } from "react";
-import { Controller } from "react-hook-form"
-;
+import { Controller } from "react-hook-form";
 import { getServices } from "@/api/Services";
 import { useQuery } from "react-query";
 
 import { Spinner, Select, SelectItem } from "@nextui-org/react";
 
-const SelectService = ({register, control}) => {
+const SelectService = ({ register, control, setValue }) => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["status"],
     enabled: true,
@@ -39,14 +38,14 @@ const SelectService = ({register, control}) => {
   if (isError) {
     return <p>Error fetching statuses</p>;
   }
-
+  console.log(data);
   return (
     <>
       <Controller
-        name={'service'}
-        defaultValue=""
+        name={"service"}
+        defaultValue={[]}
         control={control}
-        {...register('service')}
+        {...register("service")}
         render={({ field }) => (
           <Select
             aria-label="service"
@@ -54,16 +53,20 @@ const SelectService = ({register, control}) => {
             labelPlacement="outside"
             className="max-w-full mt-2 text-white"
             variant="bordered"
+            selectionMode="multiple"
             radius="sm"
             size="lg"
             name={"service"}
             {...field}
+            onChange={(e) => {
+              field.onChange([e.target.value]);
+            }}
           >
             {data.payload.map((item) => (
               <SelectItem
                 className="text-white"
                 key={item.id}
-                value={item.id}
+                value={[item.id]}
               >
                 {item.name}
               </SelectItem>

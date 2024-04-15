@@ -13,7 +13,7 @@ const ServiceCard = ({ title, content, Icon }) => {
         <div className="glass"></div>
         <div className="content">
           <span className="title">{title}</span>
-          <span className="text">{content}</span>
+          <span className="text tracking-tighter mb-2">{content}</span>
         </div>
         <div className="bottom">
           <div className="social-buttons-container">

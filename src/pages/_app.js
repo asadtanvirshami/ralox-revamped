@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }) {
     <>
       {router.pathname !== "/auth" &&
         router.pathname !== "/dashboard" &&
+        router.pathname !== "/settings" &&
         !isDynamicRoute && (
           <Fragment>
             {loading ? (
@@ -64,6 +65,7 @@ export default function App({ Component, pageProps }) {
         )}
       {(router.pathname === "/dashboard" ||
         router.pathname === "/auth" ||
+        router.pathname === "/settings" ||
         isDynamicRoute) && (
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>

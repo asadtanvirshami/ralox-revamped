@@ -5,6 +5,7 @@ import Image from "next/image";
 import Count from "../CountUp/CountUp";
 import PlainCard from "@/components/shared/PlainCard/PlainCard";
 import gif from "../../../../../public/images/2D/bulb.jpg";
+import Engineers from "../../../../../public/images/2D/engineer.jpg";
 
 const InfoSection = () => {
   return (
@@ -19,17 +20,17 @@ const InfoSection = () => {
           <Card className="w-full">
             <CardHeader className="absolute z-10 top-1 flex-col items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">
-                What to watch
+                Deep work
               </p>
               <h4 className="text-white font-medium text-large">
-                Stream the Acme event
+                We focus on providing values.
               </h4>
             </CardHeader>
             <Image
               removeWrapper
               alt="Card background"
-              src={gif}
-              className="z-0 w-full h-[32rem] object-cover"
+              src={Engineers}
+              className="z-0 w-full h-[32rem] object-cover object-right-bottom "
             />
           </Card>
         </div>

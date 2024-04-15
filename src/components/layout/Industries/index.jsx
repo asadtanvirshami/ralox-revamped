@@ -1,20 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import AOS from "aos";
-import { MdOutlineHealthAndSafety, MdCastForEducation, MdEnergySavingsLeaf} from "react-icons/md";
+import {
+  MdOutlineHealthAndSafety,
+  MdCastForEducation,
+  MdEnergySavingsLeaf,
+} from "react-icons/md";
 import { RiBankLine } from "react-icons/ri";
 import { GrMoney } from "react-icons/gr";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { MdOutlineEngineering } from "react-icons/md";
 import { FaCarSide } from "react-icons/fa6";
 
-const IndustriesCard = ({ title, description, icon,  }) => (
-  <div className=" text-white p-6 rounded-lg shadow-md mb-8 mx-4 transition transform hover:scale-105 duration-300 ease-in-out bg-opacity-5 bg-white"
-    data-aos="fade-up">
-    <div className="items-center flex text-[40px] ">{icon}
-      <h1 className="text-left font-semibold text-[1rem] xl:text-[1.8rem] mb-4 px-8 text-white">{title}</h1>
+const IndustriesCard = ({ title, description, icon }) => (
+  <div
+    className=" text-white p-6 w-full lg:w-fit rounded-lg shadow-md mb-8 lg:mx-4 transition transform hover:scale-105 duration-300 ease-in-out bg-opacity-5 bg-white"
+    data-aos="fade-up"
+  >
+    <div className="items-center flex text-[40px] ">
+      {icon}
+      <h1 className="text-left font-semibold text-[1.2rem] xl:text-[1.5rem] mb-4 px-4 text-white">
+        {title}
+      </h1>
     </div>
-    <ul className="text-[1.2rem] m-5 text-justify">
+    <ul className=" tracking-tighter text-[13.5px] lg:text-[15px] whitespace-break-spaces w-full mt-3 text-justify">
       <li>{description}</li>
     </ul>
   </div>
@@ -27,7 +36,7 @@ const Industires = () => {
 
   return (
     <>
-      <div className="flex pt-[60px] pb-[60px] justify-start container bg-black">
+      <div className="flex pt-[60px] pb-[0px] justify-start container bg-black">
         <h1
           data-aos={"fade-down-right"}
           className=" text-white font-bold text-[5rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
@@ -39,7 +48,7 @@ const Industires = () => {
         data-aos={"fade-in"}
         className="flex pt-[60px] pb-[60px] justify-start container"
       >
-        <article className=" text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[18px]">
+        <article className=" tracking-tighter text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[18px]">
           At Algorim, we pride ourselves on being at the forefront of the
           digital revolution, empowering businesses across diverse industries
           with innovative software solutions tailored to their unique needs.
@@ -55,7 +64,15 @@ const Industires = () => {
           unparalleled value to our clients.
         </article>
       </div>
-      <div className="container grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 mt-5" >
+      <div className=" bg-black pt-2 w-full ">
+        <h1
+          data-aos={"fade-up"}
+          className="text-3xl font-bold text-center text-white m-12  md:text-[4rem] lg:text-[4rem] xl:text-[4rem]"
+        >
+          Sectors We Serve
+        </h1>
+      </div>
+      <div className="container grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 mt-5">
         <IndustriesCard
           title="Healthcare"
           icon={<MdOutlineHealthAndSafety />}

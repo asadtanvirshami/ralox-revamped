@@ -8,16 +8,16 @@ import { GiTakeMyMoney } from "react-icons/gi";
 
 const IndustriesCard = ({ title, description, icon, aosDirection }) => (
   <div
-    className=" text-white p-6 rounded-lg shadow-md mb-8 mx-4 transition transform hover:scale-105 duration-300 ease-in-out bg-opacity-5 bg-white"
+    className=" text-white p-6 w-full lg:w-fit rounded-lg shadow-md mb-8 lg:mx-4 transition transform hover:scale-105 duration-300 ease-in-out bg-opacity-5 bg-white"
     data-aos="fade-up"
   >
     <div className="items-center flex text-[40px] ">
       {icon}
-      <h1 className="text-left font-semibold text-[1rem] xl:text-[1.8rem] mb-4 px-8 text-white">
+      <h1 className="text-left font-semibold text-[0.5rem] xl:text-[1.5rem] mb-4 px-4 text-white">
         {title}
       </h1>
     </div>
-    <ul className="text-[1.2rem] m-5 text-justify">
+    <ul className=" tracking-tighter text-[13.5px] lg:text-[15px] whitespace-break-spaces w-full mt-3 text-justify">
       <li>{description}</li>
     </ul>
   </div>
@@ -29,19 +29,19 @@ const Consultancy = () => {
   }, []);
   return (
     <div>
-      <div className="flex pt-[60px] pb-[60px] justify-start container bg-black">
+      <div className="flex pt-[60px] pb-[30px] justify-start container bg-black">
         <h1
           data-aos={"fade-down-right"}
-          className=" text-white font-bold text-[1rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
+          className=" text-white font-bold text-[3.5rem] md:text-[8rem] lg:text-[8rem] xl:text-[8rem]"
         >
-          Conusltancy
+          Consultancy
         </h1>
       </div>
       <div
-        data-aos={"fade-in"}
-        className="flex pt-[40px] pb-[20px] justify-end  container bg-black"
+        data-aos={"fade-up"}
+        className="flex pt-[20px] lg:pt-[40px] pb-[20px] justify-end  container bg-black"
       >
-        <article className=" text-white text-justify text-[14px] md:text-[16px] lg:text-[18px] xl:text-[18px]">
+        <article className=" text-white tracking-tighter text-justify text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
           At Algorim, we pride ourselves as the architects of success,
           diligently navigating businesses through the intricate terrain of
           today's fiercely competitive landscape. With an unwavering dedication
