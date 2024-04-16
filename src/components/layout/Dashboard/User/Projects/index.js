@@ -153,7 +153,12 @@ const Projects = () => {
         <div className="mt-5 mb-5 md:flex lg:flex ">
           <div>
             {data && (
-              <Tabs tabs={tabs} step={query.active} handleClick={handleClick} />
+              <Tabs
+                data-cy={"tab-btn"}
+                tabs={tabs}
+                step={query.active}
+                handleClick={handleClick}
+              />
             )}
           </div>
           <div className="ml-auto flex items-center align-middle mt-5 md:mt-0 lg:mt-0">
@@ -225,6 +230,7 @@ const Projects = () => {
                   variant="ghost"
                   color="danger"
                   size="md"
+                  data-cy={"prev-btn"}
                   onClick={handlePreviousPage}
                   disabled={query.page === 1}
                 />
@@ -244,6 +250,7 @@ const Projects = () => {
                   variant="ghost"
                   color="danger"
                   size="md"
+                  data-cy={"next-btn"}
                   onClick={handleNextPage}
                   disabled={!data || query.page === totalPages}
                 />
@@ -258,6 +265,7 @@ const Projects = () => {
         mode={"dark"}
         show={state.createModal}
         footer={false}
+        data-cy={"close-modal-btn"}
         onClick={() =>
           setState((prevState) => ({
             ...prevState,
