@@ -52,7 +52,12 @@ const NavHeader = () => {
   };
 
   return (
-    <Navbar className="dark:bg-white" isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      className="dark:bg-white"
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -133,6 +138,7 @@ const NavHeader = () => {
               onClick={() => setIsDropDown((prev) => !prev)}
             >
               <Avatar
+                data-cy={"profile-pic"}
                 isBordered
                 as="button"
                 className="cursor-pointer transition-transform"
@@ -149,6 +155,7 @@ const NavHeader = () => {
               </DropdownItem>
               <DropdownItem color="warning" key="configurations">
                 <Link
+                  data-cy={"link-01-dashboard"}
                   href="/dashboard"
                   className="text-white text-[12px] cursor-pointer"
                 >
@@ -156,7 +163,10 @@ const NavHeader = () => {
                 </Link>
               </DropdownItem>
               <DropdownItem color="warning" key="settings">
-                <Link href="/settings" className="text-white text-[12px]  cursor-pointer">
+                <Link
+                  href="/settings"
+                  className="text-white text-[12px]  cursor-pointer"
+                >
                   Settings
                 </Link>
               </DropdownItem>

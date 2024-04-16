@@ -6,6 +6,8 @@ import Count from "../CountUp/CountUp";
 import PlainCard from "@/components/shared/PlainCard/PlainCard";
 import gif from "../../../../../public/images/2D/bulb.jpg";
 import Engineers from "../../../../../public/images/2D/engineer.jpg";
+import Ball from "../../../../../public/images/2D/ball.jpg";
+import Code from "../../../../../public/images/2D/temp.jpg";
 
 const InfoSection = () => {
   return (
@@ -29,8 +31,8 @@ const InfoSection = () => {
             <Image
               removeWrapper
               alt="Card background"
-              src={Engineers}
-              className="z-0 w-full h-[32rem] object-cover object-right-bottom "
+              src={Code}
+              className="z-0 w-full h-[32rem] object-cover object-right lg:object-right-bottom "
             />
           </Card>
         </div>
@@ -77,7 +79,7 @@ const InfoSection = () => {
             <Image
               removeWrapper
               alt="Card background"
-              src={gif}
+              src={Ball}
               className="z-0 w-full h-[32rem] object-cover"
             />
           </Card>

@@ -34,6 +34,7 @@ const ModalCom = ({
             : "bg-white border-solid text-theme-500 border border-white"
         }
         isOpen={show}
+        data-cy={'close-modal-btn'}
         onOpenChange={Close}
         scrollBehavior={scrollBehavior}
       >
