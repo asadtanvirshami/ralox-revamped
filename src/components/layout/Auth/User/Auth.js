@@ -44,7 +44,7 @@ const Login = () => {
     }
     if (type == "forgetPassword") {
       state.openAuthModal = true;
-      state.authModalType = "forgetPass";
+      state.authModalType = "forgetPassword";
     }
   };
 
@@ -524,14 +524,15 @@ const ForgetPassword = () => {
 
   return (
     <Fragment>
-      <h1 className="text-[3.5rem] text-center text-slate-200 flex lg:mr-2 lg:text-6xl font-semibold mb-4">
-        Login
+      <h1 className="text-[2rem] text-center text-slate-200 flex lg:mr-2 lg:text-6xl font-semibold mb-4">
+        Reset Password
       </h1>
       <form
         onSubmit={onSubmitCreds}
         className=" w-full flex flex-col gap-4 mb-6 mt-2"
       >
         <Input
+          data-cy={"email-input"}
           size="md"
           type="text"
           variant={"bordered"}
@@ -539,28 +540,6 @@ const ForgetPassword = () => {
           className="mr-4 text-white"
           name="email"
           onChange={(e) => handleChange(e.target.name, e.target.value)}
-        />
-        <Input
-          type={isVisible ? "text" : "password"}
-          className=" text-white mt-2"
-          size="md"
-          variant={"bordered"}
-          label="Password"
-          name="password"
-          onChange={(e) => handleChange(e.target.name, e.target.value)}
-          endContent={
-            <button
-              className="focus:outline-none"
-              type="button"
-              onClick={toggleVisibility}
-            >
-              {isVisible ? (
-                <HiOutlineEyeOff className="text-2xl text-default-400 pointer-events-none" />
-              ) : (
-                <HiOutlineEye className="text-2xl text-default-400 pointer-events-none" />
-              )}
-            </button>
-          }
         />
         <div className="text-right text-white flex">
           <div className="flex w-full ">
@@ -574,16 +553,10 @@ const ForgetPassword = () => {
               {message}
             </small>
           </div>
-
-          <div className="flex justify-end align-baseline w-full ">
-            <small className="cursor-pointer  text-[14px]">
-              forgot password?
-            </small>
-          </div>
         </div>
 
         <Button
-          title={"Login"}
+          title={"Send Link"}
           type={"submit"}
           color={"warning"}
           variant={"flat"}
@@ -592,13 +565,13 @@ const ForgetPassword = () => {
 
         <div className="text-center text-white ">
           <small className="text-base">
-            Don't have an account?
+            You will recieve email to
             <strong
               className=" cursor-pointer"
               onClick={() => handleClick("signup")}
             >
               {" "}
-              Sign Up
+              reset passsword.
             </strong>
           </small>
         </div>
@@ -638,7 +611,7 @@ const AccessAuth = () => {
       >
         {snap.authModalType === "login" && <Login />}
         {snap.authModalType === "signup" && <SignUp />}
-        {snap.authModalType === "forgetPass" && <ForgetPassword />}
+        {snap.authModalType === "forgetPassword" && <ForgetPassword />}
       </Modal>
     </Fragment>
   );
